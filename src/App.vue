@@ -41,8 +41,15 @@
 .btn-group-lg {
   display: flex;
   justify-content: center;
+  margin-top: 1.5rem;
 }
 .btn {
   width: 14rem;
+}
+.invalid {
+  display: flex;
+  justify-content: center;
+  color: #a90f0f;
+  margin-top: 5px;
 }
 </style>

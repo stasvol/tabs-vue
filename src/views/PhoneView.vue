@@ -2,13 +2,20 @@
   <div class="card-header">
     <h1 class="header">Phone page</h1>
 
-    <form>
+    <form @submit.prevent="onSubmit">
+
       <div class="mb-3 row">
         <label for="inputPhone" class="col-sm-6 col-form-label">Phone
           <div class="col-lg-12">
-        <input type="tel" class="form-control" id="inputPhone" placeholder="phone">
+        <input v-model.trim.number="phone" type="tel" class="form-control" id="inputPhone" placeholder="phone">
           </div>
         </label>
+        <small
+            class="helper-text invalid"
+            v-if="v$.phone.$error"
+        >
+          Phone field required,  must be a number. &nbsp; HAS AN ERROR !
+        </small>
       </div>
       <div class="mb-3 row">
         <label for="textarea" class="col-sm-6 col-form-label">Description
@@ -17,15 +24,63 @@
           </div>
         </label>
       </div>
+
+      <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
+        <button @click="$router.push('/')" type="button" class="btn btn-warning">Prev</button>
+        <!--      <button type="button" class="btn btn-warning">Middle</button>-->
+        <button type="submit" class="btn btn-success">Next</button>
+      </div>
+
     </form>
+    <div>
+      <i class="invalid" v-for="error of v$.$errors"
+         :key="error.$uid"
+      >
+        <strong>{{ error.$validator }}</strong>
+        <small> on property</small>
+        <strong>{{ error.$property }}</strong>
+        <small> says:</small>
+        <strong>{{ error.$message }}</strong>
+      </i>
+    </div>
+
   </div>
 </template>
 <script>
 // @ is an alias to /src
+import useVuelidate from "@vuelidate/core";
+import {required} from "@vuelidate/validators";
+
 export default {
+  name: 'phone',
+  data:() => ({
+    phone: null,
+    description: ''
+  }),
+  setup:() => ({ v$: useVuelidate()}),
+  validations:()=> ({phone: {required}}),
+
   methods: {
-    onSubmit() {
-      console.log('SUBMIT')
+   async onSubmit() {
+      if (this.v$.$invalid) {
+        this.v$.$touch()
+        return
+      }
+      const formData = {
+         phone: this.phone,
+         description: this.description
+       }
+      try {
+        // await this.$store.dispatch('login', formData)
+        // await this.$store.dispatch('getInfo')
+        // console.log(this.$store.getters.info.locale)
+        // await this.$router.push('/')
+        if (!this.v$.$error) {
+          await this.$router.push('/photo')
+        }
+      } catch (e) {}
+      console.log(formData)
+      this.phone = this.description = ''
     }
   }
 }
