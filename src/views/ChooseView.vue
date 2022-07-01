@@ -1,8 +1,9 @@
 <template>
   <div class="card-header">
+    <Modal />
     <h1 class="header">Choose page</h1>
     <div class="checked">
-      <form @submit="onSubmit">
+      <form @submit.prevent="onSubmit">
         <div class="form-check  mb-3 ">
           <label class="form-check-label col-sm-1" for="flexCheckDefault">
             <div>
@@ -36,18 +37,20 @@
           </label>
         </div>
         <div class="btn-group-lg" role="group" aria-label="Basic mixed styles example">
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
           <!--      <button type="button" class="btn btn-warning">Middle</button>-->
           <!--        <router-link to="/modal" tag="button" class="btn btn-primary">Save</router-link>-->
         </div>
       </form>
-
     </div>
+
   </div>
 </template>
 <script>
+import Modal from "@/views/Modal";
 export default {
   name: 'choose',
+  components: {Modal},
   data:() => ({
     check: {
      value: false

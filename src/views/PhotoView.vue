@@ -30,7 +30,7 @@ export default {
       const formData = {
         photo: this.photo
       }
-      this.photo = []
+      this.$router.push('/choose')
       console.log(formData)
     }
   }

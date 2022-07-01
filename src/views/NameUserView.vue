@@ -71,6 +71,8 @@
         <strong>{{ error.$message }}</strong>
       </i>
     </div>
+<!--    <b> Name: {{name}}</b>-->
+<!--    <b> Email: {{email}}</b>-->
   </div>
 </template>
 
@@ -110,7 +112,7 @@ methods: {
   //     this.$router.push('/phone')
   //   }
   // },
- async onSubmit() {
+  onSubmit() {
     if (this.v$.$invalid) {
       this.v$.$touch()
       return
@@ -123,12 +125,14 @@ methods: {
    console.log(formData)
 
     try {
-      // await this.$store.dispatch('login', formData)
+       this.$store.dispatch('getData', formData)
       // await this.$store.dispatch('getInfo')
       // console.log(this.$store.getters.info.locale)
-      // await this.$router.push('/')
+      // this.$router.push('/')
+
+
         if (!this.v$.$error) {
-         await this.$router.push('/phone')
+         this.$router.push('/phone')
         }
     } catch (e) {}
    //   if (this.v$.$error === false) {

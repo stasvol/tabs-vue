@@ -25,11 +25,11 @@ const routes = [
     name: 'choose',
     component: () => import('../views/ChooseView')
   },
-  {
-    path: '/modal',
-    name: 'modal',
-    component: () => import('@/views/Modal')
-  },
+  // {
+  //   path: '/modal',
+  //   name: 'modal',
+  //   component: () => import('@/views/Modal')
+  // },
 
 ]
 

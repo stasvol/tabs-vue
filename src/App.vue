@@ -13,9 +13,9 @@
       <li class="nav-item">
         <router-link active-class="active" class="nav-link " to="/choose">Choose</router-link>
       </li>
-      <li class="nav-item">
-        <router-link active-class="active" class="nav-link " to="/modal">Modal</router-link>
-      </li>
+<!--      <li class="nav-item">-->
+<!--        <router-link active-class="active" class="nav-link " to="/modal">Modal</router-link>-->
+<!--      </li>-->
     </ul>
 <!--    <router-link to="/">Home</router-link> |-->
 <!--    <router-link to="/about">About</router-link>-->
