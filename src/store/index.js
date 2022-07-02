@@ -4,12 +4,18 @@ export default createStore({
   state: {
     error: null,
     name: '',
-    email: ''
+    email: '',
+    phone: null,
+    description: '',
+    photo: []
   },
   getters: {
     error: state => state.error,
-    getData({name, email}) {
+    getName({name, email}) {
       return name, email
+    },
+    getPhone({phone, description}) {
+      return phone, description
     }
 
   },
@@ -22,15 +28,23 @@ export default createStore({
       state.error = null
     },
 
-    getData(state, name, email) {
+    getName(state, name, email) {
       state.name = name
       state.email = email
+    },
+
+    getPhone(state, phone, description) {
+      state.phone = phone
+      state.description = description
     }
   },
 
   actions: {
-    getData({commit, name,email}) {
+    getName({commit, name,email}) {
       commit('getData', name,email)
+    },
+    getPhone({commit, phone, description}) {
+      commit('getPhone', phone, description)
     }
   },
 

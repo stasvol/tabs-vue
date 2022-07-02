@@ -125,7 +125,7 @@ methods: {
    console.log(formData)
 
     try {
-       this.$store.dispatch('getData', formData)
+       this.$store.dispatch('getName', formData)
       // await this.$store.dispatch('getInfo')
       // console.log(this.$store.getters.info.locale)
       // this.$router.push('/')

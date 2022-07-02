@@ -17,7 +17,7 @@
              <span>Name:</span>
             </div>
             <div class="mod">
-              <span>Email:{</span>
+              <span>Email:</span>
             </div>
             <div class="mod">
               <span>Phone:</span>

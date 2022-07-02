@@ -20,7 +20,7 @@
       <div class="mb-3 row">
         <label for="textarea" class="col-sm-6 col-form-label">Description
           <div class="col-lg-12">
-        <textarea class="form-control" id="textarea" rows="3"></textarea>
+        <textarea v-model="description" class="form-control" id="textarea" rows="3"></textarea>
           </div>
         </label>
       </div>
@@ -61,7 +61,7 @@ export default {
   validations:()=> ({phone: {required}}),
 
   methods: {
-   async onSubmit() {
+    onSubmit() {
       if (this.v$.$invalid) {
         this.v$.$touch()
         return
@@ -70,13 +70,14 @@ export default {
          phone: this.phone,
          description: this.description
        }
+      console.log(formData)
       try {
-        // await this.$store.dispatch('login', formData)
+         this.$store.dispatch('getPhone', formData)
         // await this.$store.dispatch('getInfo')
         // console.log(this.$store.getters.info.locale)
         // await this.$router.push('/')
         if (!this.v$.$error) {
-          await this.$router.push('/photo')
+           this.$router.push('/photo')
         }
       } catch (e) {}
       console.log(formData)

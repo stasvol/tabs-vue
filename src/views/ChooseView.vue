@@ -4,41 +4,42 @@
     <h1 class="header">Choose page</h1>
     <div class="checked">
       <form @submit.prevent="onSubmit">
-        <div class="form-check  mb-3 ">
-          <label class="form-check-label col-sm-1" for="flexCheckDefault">
+        <div class="form-check  mb-3 " v-for="(value,id) in 5" :key="id">
+          <label class="form-check-label col-sm-1">
             <div>
-              <input v-model="check" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
+              <input v-model="check.value" class="form-check-input" type="checkbox" value="{{value}}">
             </div>
-            Add Name
+            Add Data  <b>{{value}}</b>
           </label>
         </div>
-        <div class="form-check  mb-3">
-          <label class="form-check-label col-sm-1 " for="flexCheckDefault">
-            <div>
-              <input v-model="check" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault">
-            </div>
-            Add email
-          </label>
-        </div>
-        <div class="form-check mb-3">
-          <label class="form-check-label col-sm-1" for="flexCheckDefault">
-            <div>
-              <input v-model="check" class="form-check-input" type="checkbox" value="3" id="flexCheckDefault">
-            </div>
-            Add phone
-          </label>
-        </div>
-        <div class="form-check mb-3">
-          <label class="form-check-label col-sm-1" for="flexCheckDefault">
-            <div>
-              <input v-model="check" class="form-check-input" type="checkbox" value="4" id="flexCheckDefault">
-            </div>
-            Add photo
-          </label>
-        </div>
+<!--        <div class="form-check  mb-3">-->
+<!--          <label class="form-check-label col-sm-1 " for="flexCheckDefault">-->
+<!--            <div>-->
+<!--              <input v-model="check" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault">-->
+<!--            </div>-->
+<!--            Add email-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="form-check mb-3">-->
+<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault">-->
+<!--            <div>-->
+<!--              <input v-model="check" class="form-check-input" type="checkbox" value="3" id="flexCheckDefault">-->
+<!--            </div>-->
+<!--            Add phone-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="form-check mb-3">-->
+<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault">-->
+<!--            <div>-->
+<!--              <input v-model="check" class="form-check-input" type="checkbox" value="4" id="flexCheckDefault">-->
+<!--            </div>-->
+<!--            Add photo-->
+<!--          </label>-->
+<!--        </div>-->
         <div class="btn-group-lg" role="group" aria-label="Basic mixed styles example">
+          <button @click="$router.push('/photo')" type="button" class="btn btn-warning">Prev</button>
           <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
-          <!--      <button type="button" class="btn btn-warning">Middle</button>-->
+
           <!--        <router-link to="/modal" tag="button" class="btn btn-primary">Save</router-link>-->
         </div>
       </form>
@@ -50,12 +51,13 @@
 import Modal from "@/views/Modal";
 export default {
   name: 'choose',
+
   components: {Modal},
+
   data:() => ({
-    check: {
-     value: false
-    }
+    check: false
   }),
+
   methods: {
     onSubmit() {
       const formData = {
