@@ -5,7 +5,14 @@
       <div class="mb-3 row">
         <label for="formFile" class="col-sm-6 col-form-label">Choose files
           <div class="col-lg-10">
-            <input @change="onFileSelected" class="form-control" type="file" id="formFile">
+            <input
+                ref="input"
+                @change="onFileSelected"
+                class="form-control"
+                type="file"
+                id="formFile"
+                multiple
+            >
           </div>
         </label>
       </div>
@@ -28,25 +35,41 @@
       >
 
     </div>
+    {{needUpload}}
 
   </div>
 </template>
 <script>
-import {defineComponent, ref} from "vue";
+import {computed, defineComponent, ref} from "vue";
 
 export default defineComponent({
   setup() {
 
     const photos = ref([])
+    const input = ref()
+
     const onFileSelected =({target}) => {
       if (target.files) {
         photos.value = [...photos.value, ...Array.from(target.files)]
       }
-      console.log(target.files[0])
+       if(input.value) {
+         input.value.value = ''
+       }
     };
+
     const getSrc = (photo) => URL.createObjectURL(photo)
-    console.log(getSrc)
+    const needUpload = computed(() =>   5 - photos.value.length)
+    const uploadFile = computed(() => {
+      if (needUpload.value <= 5) {
+        needUpload.value
+      } else { ` max length photo: 5photos `}
+      console.log(needUpload.value)
+    })
+
     return {
+      uploadFile,
+      needUpload,
+      input,
       getSrc,
       photos,
       onFileSelected,
