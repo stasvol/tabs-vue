@@ -1,7 +1,7 @@
 <template>
   <div class="card-header">
     <h1 class="header">Photo page</h1>
-<!--    <form @submit="onSubmit">-->
+    <form @submit.prevent="onSubmit">
       <div class="mb-3 row">
         <label for="formFile" class="col-sm-6 col-form-label">Choose files
           <div class="col-lg-10">
@@ -19,31 +19,33 @@
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="$router.push('/phone')" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button class="btn btn-success">Next</button>
+        <button type="submit" class="btn btn-success">Next</button>
 
       </div>
-<!--    </form>-->
-    <div class="photoSize"
+    </form>
+    <div
+        v-if="needUpload"
+        class="photoSize"
         v-for="(photo,index) in photos"
-        :key="index"
+        :key="photo"
 
     >
       <img
           :src="getSrc(photo)"
-          :alt="`Photo ${index+1}`"
+          :alt="`Photo ${index}`"
           class="photo"
       >
 
     </div>
-    {{needUpload}}
+    <h3 class="head" v-else> Max length photos: 5 photo </h3>
 
   </div>
 </template>
-<script>
+<script setup>
 import {computed, defineComponent, ref} from "vue";
 
-export default defineComponent({
-  setup() {
+// export default defineComponent({
+//   setup() {
 
     const photos = ref([])
     const input = ref()
@@ -58,25 +60,29 @@ export default defineComponent({
     };
 
     const getSrc = (photo) => URL.createObjectURL(photo)
-    const needUpload = computed(() =>   5 - photos.value.length)
-    const uploadFile = computed(() => {
-      if (needUpload.value <= 5) {
-        needUpload.value
-      } else { ` max length photo: 5photos `}
-      console.log(needUpload.value)
-    })
+    const needUpload = computed(() =>photos.value.length <= 5)
 
-    return {
-      uploadFile,
-      needUpload,
-      input,
-      getSrc,
-      photos,
-      onFileSelected,
-    }
-  }
 
-})
+  //   const uploadFile = computed(() => {
+  //     if (needUpload.value > 0) {
+  //      return  `Remains ${needUpload.value.length}`
+  //     } else {
+  //     return `${needUpload.value.length >=5}- Max length photo: 5photos `
+  // }
+  //     console.log(needUpload.value)
+  //   })
+
+    // return {
+    //   // uploadFile,
+    //   needUpload,
+    //   input,
+    //   getSrc,
+    //   photos,
+    //   onFileSelected,
+    // }
+  // }
+
+// })
 // @ is an alias to /src
 // export default {
 //   name: 'photo',
@@ -97,6 +103,16 @@ export default defineComponent({
 //   },
 //
 // }
+
+</script>
+<script>
+export default {
+  methods: {
+    onSubmit() {
+      this.$router.push('/choose')
+    }
+  }
+}
 </script>
 <style>
 .photo {
@@ -107,6 +123,12 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+}
+.head {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  color: #a90f0f;
 }
 /*.row {*/
 /*  display: flex;*/

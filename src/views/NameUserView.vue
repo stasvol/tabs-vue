@@ -3,7 +3,6 @@
    <h1 class="header">Names page</h1>
 
     <form @submit.prevent="onSubmit">
-
       <div class="mb-3 row">
         <label for="inputName" class="col-sm-6 col-form-label">Name
           <div class="col-lg-12">
@@ -45,8 +44,15 @@
         </small>
       </div>
       <div class="form-check form-switch">
-        <label class="form-check-label" for="switchCheck">ON
-        <input v-model="check" class="form-check-input" type="checkbox" role="switch" id="switchCheck">
+        <label class="form-check-label" for="switchCheck">{{check}}
+        <input
+            v-model="check"
+            class="form-check-input"
+            type="checkbox" role="switch"
+            id="switchCheck"
+            @click="checkToggle"
+            value="{{check ? 'ON' : 'OF'}}"
+        >
         </label>
       </div>
       <div  class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
@@ -107,6 +113,10 @@ export default {
   components:{},
 
 methods: {
+   checkToggle() {
+     console.log(this.check)
+     this.check = !this.check
+   },
   // patchPhone() {
   //   if (this.v$.$error === false) {
   //     this.$router.push('/phone')
@@ -147,6 +157,12 @@ methods: {
 .form-check {
   display: flex;
   justify-content: center;
+}
+.checkVal {
+  content: "ON";
+}
+.nodCheck {
+  content: "OF";
 }
 /*.validate {*/
 /*  color: #a90f0f;*/
