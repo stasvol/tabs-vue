@@ -5,32 +5,38 @@ export default createStore({
     error: null,
     name: '',
     email: '',
+    check: false,
     phone: null,
     description: '',
     photo: []
   },
   getters: {
+
     error: state => state.error,
-    getName({name, email}) {
-      return name, email
+
+    getName(state, {name, email, check}) {
+      console.log(state)
+      return {name, email, check}
     },
+
     getPhone({phone, description}) {
-      return phone, description
+      return {phone, description}
     }
 
   },
   mutations: {
     setError(state, error) {
-      console.log(error)
       state.error = error
     },
     clearError(state) {
       state.error = null
     },
 
-    getName(state, name, email) {
+    getName(state, name, email, check) {
       state.name = name
       state.email = email
+      state.check = check
+      console.log(name,email,check)
     },
 
     getPhone(state, phone, description) {
@@ -40,11 +46,14 @@ export default createStore({
   },
 
   actions: {
-    getName({commit, name,email}) {
-      commit('getData', name,email)
+    getName({commit}, {name,email,check}) {
+      console.log(name,email,check)
+      return commit('getName', {name,email,check})
+
+
     },
-    getPhone({commit, phone, description}) {
-      commit('getPhone', phone, description)
+    getPhone({commit}, {phone, description}) {
+      return commit('getPhone', {phone, description})
     }
   },
 

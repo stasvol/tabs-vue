@@ -114,7 +114,7 @@ export default {
 
 methods: {
    checkToggle() {
-     console.log(this.check)
+     // console.log(this.check)
      this.check = !this.check
    },
   // patchPhone() {
@@ -130,7 +130,8 @@ methods: {
     const formData = {
       name:  this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      check: this.check
     }
    console.log(formData)
 

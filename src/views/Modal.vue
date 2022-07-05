@@ -14,16 +14,19 @@
           </div>
           <div class="modal-body">
             <div class="mod">
-             <span>Name:</span>
+              <span>Name:<strong>{{$store.name}}</strong></span>
             </div>
             <div class="mod">
-              <span>Email:</span>
+              <span>Email: <strong>{{ $store.state.name.email }}</strong></span>
             </div>
             <div class="mod">
-              <span>Phone:</span>
+              <span>Check: <strong>{{ $store.state.name.check }}</strong></span>
             </div>
             <div class="mod">
-              <span>Description:</span>
+              <span>Phone: <strong>{{ $store.state.phone }}</strong></span>
+            </div>
+            <div class="mod">
+              <span>Description: <strong>{{ $store.state.name.description}}</strong></span>
             </div>
             <div class="mod">
               <span>Photo:</span>
@@ -43,6 +46,7 @@
 import {mapGetters} from "vuex";
 
 export default {
+
   ...mapGetters
 }
 </script>
