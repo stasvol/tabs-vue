@@ -30,14 +30,15 @@
         :key="photo"
 
     >
+
       <img
           :src="getSrc(photo)"
           :alt="`Photo ${index}`"
           class="photo"
       >
-
+      <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
     </div>
-    <h3 class="head" v-else> Max length photos: 5 photo </h3>
+    <h3 class="head" v-else> Max length photos: {{maxSize}}photo </h3>
 
   </div>
 </template>
@@ -46,7 +47,7 @@ import {computed, defineComponent, ref} from "vue";
 
 // export default defineComponent({
 //   setup() {
-
+    const maxSize = 5
     const photos = ref([])
     const input = ref()
 
@@ -61,6 +62,7 @@ import {computed, defineComponent, ref} from "vue";
 
     const getSrc = (photo) => URL.createObjectURL(photo)
     const needUpload = computed(() =>photos.value.length <= 5)
+    const removePhoto =(index) => photos.value = photos.value.filter((photo, i) => i != index)
 
 
   //   const uploadFile = computed(() => {
@@ -123,6 +125,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  cursor: pointer;
 }
 .head {
   display: flex;
@@ -130,6 +133,16 @@ export default {
   margin-top: 3rem;
   color: #a90f0f;
 }
+.position {
+  margin: 1rem 0 0 -9rem;
+  /*opacity: 0;*/
+  color: whitesmoke;
+}
+.position:hover {
+  transform: scale(2);
+  color: #c2c1c1;
+}
+
 /*.row {*/
 /*  display: flex;*/
 /*  justify-content: center;*/

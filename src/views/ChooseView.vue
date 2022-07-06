@@ -1,13 +1,14 @@
 <template>
   <div class="card-header">
-    <Modal />
+    <Modal :modelValue="check.value"
+           @update:modelValue="check.value = $event"/>
     <h1 class="header">Choose page</h1>
     <div class="checked">
       <form @submit.prevent="onSubmit">
-        <div class="form-check  mb-3 " v-for="(value,id) in 5" :key="id">
+        <div class="form-check  mb-3 " v-for="(value,i) in 5" :key="i">
           <label class="form-check-label col-sm-1">
             <div>
-              <input v-model="check.value" class="form-check-input" type="checkbox" value="{{value}}">
+              <input v-model="check.value" class="form-check-input" type="checkbox" >
             </div>
             Add Data  <b>{{value}}</b>
           </label>
@@ -52,18 +53,20 @@ import Modal from "@/views/Modal";
 export default {
   name: 'choose',
 
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
+
   components: {Modal},
 
   data:() => ({
-    check: false
+    check: ''
   }),
 
   methods: {
     onSubmit() {
-      const formData = {
-        check: this.check.value
-      }
-      console.log(formData)
+      check: this.check.value
+      console.log(this.check.value)
+
     }
   }
 }

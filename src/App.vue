@@ -41,7 +41,7 @@
 .btn-group-lg {
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0 1.5rem 0;
 }
 .btn {
   width: 14rem;

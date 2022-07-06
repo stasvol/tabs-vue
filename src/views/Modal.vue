@@ -14,7 +14,7 @@
           </div>
           <div class="modal-body">
             <div class="mod">
-              <span>Name:<strong>{{$store.name}}</strong></span>
+              <span>Name:<strong>{{$store.state.name.name}}</strong></span>
             </div>
             <div class="mod">
               <span>Email: <strong>{{ $store.state.name.email }}</strong></span>
@@ -23,10 +23,13 @@
               <span>Check: <strong>{{ $store.state.name.check }}</strong></span>
             </div>
             <div class="mod">
-              <span>Phone: <strong>{{ $store.state.phone }}</strong></span>
+              <span>Phone: <strong>{{ $store.state.phone?.phone}}</strong></span>
             </div>
             <div class="mod">
-              <span>Description: <strong>{{ $store.state.name.description}}</strong></span>
+              <span>Description: <strong>{{ $store.state.phone?.description}}</strong></span>
+            </div>
+            <div class="mod">
+              <span>Check choose: {{check?.modelValue}}</span>
             </div>
             <div class="mod">
               <span>Photo:</span>
@@ -35,7 +38,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button @click="$router.push('/')" data-bs-dismiss="modal" type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -43,11 +46,13 @@
   </div>
 </template>
 <script>
-import {mapGetters} from "vuex";
-
+// import {mapGetters} from "vuex";
 export default {
-
-  ...mapGetters
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
+      closeModal:() => {
+        this.$router.push('/')
+      }
 }
 </script>
 <style scoped>
