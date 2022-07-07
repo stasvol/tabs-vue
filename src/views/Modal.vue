@@ -5,6 +5,7 @@
 <!--      Launch demo modal-->
 <!--    </button>-->
     <!-- Modal -->
+<!--    <h1>{{files.length}}</h1>-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -13,32 +14,36 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="mod">
-              <span>Name:<strong>{{$store.state.name.name}}</strong></span>
+            <div>
+            <div class="mod" >
+              <span>Name:<strong>{{getName.name?.name}}</strong></span>
             </div>
             <div class="mod">
-              <span>Email: <strong>{{ $store.state.name.email }}</strong></span>
+              <span>Email: <strong>{{getName.name?.email }}</strong></span>
             </div>
             <div class="mod">
-              <span>Check: <strong>{{ $store.state.name.check }}</strong></span>
+              <span>Check: <strong>{{getName.name?.check }}</strong></span>
+            </div>
             </div>
             <div class="mod">
-              <span>Phone: <strong>{{ $store.state.phone?.phone}}</strong></span>
+              <span>Phone: <strong>{{ getPhone.phone?.phone}}</strong></span>
             </div>
             <div class="mod">
               <span>Description: <strong>{{ $store.state.phone?.description}}</strong></span>
             </div>
             <div class="mod">
-              <span>Check choose: {{check?.modelValue}}</span>
+              <span>Check choose: {{check?.value}}</span>
             </div>
-            <div class="mod">
-              <span>Photo:</span>
+            <div class="mod">Photo:
+<!--               <PhotoView v-model="files" />-->
+<!--              {{files.length}}-->
+
             </div>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button @click="$router.push('/')" data-bs-dismiss="modal" type="button" class="btn btn-primary">Save changes</button>
+            <button @click="closeModal" data-bs-dismiss="modal" type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -46,13 +51,37 @@
   </div>
 </template>
 <script>
-// import {mapGetters} from "vuex";
+ import {mapGetters} from "vuex";
+ import {ref} from "vue";
+ import PhotoView from "@/views/PhotoView";
 export default {
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
-      closeModal:() => {
-        this.$router.push('/')
-      }
+  // components: {PhotoView},
+  // props: ['modelValue'],
+  // emits: ['update:modelValue'],
+  // data:()=>({
+  //   files: []
+  // }),
+  methods: {
+    closeModal() {
+      this.$router.push('/')
+    }
+  },
+  // components: {PhotoView},
+
+  computed: mapGetters(['getName','getPhone']),
+  // computed: {
+  //   getName() {
+  //    return  this.$store.getters.getName
+  //   },
+  //
+  //     getPhone() {
+  //       return this.$store.getters.getPhone
+  //     }
+  //   },
+  // setup() {
+  //   const files = ref([])
+  //   return {files}
+  // }
 }
 </script>
 <style scoped>

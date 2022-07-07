@@ -1,7 +1,8 @@
 <template>
   <div class="card-header">
-    <Modal :modelValue="check.value"
-           @update:modelValue="check.value = $event"/>
+    <Modal />
+<!--        :modelValue="check.value"-->
+<!--           @update:modelValue="check.value = $event"/>-->
     <h1 class="header">Choose page</h1>
     <div class="checked">
       <form @submit.prevent="onSubmit">
@@ -59,13 +60,13 @@ export default {
   components: {Modal},
 
   data:() => ({
-    check: ''
+    check: false
   }),
 
   methods: {
     onSubmit() {
       check: this.check.value
-      console.log(this.check.value)
+      console.log(this.check)
 
     }
   }

@@ -1,21 +1,20 @@
 import { createStore } from 'vuex'
 
 export default createStore({
-  state: {
-    error: null,
-    name: '',
-    email: '',
-    check: false,
-    phone: null,
-    description: '',
-    photo: []
-  },
+  // state: {
+  //   error: null,
+  //   name: '',
+  //   email: '',
+  //   check: false,
+  //   phone: null,
+  //   description: '',
+  //   photo: []
+  // },
   getters: {
 
     error: state => state.error,
 
-    getName(state, {name, email, check}) {
-      console.log(state)
+    getName({name, email, check}) {
       return {name, email, check}
     },
 

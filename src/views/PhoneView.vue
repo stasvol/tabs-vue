@@ -57,8 +57,15 @@ export default {
     phone: null,
     description: ''
   }),
+
   setup:() => ({ v$: useVuelidate()}),
   validations:()=> ({phone: {required}}),
+
+  // computed: {
+  //   getPhone() {
+  //     return this.$store.getters.getPhone
+  //   }
+  // },
 
   methods: {
     onSubmit() {
@@ -82,7 +89,7 @@ export default {
       } catch (e) {}
       console.log(formData)
       this.phone = this.description = ''
-    }
+    },
   }
 }
 </script>

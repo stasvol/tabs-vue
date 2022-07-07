@@ -19,7 +19,7 @@
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="$router.push('/phone')" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button type="submit" class="btn btn-success">Next</button>
+        <button @click="$router.push('/choose')" type="submit" class="btn btn-success">Next</button>
 
       </div>
     </form>
@@ -43,16 +43,29 @@
   </div>
 </template>
 <script setup>
-import {computed, defineComponent, ref} from "vue";
+import {computed, defineComponent, ref, toRefs} from "vue";
 
 // export default defineComponent({
-//   setup() {
+
+  // props: {
+  //   modelValue: {
+  //     type: Array,
+  //     required: true
+  //   }
+  // },
+
+  // emits: ['update: modelValue'],
+  //
+  // setup(props, {emit}) {
+
+    // const { modelValue } = toRefs(props)
     const maxSize = 5
     const photos = ref([])
     const input = ref()
 
     const onFileSelected =({target}) => {
       if (target.files) {
+        // emit('update: modelValue',[...modelValue.value, ...Array.from(target.files)])
         photos.value = [...photos.value, ...Array.from(target.files)]
       }
        if(input.value) {
@@ -62,7 +75,9 @@ import {computed, defineComponent, ref} from "vue";
 
     const getSrc = (photo) => URL.createObjectURL(photo)
     const needUpload = computed(() =>photos.value.length <= 5)
+    // const needUpload = computed(() =>modelValue?.value?.length <= 5)
     const removePhoto =(index) => photos.value = photos.value.filter((photo, i) => i != index)
+    // const removePhoto =(index) => emit('update: modelValue',modelValue.value.filter((photo, i) => i != index))
 
 
   //   const uploadFile = computed(() => {
@@ -74,16 +89,18 @@ import {computed, defineComponent, ref} from "vue";
   //     console.log(needUpload.value)
   //   })
 
-    // return {
-    //   // uploadFile,
-    //   needUpload,
-    //   input,
-    //   getSrc,
-    //   photos,
-    //   onFileSelected,
-    // }
-  // }
-
+//     return {
+//       maxSize,
+//       removePhoto,
+//       // uploadFile,
+//       needUpload,
+//       input,
+//       getSrc,
+//       // photos,
+//       onFileSelected,
+//     }
+//   }
+//
 // })
 // @ is an alias to /src
 // export default {
@@ -107,15 +124,15 @@ import {computed, defineComponent, ref} from "vue";
 // }
 
 </script>
-<script>
-export default {
-  methods: {
-    onSubmit() {
-      this.$router.push('/choose')
-    }
-  }
-}
-</script>
+<!--<script>-->
+<!--export default {-->
+<!--  methods: {-->
+<!--    onSubmit() {-->
+<!--      this.$router.push('/choose')-->
+<!--    }-->
+<!--  }-->
+<!--}-->
+<!--</script>-->
 <style>
 .photo {
   max-width: 30%;

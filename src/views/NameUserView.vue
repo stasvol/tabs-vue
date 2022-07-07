@@ -1,12 +1,12 @@
 <template>
   <div class="card-header">
-   <h1 class="header">Names page</h1>
+    <h1 class="header">Names page</h1>
 
     <form @submit.prevent="onSubmit">
       <div class="mb-3 row">
         <label for="inputName" class="col-sm-6 col-form-label">Name
           <div class="col-lg-12">
-            <input v-model.trim="name" type="text" class="form-control validate" id="inputName" placeholder="name" >
+            <input v-model.trim="name" type="text" class="form-control validate" id="inputName" placeholder="name">
           </div>
         </label>
         <small
@@ -18,9 +18,9 @@
       </div>
       <div class="mb-3 row">
         <label for="inputEmail" class="col-sm-6 col-form-label">Email
-        <div class="col-lg-12">
-          <input  v-model.trim="email" type="email" class="form-control validate" id="inputEmail" placeholder="email" >
-        </div>
+          <div class="col-lg-12">
+            <input v-model.trim="email" type="email" class="form-control validate" id="inputEmail" placeholder="email">
+          </div>
         </label>
         <small
             class="helper-text invalid"
@@ -32,37 +32,40 @@
       </div>
       <div class="mb-3 row">
         <label for="inputPassword" class="col-sm-6 col-form-label">Password
-        <div class="col-lg-12">
-          <input v-model.trim="password" type="password" class="form-control validate" id="inputPassword" placeholder="password" >
-        </div>
+          <div class="col-lg-12">
+            <input v-model.trim="password" type="password" class="form-control validate" id="inputPassword"
+                   placeholder="password">
+          </div>
         </label>
         <small
             class="invalid"
             v-if="v$.password.$error"
         >
-          Password field is required and length {{password.length}} - should be: {{v$.password.minLength.$params.min}}.&nbsp; HAS AN ERROR !
+          Password field is required and length {{ password.length }} - should be:
+          {{ v$.password.minLength.$params.min }}.&nbsp; HAS AN ERROR !
         </small>
       </div>
       <div class="form-check form-switch">
-        <label class="form-check-label" for="switchCheck">{{check}}
-        <input
-            v-model="check"
-            class="form-check-input"
-            type="checkbox" role="switch"
-            id="switchCheck"
-            @click="checkToggle"
-            value="{{check ? 'ON' : 'OF'}}"
-        >
+        <label class="form-check-label" for="switchCheck">{{ check }}
+          <input
+              v-model="check"
+              class="form-check-input"
+              type="checkbox" role="switch"
+              id="switchCheck"
+              @click="checkToggle"
+              value="{{check ? 'ON' : 'OF'}}"
+          >
         </label>
       </div>
-      <div  class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
+      <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <!--      <button type="button" class="btn btn-warning">Prev</button>-->
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
         <button
             type="submit"
             class="btn btn-success"
         >
-          Next</button>
+          Next
+        </button>
       </div>
     </form>
 
@@ -77,8 +80,8 @@
         <strong>{{ error.$message }}</strong>
       </i>
     </div>
-<!--    <b> Name: {{name}}</b>-->
-<!--    <b> Email: {{email}}</b>-->
+    <!--    <b> Name: {{name}}</b>-->
+    <!--    <b> Email: {{email}}</b>-->
   </div>
 </template>
 
@@ -88,70 +91,69 @@
 // import mapGetters from "vuex";
 import useVuelidate from "@vuelidate/core";
 import {email, minLength, required} from "@vuelidate/validators";
+import {mapActions} from "vuex";
 
 export default {
- name: 'nameUser',
-  data:() => ({
+  name: 'nameUser',
+  data: () => ({
     name: '',
     email: '',
     password: '',
     check: false
   }),
 
-  setup: () => ({ v$: useVuelidate() }),
+  setup: () => ({v$: useVuelidate()}),
   // setup() {
   //   return {v$: useVuelidate()}
   // },
   validations() {
     return {
       name: {required},
-      email: {required,email},
-      password: {required, minLength:minLength(6)}
+      email: {required, email},
+      password: {required, minLength: minLength(6)}
     }
   },
 
-  components:{},
+  components: {},
 
-methods: {
-   checkToggle() {
-     // console.log(this.check)
-     this.check = !this.check
-   },
-  // patchPhone() {
-  //   if (this.v$.$error === false) {
-  //     this.$router.push('/phone')
-  //   }
-  // },
-  onSubmit() {
-    if (this.v$.$invalid) {
-      this.v$.$touch()
-      return
-    }
-    const formData = {
-      name:  this.name,
-      email: this.email,
-      password: this.password,
-      check: this.check
-    }
-   console.log(formData)
+  // methods: mapActions(['getName']),
+  methods: {
+    checkToggle() {
+      // console.log(this.check)
+      this.check = !this.check
+    },
+    // patchPhone() {
+    //   if (this.v$.$error === false) {
+    //     this.$router.push('/phone')
+    //   }
+    // },
+    onSubmit() {
+      if (this.v$.$invalid) {
+        this.v$.$touch()
+        return
+      }
+      const formData = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        check: this.check
+      }
+      console.log(formData)
 
-    try {
-       this.$store.dispatch('getName', formData)
-      // await this.$store.dispatch('getInfo')
-      // console.log(this.$store.getters.info.locale)
-      // this.$router.push('/')
-
-
+      try {
+        // this.getName(formData)
+        this.$store.dispatch('getName', formData)
         if (!this.v$.$error) {
-         this.$router.push('/phone')
+          this.$router.push('/phone')
         }
-    } catch (e) {}
-   //   if (this.v$.$error === false) {
-   //     this.$router.push('/phone')
-   this.name=this.email=this.password = ''
+      } catch (e) {
+      }
+      //   if (this.v$.$error === false) {
+      //     this.$router.push('/phone')
+      this.name = this.email = this.password = ''
 
+    },
   },
-},
 }
 </script>
 <style scoped>
@@ -159,12 +161,15 @@ methods: {
   display: flex;
   justify-content: center;
 }
+
 .checkVal {
   content: "ON";
 }
+
 .nodCheck {
   content: "OF";
 }
+
 /*.validate {*/
 /*  color: #a90f0f;*/
 /*}*/
