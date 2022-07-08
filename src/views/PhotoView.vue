@@ -1,7 +1,7 @@
 <template>
   <div class="card-header">
     <h1 class="header">Photo page</h1>
-    <form @submit.prevent="onSubmit">
+    <form >
       <div class="mb-3 row">
         <label for="formFile" class="col-sm-6 col-form-label">Choose files
           <div class="col-lg-10">
