@@ -20,7 +20,12 @@ export default createStore({
 
     getPhone({phone, description}) {
       return {phone, description}
-    }
+    },
+
+    checkValue({check}) {
+      return check.value
+    },
+
 
   },
   mutations: {
@@ -35,25 +40,34 @@ export default createStore({
       state.name = name
       state.email = email
       state.check = check
-      console.log(name,email,check)
+      console.log(name, email, check)
     },
 
     getPhone(state, phone, description) {
       state.phone = phone
       state.description = description
-    }
+    },
+
+    checkValue(state, check) {
+      console.log(check.value)
+      state.check = check.value
+    },
   },
 
   actions: {
-    getName({commit}, {name,email,check}) {
-      console.log(name,email,check)
-      return commit('getName', {name,email,check})
+    getName({commit}, {name, email, check}) {
+      console.log(name, email, check)
+      return commit('getName', {name, email, check})
 
 
     },
     getPhone({commit}, {phone, description}) {
       return commit('getPhone', {phone, description})
-    }
+    },
+
+    checkValue({commit}, {check}) {
+      return commit('checkValue', check.value)
+    },
   },
 
   modules: {

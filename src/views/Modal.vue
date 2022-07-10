@@ -32,7 +32,7 @@
               <span>Description: <strong>{{ $store.state.phone?.description}}</strong></span>
             </div>
             <div class="mod">
-              <span>Check choose: {{check?.value}}</span>
+              <span>Check choose: <b>{{$store.state.check?.value}}</b></span>
             </div>
             <div class="mod">Photo: <slot></slot>
 <!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->

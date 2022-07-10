@@ -48,6 +48,7 @@
 </template>
 <script setup>
 import {computed, defineComponent, ref, toRefs} from "vue";
+import Modal from "@/views/Modal";
 
 // export default defineComponent({
 

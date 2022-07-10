@@ -9,7 +9,7 @@
         <div class="form-check  mb-3 " v-for="(value,i) in 5" :key="i">
           <label class="form-check-label col-sm-1">
             <div>
-              <input v-model="check.value" class="form-check-input" type="checkbox" >
+              <input v-model="check.value" @click="check=!check" class="form-check-input" type="checkbox" >
             </div>
             Add Data  <b>{{value}}</b>
           </label>
@@ -54,8 +54,8 @@ import Modal from "@/views/Modal";
 export default {
   name: 'choose',
 
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
+  // props: ['modelValue'],
+  // emits: ['update:modelValue'],
 
   components: {Modal},
 
@@ -64,9 +64,18 @@ export default {
   }),
 
   methods: {
+
     onSubmit() {
-      check: this.check.value
+
+      const formData = {
+        check: this.check.value
+      }
+
       console.log(this.check)
+     try {
+        this.$store.dispatch('checkValue',formData)
+
+     }catch (e) {}
 
     }
   }
