@@ -7,5 +7,8 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
+// export const bus = new Vue()
+// Vue.config.productionTip = false
+
 createApp(App).use(useVuelidate).use(store).use(router).mount('#app')
 

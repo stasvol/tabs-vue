@@ -34,7 +34,9 @@
             <div class="mod">
               <span>Check choose: {{check?.value}}</span>
             </div>
-            <div class="mod">Photo:
+            <div class="mod">Photo: <slot></slot>
+<!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
+<!--              <slot name="photo"></slot>-->
 <!--               <PhotoView v-model="files" />-->
 <!--              {{files.length}}-->
 

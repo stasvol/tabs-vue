@@ -19,10 +19,12 @@
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="$router.push('/phone')" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button @click="$router.push('/choose')" type="submit" class="btn btn-success">Next</button>
+        <button @click.prevent="$router.push('/choose')" type="submit" class="btn btn-success">Next</button>
 
       </div>
     </form>
+    <photo-slots>
+    <template #default>
     <div
         v-if="needUpload"
         class="photoSize"
@@ -36,10 +38,12 @@
           :alt="`Photo ${index}`"
           class="photo"
       >
+<!--      <slot v-bind:item="photo"></slot>-->
       <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
     </div>
     <h3 class="head" v-else> Max length photos: {{maxSize}}photo </h3>
-
+    </template>
+    </photo-slots>
   </div>
 </template>
 <script setup>
@@ -75,7 +79,7 @@ import {computed, defineComponent, ref, toRefs} from "vue";
 
     const getSrc = (photo) => URL.createObjectURL(photo)
     const needUpload = computed(() =>photos.value.length <= 5)
-    // const needUpload = computed(() =>modelValue?.value?.length <= 5)
+   // const needUpload = computed(() =>modelValue?.value?.length <= 5)
     const removePhoto =(index) => photos.value = photos.value.filter((photo, i) => i != index)
     // const removePhoto =(index) => emit('update: modelValue',modelValue.value.filter((photo, i) => i != index))
 
