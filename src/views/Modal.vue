@@ -22,7 +22,7 @@
               <span>Email: <strong>{{getName.name?.email }}</strong></span>
             </div>
             <div class="mod">
-              <span>Check: <strong>{{getName.name?.check }}</strong></span>
+              <span>Check: <strong>{{getName.name?.checkToggle }}</strong></span>
             </div>
             </div>
             <div class="mod">
@@ -32,7 +32,7 @@
               <span>Description: <strong>{{ $store.state.phone?.description}}</strong></span>
             </div>
             <div class="mod">
-              <span>Check choose: <b>{{$store.state.check?.value}}</b></span>
+              <span>Check choose: <b>{{$store.state.checks}}</b></span>
             </div>
             <div class="mod">Photo: <slot></slot>
 <!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
@@ -56,7 +56,11 @@
  import {mapGetters} from "vuex";
  import {ref} from "vue";
  import PhotoView from "@/views/PhotoView";
+ import usePhotos from "@/utils/photo";
+
+ const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 export default {
+
   // components: {PhotoView},
   // props: ['modelValue'],
   // emits: ['update:modelValue'],

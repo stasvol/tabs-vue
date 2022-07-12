@@ -49,6 +49,7 @@
 <script setup>
 import {computed, defineComponent, ref, toRefs} from "vue";
 import Modal from "@/views/Modal";
+import  usePhotos  from "@/utils/photo";
 
 // export default defineComponent({
 
@@ -64,25 +65,28 @@ import Modal from "@/views/Modal";
   // setup(props, {emit}) {
 
     // const { modelValue } = toRefs(props)
-    const maxSize = 5
-    const photos = ref([])
-    const input = ref()
 
-    const onFileSelected =({target}) => {
-      if (target.files) {
-        // emit('update: modelValue',[...modelValue.value, ...Array.from(target.files)])
-        photos.value = [...photos.value, ...Array.from(target.files)]
-      }
-       if(input.value) {
-         input.value.value = ''
-       }
-    };
+   const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+   //  const maxSize = 5
+   //  const photos = ref([])
+   //  const input = ref()
+   //
+   //  const onFileSelected =({target}) => {
+   //    if (target.files) {
+   //      // emit('update: modelValue',[...modelValue.value, ...Array.from(target.files)])
+   //      photos.value = [...photos.value, ...Array.from(target.files)]
+   //    }
+   //     if(input.value) {
+   //       input.value.value = ''
+   //     }
+   //  };
+   //
+   //  const getSrc = (photo) => URL.createObjectURL(photo)
+   //  const needUpload = computed(() =>photos.value.length <= 5)
+   // // const needUpload = computed(() =>modelValue?.value?.length <= 5)
+   //  const removePhoto =(index) => photos.value = photos.value.filter((photo, i) => i != index)
+   //  // const removePhoto =(index) => emit('update: modelValue',modelValue.value.filter((photo, i) => i != index))
 
-    const getSrc = (photo) => URL.createObjectURL(photo)
-    const needUpload = computed(() =>photos.value.length <= 5)
-   // const needUpload = computed(() =>modelValue?.value?.length <= 5)
-    const removePhoto =(index) => photos.value = photos.value.filter((photo, i) => i != index)
-    // const removePhoto =(index) => emit('update: modelValue',modelValue.value.filter((photo, i) => i != index))
 
 
   //   const uploadFile = computed(() => {

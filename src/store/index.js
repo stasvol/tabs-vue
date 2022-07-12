@@ -10,12 +10,15 @@ export default createStore({
   //   description: '',
   //   photo: []
   // },
+  state: {
+    checks: []
+  },
   getters: {
 
     error: state => state.error,
 
-    getName({name, email, check}) {
-      return {name, email, check}
+    getName({name, email, checkToggle}) {
+      return {name, email, checkToggle}
     },
 
     getPhone({phone, description}) {
@@ -23,7 +26,7 @@ export default createStore({
     },
 
     checkValue({check}) {
-      return check.value
+      return check
     },
 
 
@@ -36,11 +39,11 @@ export default createStore({
       state.error = null
     },
 
-    getName(state, name, email, check) {
+    getName(state, name, email, checkToggle) {
+
       state.name = name
       state.email = email
-      state.check = check
-      console.log(name, email, check)
+      state.checkToggle = checkToggle
     },
 
     getPhone(state, phone, description) {
@@ -49,15 +52,20 @@ export default createStore({
     },
 
     checkValue(state, check) {
-      console.log(check.value)
-      state.check = check.value
+      debugger
+        state.check = state.checks.push(check)
+
+
+      // state.checks = state.checks.push({check:value})
+      // state.check = {check:value}
+
     },
   },
 
   actions: {
-    getName({commit}, {name, email, check}) {
-      console.log(name, email, check)
-      return commit('getName', {name, email, check})
+    getName({commit}, {name, email, checkToggle}) {
+      console.log(name, email, checkToggle)
+      return commit('getName', {name, email, checkToggle})
 
 
     },
@@ -66,7 +74,8 @@ export default createStore({
     },
 
     checkValue({commit}, {check}) {
-      return commit('checkValue', check.value)
+      console.log(check)
+      return commit('checkValue',check)
     },
   },
 

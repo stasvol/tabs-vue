@@ -46,14 +46,14 @@
         </small>
       </div>
       <div class="form-check form-switch">
-        <label class="form-check-label" for="switchCheck">{{ check }}
+        <label class="form-check-label" for="switchCheck">{{ checkToggle ? 'ON' : 'OF'}}
           <input
-              v-model="check"
+              v-model="checkToggle"
               class="form-check-input"
               type="checkbox" role="switch"
               id="switchCheck"
-              @click="checkToggle"
-              value="{{check ? 'ON' : 'OF'}}"
+              @click="toggleCheck"
+              value="checkToggle"
           >
         </label>
       </div>
@@ -99,7 +99,7 @@ export default {
     name: '',
     email: '',
     password: '',
-    check: false
+    checkToggle: null
   }),
 
   setup: () => ({v$: useVuelidate()}),
@@ -118,9 +118,9 @@ export default {
 
   // methods: mapActions(['getName']),
   methods: {
-    checkToggle() {
+    toggleCheck() {
       // console.log(this.check)
-      this.check = !this.check
+      this.checkToggle = !this.checkToggle
     },
     // patchPhone() {
     //   if (this.v$.$error === false) {
@@ -136,7 +136,7 @@ export default {
         name: this.name,
         email: this.email,
         password: this.password,
-        check: this.check
+        checkToggle: this.checkToggle
       }
       console.log(formData)
 
