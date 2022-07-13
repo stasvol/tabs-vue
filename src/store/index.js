@@ -52,7 +52,7 @@ export default createStore({
     },
 
     checkValue(state, check) {
-      debugger
+
         state.check = state.checks.push(check)
 
 

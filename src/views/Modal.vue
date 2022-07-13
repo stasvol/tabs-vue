@@ -32,9 +32,10 @@
               <span>Description: <strong>{{ $store.state.phone?.description}}</strong></span>
             </div>
             <div class="mod">
-              <span>Check choose: <b>{{$store.state.checks}}</b></span>
+              <span>Check choose: <b>{{$store.state?.check}}</b></span>
             </div>
-            <div class="mod">Photo: <slot></slot>
+            <div class="mod">Photo: {{photosValue}}
+<!--              <slot></slot>-->
 <!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
 <!--              <slot name="photo"></slot>-->
 <!--               <PhotoView v-model="files" />-->
@@ -58,8 +59,10 @@
  import PhotoView from "@/views/PhotoView";
  import usePhotos from "@/utils/photo";
 
- const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+
 export default {
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
 
   // components: {PhotoView},
   // props: ['modelValue'],
@@ -67,6 +70,10 @@ export default {
   // data:()=>({
   //   files: []
   // }),
+  setup() {
+    const {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+    return {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto}
+  },
   methods: {
     closeModal() {
       this.$router.push('/')

@@ -16,43 +16,47 @@
           </div>
         </label>
       </div>
+      <div>
+      <!--    <photo-slots>-->
+      <!--    <template #default>-->
+      <div
+          v-if="needUpload"
+          class="photoSize"
+          v-for="(photo,index) in photos"
+          :key="photo"
+
+      >
+
+        <img
+            :src="getSrc(photo)"
+            :alt="`Photo ${index}`"
+            class="photo "
+        >
+        <!--      <slot v-bind:item="photo"></slot>-->
+        <button @click="removePhoto(index)" class="btn btn-close  position "  type="button"></button>
+      </div>
+      <h3 class="head" v-else> Max length photos: {{maxSize}}photo </h3>
+      <!--    </template>-->
+      <!--    </photo-slots>-->
+      </div>
+
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="$router.push('/phone')" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
         <button @click.prevent="$router.push('/choose')" type="submit" class="btn btn-success">Next</button>
 
       </div>
+
     </form>
-    <photo-slots>
-    <template #default>
-    <div
-        v-if="needUpload"
-        class="photoSize"
-        v-for="(photo,index) in photos"
-        :key="photo"
 
-    >
-
-      <img
-          :src="getSrc(photo)"
-          :alt="`Photo ${index}`"
-          class="photo"
-      >
-<!--      <slot v-bind:item="photo"></slot>-->
-      <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
-    </div>
-    <h3 class="head" v-else> Max length photos: {{maxSize}}photo </h3>
-    </template>
-    </photo-slots>
   </div>
+
 </template>
 <script setup>
 import {computed, defineComponent, ref, toRefs} from "vue";
 import Modal from "@/views/Modal";
 import  usePhotos  from "@/utils/photo";
-
 // export default defineComponent({
-
   // props: {
   //   modelValue: {
   //     type: Array,
@@ -66,7 +70,9 @@ import  usePhotos  from "@/utils/photo";
 
     // const { modelValue } = toRefs(props)
 
-   const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+   const {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+
+
    //  const maxSize = 5
    //  const photos = ref([])
    //  const input = ref()
@@ -159,14 +165,15 @@ import  usePhotos  from "@/utils/photo";
   margin-top: 3rem;
   color: #a90f0f;
 }
+
 .position {
   margin: 1rem 0 0 -9rem;
   /*opacity: 0;*/
-  color: whitesmoke;
+  /*color: #d9a012;*/
 }
+
 .position:hover {
   transform: scale(2);
-  color: #c2c1c1;
 }
 
 /*.row {*/
