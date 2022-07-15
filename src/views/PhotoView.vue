@@ -35,7 +35,7 @@
         <!--      <slot v-bind:item="photo"></slot>-->
         <button @click="removePhoto(index)" class="btn btn-close  position "  type="button"></button>
       </div>
-      <h3 class="head" v-else> Max length photos: {{maxSize}}photo </h3>
+      <h3 v-else class="head" > Max length photos: {{maxSize}}photo </h3>
       <!--    </template>-->
       <!--    </photo-slots>-->
       </div>

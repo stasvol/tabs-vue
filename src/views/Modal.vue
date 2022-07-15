@@ -34,7 +34,7 @@
             <div class="mod">
               <span>Check choose: <b>{{$store.state?.check}}</b></span>
             </div>
-            <div class="mod">Photo: {{photosValue}}
+            <div class="mod">Photo: {{photos.value}}
 <!--              <slot></slot>-->
 <!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
 <!--              <slot name="photo"></slot>-->
@@ -72,6 +72,7 @@ export default {
   // }),
   setup() {
     const {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+    console.log(photos.value)
     return {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto}
   },
   methods: {
