@@ -12,13 +12,18 @@
           <label class="form-check-label col-sm-1">
             <div>
               <input
-                  :value="modelValue"
-                  @update:modelValue="newValue => value = newValue"
-                  @input="$emit('update: modelValue', $event.target.value)"
-                  @click="check=!check"
+                  :value="check.value"
                   class="form-check-input"
                   type="checkbox"
               >
+<!--              <input-->
+<!--                  :value="modelValue"-->
+<!--                  @update:modelValue="newValue => value = newValue"-->
+<!--                  @input="$emit('update: modelValue', $event.target.value)"-->
+<!--                  @click="check=!check"-->
+<!--                  class="form-check-input"-->
+<!--                  type="checkbox"-->
+<!--              >-->
             </div>
             Add Data  <b>{{value}}</b>
           </label>
@@ -69,6 +74,7 @@ export default {
 
   data:() => ({
     check: []
+
   }),
 
   methods: {
@@ -79,7 +85,7 @@ export default {
         check: this.check.value
       }
 
-      console.log(this.check)
+      console.log(formData)
      try {
         this.$store.dispatch('checkValue',formData)
 
