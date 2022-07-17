@@ -32,9 +32,11 @@
               <span>Description: <strong>{{ $store.state.phone?.description}}</strong></span>
             </div>
             <div class="mod">
+<!--              <Choose v-model="checkList" />-->
+<!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check}}</b></span>
             </div>
-            <div class="mod">Photo: {{photos?.value}}
+            <div class="mod">Photo: {{photos}}
 <!--              <slot></slot>-->
 <!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
 <!--              <slot name="photo"></slot>-->
@@ -58,12 +60,16 @@
  import {ref} from "vue";
  import PhotoView from "@/views/PhotoView";
  import usePhotos from "@/utils/photo";
+ import Choose from "@/views/ChooseView";
 
 
 export default {
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
-
+  components: {Choose},
+  // props: ['modelValue'],
+  // emits: ['update:modelValue'],
+  // data:() =>({
+  //   checkList: []
+  // }),
   // components: {PhotoView},
   // props: ['modelValue'],
   // emits: ['update:modelValue'],
@@ -73,7 +79,7 @@ export default {
 
   setup() {
     const {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
-    console.log(photos.value)
+    console.log(photos)
     return {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto}
   },
   methods: {

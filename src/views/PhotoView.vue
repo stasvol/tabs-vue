@@ -31,6 +31,7 @@
             :src="getSrc(photo)"
             :alt="`Photo ${index}`"
             class="photo "
+            ref="photos"
         >
         <!--      <slot v-bind:item="photo"></slot>-->
         <button @click="removePhoto(index)" class="btn btn-close  position "  type="button"></button>

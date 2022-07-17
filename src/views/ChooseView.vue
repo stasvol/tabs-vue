@@ -11,6 +11,12 @@
         <div class="form-check  mb-3 " v-for="(value,i) in 5" :key="i">
           <label class="form-check-label col-sm-1">
             <div>
+<!--              <input-->
+<!--                  type="checkbox"-->
+<!--                  :value="value"-->
+<!--                  :checked="modelValue.includes(value)"-->
+<!--                  @change="evt => onChange(evt.target.value)"-->
+<!--              >-->
               <input
                   :value="check.value"
                   class="form-check-input"
@@ -58,6 +64,7 @@
 
           <!--        <router-link to="/modal" tag="button" class="btn btn-primary">Save</router-link>-->
         </div>
+
       </form>
     </div>
 
@@ -71,6 +78,21 @@ export default {
   // emits: ['update:modelValue'],
 
   components: {Modal},
+
+  // props: {
+  //   value: { type: String, default: null, },
+  //   modelValue: { type: Array, default: () => [], },
+  // },
+  // methods: {
+  //   onChange(value) {
+  //     if (this.modelValue.includes(this.value)) {
+  //       this.$emit('update:modelValue', this.modelValue.filter(cv => cv !== value))
+  //     }
+  //     else {
+  //       this.$emit('update:modelValue', this.modelValue.concat(value))
+  //     }
+  //   }
+  // }
 
   data:() => ({
     check: []
