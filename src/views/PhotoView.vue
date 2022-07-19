@@ -19,12 +19,11 @@
       <div>
       <!--    <photo-slots>-->
       <!--    <template #default>-->
-      <div
+      <div ref="photos"
           v-if="needUpload"
           class="photoSize"
           v-for="(photo,index) in photos"
           :key="photo"
-          ref="photos"
       >
 
         <img
@@ -33,10 +32,12 @@
             class="photo "
 
         >
+        <div class="">
         <!--      <slot v-bind:item="photo"></slot>-->
-        <button @click="removePhoto(index)" class="btn btn-close  position "  type="button"></button>
+        <button @click="removePhoto(index)" class="btn btn-close position  "  type="button"></button>
+        </div>
       </div>
-<!--      <h3 v-else class="head" > Max length photos: {{maxSize}}photo </h3>-->
+      <h3 v-else class="head" > Max length photos: {{maxSize}}photo </h3>
       <!--    </template>-->
       <!--    </photo-slots>-->
       </div>
@@ -168,13 +169,19 @@ import  usePhotos  from "@/utils/photo";
 }
 
 .position {
-  margin: 1rem 0 0 -9rem;
+  margin: 1rem 0 0 -3rem;
+  background-color: #ebfcfc;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
   /*opacity: 0;*/
   /*color: #d9a012;*/
 }
 
 .position:hover {
-  transform: scale(2);
+  transform: scale(1.4);
+  background-color: #f30606;
+  /*opacity: 1;*/
 }
 
 /*.row {*/

@@ -36,7 +36,7 @@
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check}}</b></span>
             </div>
-            <div class="mod">Photo: {{photos.name}}
+            <div class="mod">Photo: {{photos}}
 <!--              <slot></slot>-->
 <!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
 <!--              <slot name="photo"></slot>-->
@@ -64,7 +64,7 @@
 
 
 export default {
-  components: {Choose},
+  // components: {Choose},
   // props: ['modelValue'],
   // emits: ['update:modelValue'],
   // data:() =>({
@@ -83,6 +83,7 @@ export default {
     return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
   },
   methods: {
+
     closeModal() {
       this.$router.push('/')
     }
