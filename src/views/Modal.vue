@@ -36,7 +36,7 @@
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check}}</b></span>
             </div>
-            <div class="mod">Photo: {{photos}}
+            <div class="mod">Photo: {{photos.name}}
 <!--              <slot></slot>-->
 <!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
 <!--              <slot name="photo"></slot>-->
@@ -78,9 +78,9 @@ export default {
   // }),
 
   setup() {
-    const {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
-    console.log(photos)
-    return {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto}
+    const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+
+    return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
   },
   methods: {
     closeModal() {

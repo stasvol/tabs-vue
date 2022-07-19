@@ -1,6 +1,6 @@
 <template>
   <div class="card-header">
-    <Modal v-model="check" />
+    <Modal v-model="check.value" />
 <!--             :value="modelValue"-->
 <!--             @input="$emit('update:modelValue', $event.target.value)"/>-->
 <!--        :modelValue="check.value"-->

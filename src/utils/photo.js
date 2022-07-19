@@ -3,7 +3,7 @@ import {computed, ref} from "vue";
 export default function usePhotos ()  {
 
     const maxSize = 5
-    const photos = ref([])
+    let photos = ref([])
     const input = ref()
     // const photosValue = []
 
@@ -23,7 +23,6 @@ export default function usePhotos ()  {
     };
 
     console.log(photos.value)
-
 
     const  getSrc = (photo) => URL.createObjectURL(photo)
     const needUpload = computed(() =>photos.value?.length <= 5)

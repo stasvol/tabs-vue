@@ -24,19 +24,19 @@
           class="photoSize"
           v-for="(photo,index) in photos"
           :key="photo"
-
+          ref="photos"
       >
 
         <img
             :src="getSrc(photo)"
             :alt="`Photo ${index}`"
             class="photo "
-            ref="photos"
+
         >
         <!--      <slot v-bind:item="photo"></slot>-->
         <button @click="removePhoto(index)" class="btn btn-close  position "  type="button"></button>
       </div>
-      <h3 v-else class="head" > Max length photos: {{maxSize}}photo </h3>
+<!--      <h3 v-else class="head" > Max length photos: {{maxSize}}photo </h3>-->
       <!--    </template>-->
       <!--    </photo-slots>-->
       </div>
@@ -71,7 +71,7 @@ import  usePhotos  from "@/utils/photo";
 
     // const { modelValue } = toRefs(props)
 
-   const {maxSize, photos, photosValue, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+   const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
 
    //  const maxSize = 5
