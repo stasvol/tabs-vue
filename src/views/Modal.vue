@@ -34,14 +34,23 @@
             <div class="mod">
 <!--              <Choose v-model="checkList" />-->
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
-              <span>Check choose: <b>{{$store.state?.check}}</b></span>
+              <span>Check choose: <b>{{$store.state?.check + ''}}</b></span>
             </div>
             <div class="mod">Photo: {{photos}}
-<!--              <slot></slot>-->
-<!--              <template v-slot="slotProps">{{slotProps.item}}</template>-->
-<!--              <slot name="photo"></slot>-->
-<!--               <PhotoView v-model="files" />-->
-<!--              {{files.length}}-->
+              <div ref="photos"
+                   v-if="needUpload"
+                   class="photoSize"
+                   v-for="(photo,index) in photos"
+                   :key="photo"
+              >
+
+                <img
+                    :src="getSrc(photos.name)"
+                    :alt="`Photo ${index}`"
+                    class="photo "
+
+                >
+            </div>
 
             </div>
 

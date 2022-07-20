@@ -53,9 +53,10 @@ export default createStore({
 
     checkValue(state, check) {
 
-        state.check = state.checks.push(check)
+        state.check = check
+        // state.check.name = check.name
 
-
+      console.log(check)
       // state.checks = state.checks.push({check:value})
       // state.check = {check:value}
 

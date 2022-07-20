@@ -1,6 +1,6 @@
 <template>
   <div class="card-header">
-    <Modal v-model="check.value" />
+    <Modal v-model="check" />
 <!--             :value="modelValue"-->
 <!--             @input="$emit('update:modelValue', $event.target.value)"/>-->
 <!--        :modelValue="check.value"-->
@@ -9,7 +9,7 @@
     <div class="checked">
       <form @submit.prevent="onSubmit">
         <div class="form-check  mb-3 " v-for="(value,i) in 5" :key="i">
-          <label class="form-check-label col-sm-1">
+          <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">
             <div>
 <!--              <input-->
 <!--                  type="checkbox"-->
@@ -18,9 +18,11 @@
 <!--                  @change="evt => onChange(evt.target.value)"-->
 <!--              >-->
               <input
-                  :value="check.value"
+                  v-model="check"
+                  :value="value"
                   class="form-check-input"
                   type="checkbox"
+                  id="flexCheckDefault{{value}}"
               >
 <!--              <input-->
 <!--                  :value="modelValue"-->
@@ -35,27 +37,27 @@
           </label>
         </div>
 <!--        <div class="form-check  mb-3">-->
-<!--          <label class="form-check-label col-sm-1 " for="flexCheckDefault">-->
+<!--          <label class="form-check-label col-sm-1 " for="flexCheckDefault1">-->
 <!--            <div>-->
-<!--              <input v-model="check" class="form-check-input" type="checkbox" value="2" id="flexCheckDefault">-->
+<!--              <input v-model="check" class="form-check-input" name="one" type="checkbox" value="1" id="flexCheckDefault1">-->
 <!--            </div>-->
-<!--            Add email-->
+<!--            Add-->
 <!--          </label>-->
 <!--        </div>-->
 <!--        <div class="form-check mb-3">-->
-<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault">-->
+<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault2">-->
 <!--            <div>-->
-<!--              <input v-model="check" class="form-check-input" type="checkbox" value="3" id="flexCheckDefault">-->
+<!--              <input v-model="check" class="form-check-input" name="two" type="checkbox" value="2" id="flexCheckDefault2">-->
 <!--            </div>-->
-<!--            Add phone-->
+<!--            Add-->
 <!--          </label>-->
 <!--        </div>-->
 <!--        <div class="form-check mb-3">-->
-<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault">-->
+<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault3">-->
 <!--            <div>-->
-<!--              <input v-model="check" class="form-check-input" type="checkbox" value="4" id="flexCheckDefault">-->
+<!--              <input v-model="check" class="form-check-input" name="three" type="checkbox" value="3" id="flexCheckDefault3">-->
 <!--            </div>-->
-<!--            Add photo-->
+<!--            Add-->
 <!--          </label>-->
 <!--        </div>-->
         <div class="btn-group-lg" role="group" aria-label="Basic mixed styles example">
@@ -95,8 +97,7 @@ export default {
   // }
 
   data:() => ({
-    check: []
-
+    check: [],
   }),
 
   methods: {
@@ -104,7 +105,7 @@ export default {
     onSubmit() {
 
       const formData = {
-        check: this.check.value
+        check: this.check,
       }
 
       console.log(formData)
