@@ -19,7 +19,7 @@
       <div>
       <!--    <photo-slots>-->
       <!--    <template #default>-->
-      <div ref="photos"
+      <div
           v-if="needUpload"
           class="photoSize"
           v-for="(photo,index) in photos"
@@ -27,6 +27,7 @@
       >
 
         <img
+            ref="photos"
             :src="getSrc(photo)"
             :alt="`Photo ${index}`"
             class="photo "
@@ -180,7 +181,7 @@ import  usePhotos  from "@/utils/photo";
 
 .position:hover {
   transform: scale(1.4);
-  background-color: #f30606;
+  background-color: #ef0505;
   /*opacity: 1;*/
 }
 
