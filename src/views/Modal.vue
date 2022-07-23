@@ -36,16 +36,17 @@
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check + ''}}</b></span>
             </div>
-            <div class="mod">Photo: {{photos}}
-              <div ref="photos"
-                   v-if="needUpload"
+            <div class="mod">Photo:
+<!--              {{photos}}-->
+              <div
                    class="photoSize"
                    v-for="(photo,index) in photos"
                    :key="photo"
               >
 
                 <img
-                    :src="getSrc(photos.name)"
+                    ref="photos"
+                    :src="getSrc(photo)"
                     :alt="`Photo ${index}`"
                     class="photo "
 
@@ -67,9 +68,10 @@
 <script>
  import {mapGetters} from "vuex";
  import {ref} from "vue";
- import PhotoView from "@/views/PhotoView";
+ // import PhotoView from "@/views/PhotoView";
  import usePhotos from "@/utils/photo";
- import Choose from "@/views/ChooseView";
+ // import Choose from "@/views/ChooseView";
+ // import {computed} from "vue/dist/vue";
 
 
 export default {
@@ -87,9 +89,31 @@ export default {
   // }),
 
   setup() {
+
+
+    // const photos = ref([])
+    // // const input = ref()
+    //
+    // const onSelected =({target}) => {
+    //
+    //   if (target.files) {
+    //     photos.value =  [...photos.value, ...Array.from(target.files)]
+    //   }
+    //   console.log(photos)
+    // };
+    //
+    // const  getSrc = (photo) => URL.createObjectURL(photo)
+    //
+    // return { photos, onSelected, getSrc }
+
+
+    // const  getSrc = (photo) => URL.createObjectURL(photo)
     const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
+    console.log(photos)
     return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
+
+
   },
   methods: {
 
