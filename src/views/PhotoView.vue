@@ -72,8 +72,17 @@ export default defineComponent({
 
  methods:{
 
-   onSubmit(e) {
-     console.log(e)
+   onSubmit() {
+
+     const formData = {
+       photos: this.photos,
+       getSrc: this.getSrc,
+       maxSize: this.maxSize,
+       removePhoto: this.removePhoto,
+       onFileSelected: this.onFileSelected,
+       needUpload: this.needUpload,
+     }
+     console.log(formData.photos)
      this.$router.push('/choose')
    }
 
