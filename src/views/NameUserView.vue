@@ -95,6 +95,7 @@ import {mapActions} from "vuex";
 
 export default {
   name: 'nameUser',
+
   data: () => ({
     name: '',
     email: '',
