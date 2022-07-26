@@ -29,8 +29,11 @@ export default createStore({
       return check
     },
 
+    getPhoto({photos}) {
+      return photos
+    }
+    },
 
-  },
   mutations: {
     setError(state, error) {
       state.error = error
@@ -61,6 +64,11 @@ export default createStore({
       // state.check = {check:value}
 
     },
+    getPhoto(state,photos) {
+      state.photos = photos
+      console.log(photos)
+    }
+
   },
 
   actions: {
@@ -78,6 +86,10 @@ export default createStore({
       console.log(check)
       return commit('checkValue',check)
     },
+
+    getPhoto({commit}, {photos}) {
+      return commit('getPhoto', photos)
+    }
   },
 
   modules: {

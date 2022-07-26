@@ -36,7 +36,7 @@
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check + ''}}</b></span>
             </div>
-            <div class="mod">Photo:
+            <div class="mod">Photo: {{$store.state?.photos[0].name}}
 <!--              {{photos}}-->
               <div
                    class="photoSize"
@@ -45,8 +45,7 @@
               >
 
                 <img
-                    ref="photos"
-                    :src="getSrc(photo)"
+                    :src="$store.state?.photos[0].name"
                     :alt="`Photo ${index}`"
                     class="photo "
 

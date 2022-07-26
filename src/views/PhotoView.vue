@@ -23,11 +23,11 @@
           v-if="needUpload"
           class="photoSize"
           v-for="(photo,index) in photos"
-          :key="photo"
+          :key="index"
       >
 
         <img
-            ref="photos"
+
             :src="getSrc(photo)"
             :alt="`Photo ${index}`"
             class="photo "
@@ -82,8 +82,15 @@ export default defineComponent({
        onFileSelected: this.onFileSelected,
        needUpload: this.needUpload,
      }
+
+     try {
+       this.$store.dispatch('getPhoto',formData)
+       this.$router.push('/choose')
+
+     } catch (e) {}
+
      console.log(formData.photos)
-     this.$router.push('/choose')
+
    }
 
  },
