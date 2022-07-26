@@ -36,7 +36,7 @@
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check + ''}}</b></span>
             </div>
-            <div class="mod">Photo: {{$store.state?.photos[0].name}}
+            <div class="mod">Photo: {{getPhoto.photos?.photos[0]}}
 <!--              {{photos}}-->
               <div
                    class="photoSize"
@@ -45,7 +45,7 @@
               >
 
                 <img
-                    :src="$store.state?.photos[0].name"
+                    :src="getSrc(photo)"
                     :alt="`Photo ${index}`"
                     class="photo "
 
@@ -122,7 +122,7 @@ export default {
   },
   // components: {PhotoView},
 
-  computed: mapGetters(['getName','getPhone']),
+  computed: mapGetters(['getName','getPhone','getPhoto']),
   // computed: {
   //   getName() {
   //    return  this.$store.getters.getName

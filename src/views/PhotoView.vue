@@ -89,7 +89,7 @@ export default defineComponent({
 
      } catch (e) {}
 
-     console.log(formData.photos)
+     console.log(formData.maxSize)
 
    }
 

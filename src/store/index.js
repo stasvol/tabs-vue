@@ -29,7 +29,7 @@ export default createStore({
       return check
     },
 
-    getPhoto({photos}) {
+    getPhoto(photos) {
       return photos
     }
     },
@@ -64,9 +64,10 @@ export default createStore({
       // state.check = {check:value}
 
     },
-    getPhoto(state,photos) {
+    getPhoto(state,photos,getSrc) {
       state.photos = photos
-      console.log(photos)
+      state.getSrc = getSrc
+
     }
 
   },
@@ -87,8 +88,8 @@ export default createStore({
       return commit('checkValue',check)
     },
 
-    getPhoto({commit}, {photos}) {
-      return commit('getPhoto', photos)
+    getPhoto({commit}, {photos, getSrc}) {
+      return commit('getPhoto', {photos, getSrc})
     }
   },
 
