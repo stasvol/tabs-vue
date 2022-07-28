@@ -58,7 +58,7 @@
 <script >
 import {computed, defineComponent, ref, toRefs} from "vue";
 import Modal from "@/views/Modal";
-// import  usePhotos  from "@/utils/photo";
+import  usePhotos  from "@/utils/photo";
 export default defineComponent({
 
   // props: {
@@ -89,65 +89,76 @@ export default defineComponent({
 
      } catch (e) {}
 
-     console.log(formData.maxSize)
+     console.log(formData.photos)
 
    }
 
  },
-
-
   // const onSubmit = (e) =>  {
   //   console.log(e)
   //   alert(e)
   //   $router.push('/choose')
   // }
-  // const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
+  setup() {
+    const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
-  setup(props, {emit}) {
-
-    // const { modelValue } = toRefs(props)
-
-    const maxSize = 5
-    const photos = ref([])
-    const input = ref()
-
-    const onFileSelected = ({target: {files}}) => {
-      if (files) {
-        // emit('update: modelValue',[...modelValue.value, ...Array.from(target.files)])
-        photos.value = [...photos.value, ...Array.from(files)]
+      return {
+        maxSize,
+        removePhoto,
+        // uploadFile,
+        needUpload,
+        input,
+        getSrc,
+        photos,
+        onFileSelected,
       }
-      if (input.value) {
-        input.value.value = ''
-      }
-    };
-
-    const getSrc = (photo) => URL.createObjectURL(photo)
-    const needUpload = computed(() =>photos.value.length <= 5)
-   // const needUpload = computed(() =>modelValue?.value?.length <= 5)
-    const removePhoto =(index) => photos.value = photos.value.filter((photo, i) => i != index)
-    // const removePhoto =(index) => emit('update: modelValue',modelValue.value.filter((photo, i) => i != index))
-
-    //   const uploadFile = computed(() => {
-  //     if (needUpload.value > 0) {
-  //      return  `Remains ${needUpload.value.length}`
-  //     } else {
-  //     return `${needUpload.value.length >=5}- Max length photo: 5photos `
-  // }
-  //     console.log(needUpload.value)
-  //   })
-
-    return {
-      maxSize,
-      removePhoto,
-      // uploadFile,
-      needUpload,
-      input,
-      getSrc,
-      photos,
-      onFileSelected,
-    }
   }
+
+  // setup(props, {emit}) {
+  //
+  //   // const { modelValue } = toRefs(props)
+  //
+  //   const maxSize = 5
+  //   const photos = ref([])
+  //   const input = ref()
+  //
+  //   const onFileSelected = ({target: {files}}) => {
+  //     if (files) {
+  //       // emit('update: modelValue',[...modelValue.value, ...Array.from(target.files)])
+  //       photos.value = [...photos.value, ...Array.from(files[0])]
+  //     }
+  //     if (input.value) {
+  //       input.value.value = ''
+  //     }
+  //   };
+  //
+  //   const getSrc = (photo) => URL.createObjectURL(photo)
+  //   const needUpload = computed(() =>photos.value.length <= 5)
+  //  // const needUpload = computed(() =>modelValue?.value?.length <= 5)
+  //   const removePhoto =(index) => photos.value = photos.value.filter((photo, i) => i != index)
+  //   // const removePhoto =(index) => emit('update: modelValue',modelValue.value.filter((photo, i) => i != index))
+  //
+  //   //   const uploadFile = computed(() => {
+  // //     if (needUpload.value > 0) {
+  // //      return  `Remains ${needUpload.value.length}`
+  // //     } else {
+  // //     return `${needUpload.value.length >=5}- Max length photo: 5photos `
+  // // }
+  // //     console.log(needUpload.value)
+  // //   })
+  //
+  //   return {
+  //     maxSize,
+  //     removePhoto,
+  //     // uploadFile,
+  //     needUpload,
+  //     input,
+  //     getSrc,
+  //     photos,
+  //     onFileSelected,
+  //   }
+  // }
 
 })
 // @ is an alias to /src
@@ -172,15 +183,7 @@ export default defineComponent({
 // }
 
 </script>
-<!--<script>-->
-<!--export default {-->
-<!--  methods: {-->
-<!--    onSubmit() {-->
-<!--      this.$router.push('/choose')-->
-<!--    }-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
+
 <style>
 .photo {
   max-width: 30%;

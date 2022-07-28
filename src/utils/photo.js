@@ -8,7 +8,6 @@ export default function usePhotos ()  {
     // const photosValue = []
 
     const onFileSelected =({target}) => {
-        console.log(target.files[0])
 
         if (target.files) {
           photos.value =  [...photos.value, ...Array.from(target.files)]
@@ -18,11 +17,8 @@ export default function usePhotos ()  {
             input.value.value = ''
         }
 
-        console.log(photos)
 
     };
-
-    console.log(photos.value)
 
     const  getSrc = (photo) => URL.createObjectURL(photo)
     const needUpload = computed(() =>photos.value?.length <= 5)

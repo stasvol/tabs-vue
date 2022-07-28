@@ -36,11 +36,12 @@
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check + ''}}</b></span>
             </div>
-            <div class="mod">Photo: {{getPhoto.photos?.photos[0]}}
+            <div class="mod" >Photo:
+<!--              {{getPhoto.photos?.photos[0].name}}-->
 <!--              {{photos}}-->
               <div
                    class="photoSize"
-                   v-for="(photo,index) in photos"
+                   v-for="(photo,index) in getPhoto.photos?.photos"
                    :key="photo"
               >
 
@@ -104,7 +105,6 @@ export default {
     // const  getSrc = (photo) => URL.createObjectURL(photo)
     //
     // return { photos, onSelected, getSrc }
-
 
     // const  getSrc = (photo) => URL.createObjectURL(photo)
     const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
