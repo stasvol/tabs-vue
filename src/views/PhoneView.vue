@@ -77,7 +77,6 @@ export default {
          phone: this.phone,
          description: this.description
        }
-      console.log(formData)
       try {
          this.$store.dispatch('getPhone', formData)
         // await this.$store.dispatch('getInfo')
@@ -86,8 +85,9 @@ export default {
         if (!this.v$.$error) {
            this.$router.push('/photo')
         }
-      } catch (e) {}
-      console.log(formData)
+      } catch (e) {
+        throw new Error(e)
+      }
       this.phone = this.description = ''
     },
   }

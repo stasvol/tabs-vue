@@ -109,7 +109,6 @@ export default {
     // const  getSrc = (photo) => URL.createObjectURL(photo)
     const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
-    console.log(photos)
     return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
 
 
@@ -120,7 +119,6 @@ export default {
       this.$router.push('/')
     }
   },
-  // components: {PhotoView},
 
   computed: mapGetters(['getName','getPhone','getPhoto']),
   // computed: {

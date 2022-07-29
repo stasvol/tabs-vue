@@ -73,23 +73,21 @@ export default defineComponent({
  methods:{
 
    onSubmit() {
-
      const formData = {
        photos: this.photos,
-       getSrc: this.getSrc,
-       maxSize: this.maxSize,
-       removePhoto: this.removePhoto,
-       onFileSelected: this.onFileSelected,
-       needUpload: this.needUpload,
+       // getSrc: this.getSrc,
+       // maxSize: this.maxSize,
+       // removePhoto: this.removePhoto,
+       // onFileSelected: this.onFileSelected,
+       // needUpload: this.needUpload,
      }
 
      try {
        this.$store.dispatch('getPhoto',formData)
        this.$router.push('/choose')
 
-     } catch (e) {}
+     } catch (e) {throw new Error(e)}
 
-     console.log(formData.photos)
 
    }
 

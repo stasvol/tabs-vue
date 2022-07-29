@@ -26,11 +26,11 @@ export default createStore({
     },
 
     checkValue({check}) {
-      return check
+      return {check}
     },
 
-    getPhoto(photos) {
-      return photos
+    getPhoto({photos}) {
+      return {photos}
     }
     },
 
@@ -59,14 +59,13 @@ export default createStore({
         state.check = check
         // state.check.name = check.name
 
-      console.log(check)
       // state.checks = state.checks.push({check:value})
       // state.check = {check:value}
 
     },
-    getPhoto(state,photos,getSrc) {
+    getPhoto(state,photos) {
       state.photos = photos
-      state.getSrc = getSrc
+      // state.getSrc = getSrc
 
     }
 
@@ -74,7 +73,6 @@ export default createStore({
 
   actions: {
     getName({commit}, {name, email, checkToggle}) {
-      console.log(name, email, checkToggle)
       return commit('getName', {name, email, checkToggle})
 
 
@@ -84,12 +82,11 @@ export default createStore({
     },
 
     checkValue({commit}, {check}) {
-      console.log(check)
       return commit('checkValue',check)
     },
 
-    getPhoto({commit}, {photos, getSrc}) {
-      return commit('getPhoto', {photos, getSrc})
+    getPhoto({commit}, {photos}) {
+      return commit('getPhoto', {photos})
     }
   },
 

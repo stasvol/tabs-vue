@@ -139,7 +139,6 @@ export default {
         password: this.password,
         checkToggle: this.checkToggle
       }
-      console.log(formData)
 
       try {
         // this.getName(formData)
@@ -148,6 +147,7 @@ export default {
           this.$router.push('/phone')
         }
       } catch (e) {
+        throw new Error(e)
       }
       //   if (this.v$.$error === false) {
       //     this.$router.push('/phone')
