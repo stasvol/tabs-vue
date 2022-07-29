@@ -108,7 +108,6 @@ export default {
         check: this.check,
       }
 
-      console.log(formData)
      try {
         this.$store.dispatch('checkValue',formData)
 

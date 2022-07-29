@@ -1,7 +1,7 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <div class="card-header">
     <h1 class="header">Photo page</h1>
-    <form  @submit.prevent="onSubmit">
+    <form @submit.prevent="onSubmit">
       <div class="mb-3 row">
         <label for="formFile" class="col-sm-6 col-form-label">Choose files
           <div class="col-lg-10">
@@ -17,36 +17,46 @@
         </label>
       </div>
       <div>
-      <!--    <photo-slots>-->
-      <!--    <template #default>-->
-      <div
-          v-if="needUpload"
-          class="photoSize"
-          v-for="(photo,index) in photos"
-          :key="index"
-      >
-
-        <img
-
-            :src="getSrc(photo)"
-            :alt="`Photo ${index}`"
-            class="photo "
-
+        <!--    <photo-slots>-->
+        <!--    <template #default>-->
+        <div
+            v-if="needUpload"
+            class="photoSize"
+            v-for="(photo,index) in photos"
+            :key="index"
         >
-        <div class="">
-        <!--      <slot v-bind:item="photo"></slot>-->
-        <button @click="removePhoto(index)" class="btn btn-close position  "  type="button"></button>
+
+          <img
+
+              :src="getSrc(photo)"
+              :alt="`Photo ${index}`"
+              class="photo "
+
+          >
+          <div class="">
+            <!--      <slot v-bind:item="photo"></slot>-->
+            <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
+          </div>
         </div>
-      </div>
-      <h3 v-else class="head" > Max length photos: {{maxSize}}photo </h3>
-      <!--    </template>-->
-      <!--    </photo-slots>-->
+        <div v-else-if="!needUpload">
+          <h3  class="head"> Max length photos: {{ maxSize }}photo </h3>
+          <img
+
+              :src="getSrc(photo)"
+              :alt=" 'photo' "
+              class="photo "
+
+          >
+
+        </div>
+        <!--    </template>-->
+        <!--    </photo-slots>-->
       </div>
 
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="$router.push('/phone')" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button  type="submit"  class="btn btn-success">Next</button>
+        <button type="submit" class="btn btn-success">Next</button>
 
       </div>
 
@@ -55,10 +65,11 @@
   </div>
 
 </template>
-<script >
+<script>
 import {computed, defineComponent, ref, toRefs} from "vue";
 import Modal from "@/views/Modal";
-import  usePhotos  from "@/utils/photo";
+import usePhotos from "@/utils/photo";
+
 export default defineComponent({
 
   // props: {
@@ -70,28 +81,30 @@ export default defineComponent({
   // emits: ['update: modelValue'],
 
 
- methods:{
+  methods: {
 
-   onSubmit() {
-     const formData = {
-       photos: this.photos,
-       // getSrc: this.getSrc,
-       // maxSize: this.maxSize,
-       // removePhoto: this.removePhoto,
-       // onFileSelected: this.onFileSelected,
-       // needUpload: this.needUpload,
-     }
+    onSubmit() {
+      const formData = {
+        photos: this.photos,
+        // getSrc: this.getSrc,
+        // maxSize: this.maxSize,
+        // removePhoto: this.removePhoto,
+        // onFileSelected: this.onFileSelected,
+        // needUpload: this.needUpload,
+      }
 
-     try {
-       this.$store.dispatch('getPhoto',formData)
-       this.$router.push('/choose')
+      try {
+        this.$store.dispatch('getPhoto', formData)
+        this.$router.push('/choose')
 
-     } catch (e) {throw new Error(e)}
+      } catch (e) {
+        throw new Error(e)
+      }
 
 
-   }
+    }
 
- },
+  },
   // const onSubmit = (e) =>  {
   //   console.log(e)
   //   alert(e)
@@ -101,16 +114,16 @@ export default defineComponent({
   setup() {
     const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
-      return {
-        maxSize,
-        removePhoto,
-        // uploadFile,
-        needUpload,
-        input,
-        getSrc,
-        photos,
-        onFileSelected,
-      }
+    return {
+      maxSize,
+      removePhoto,
+      // uploadFile,
+      needUpload,
+      input,
+      getSrc,
+      photos,
+      onFileSelected,
+    }
   }
 
   // setup(props, {emit}) {
@@ -187,12 +200,14 @@ export default defineComponent({
   max-width: 30%;
   border-radius: 1rem;
 }
+
 .photoSize {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
   cursor: pointer;
 }
+
 .head {
   display: flex;
   justify-content: center;

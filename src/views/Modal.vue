@@ -36,7 +36,7 @@
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
               <span>Check choose: <b>{{$store.state?.check + ''}}</b></span>
             </div>
-            <div class="mod" >Photo:
+            <div class="mod">Photo:
 <!--              {{getPhoto.photos?.photos[0].name}}-->
 <!--              {{photos}}-->
               <div
@@ -46,6 +46,7 @@
               >
 
                 <img
+
                     :src="getSrc(photo)"
                     :alt="`Photo ${index}`"
                     class="photo "
