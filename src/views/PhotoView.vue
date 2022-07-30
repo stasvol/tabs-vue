@@ -38,17 +38,21 @@
             <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
           </div>
         </div>
-        <div v-else-if="!needUpload">
-          <h3  class="head"> Max length photos: {{ maxSize }}photo </h3>
-          <img
+        <div v-else>
+          <h3  class="head"> Max length photos - {{ maxSize }}
+            <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto" >Clear photo</button>
+          </h3>
 
-              :src="getSrc(photo)"
-              :alt=" 'photo' "
-              class="photo "
+<!--          <img-->
 
-          >
+<!--              :src="getSrc(photo)"-->
+<!--              :alt=" 'photo' "-->
+<!--              class="photo "-->
+
+<!--          >-->
 
         </div>
+
         <!--    </template>-->
         <!--    </photo-slots>-->
       </div>
@@ -56,7 +60,7 @@
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="$router.push('/phone')" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button type="submit" class="btn btn-success">Next</button>
+        <button type="submit" class="btn btn-success ">Next</button>
 
       </div>
 
@@ -102,6 +106,9 @@ export default defineComponent({
       }
 
 
+    },
+    clearPhoto() {
+      this.photos = ''
     }
 
   },
@@ -230,7 +237,10 @@ export default defineComponent({
   background-color: #ef0505;
   /*opacity: 1;*/
 }
-
+.btnSize {
+  display: inline;
+  margin-left: 1rem;
+}
 /*.row {*/
 /*  display: flex;*/
 /*  justify-content: center;*/
