@@ -19,6 +19,7 @@
       <div>
         <!--    <photo-slots>-->
         <!--    <template #default>-->
+
         <div
             v-if="needUpload"
             class="photoSize"
@@ -27,7 +28,6 @@
         >
 
           <img
-
               :src="getSrc(photo)"
               :alt="`Photo ${index}`"
               class="photo "
@@ -39,8 +39,10 @@
           </div>
         </div>
         <div v-else>
-          <h3  class="head"> Max length photos - {{ maxSize }}
+
+          <h3  class="head"> Max length photos - {{ maxSize }}photo
             <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto" >Clear photo</button>
+
           </h3>
 
 <!--          <img-->
