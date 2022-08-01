@@ -40,18 +40,35 @@
         </div>
         <div v-else>
 
-          <h3  class="head"> Max length photos - {{ maxSize }}photo
-            <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto" >Clear photo</button>
+          <h3 class="head"> Max length photos - {{ maxSize }}photo
+            <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear photo</button>
 
           </h3>
 
-<!--          <img-->
+          <div
+              class="photoSize"
+              v-for="(photo,index) in photos"
+              :key="index"
+          >
 
-<!--              :src="getSrc(photo)"-->
-<!--              :alt=" 'photo' "-->
-<!--              class="photo "-->
+            <img
+                :src="getSrc(photo)"
+                :alt="`Photo ${index}`"
+                class="photo "
 
-<!--          >-->
+            >
+<!--            <div class="">-->
+<!--              <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>-->
+<!--            </div>-->
+          </div>
+
+          <!--          <img-->
+
+          <!--              :src="getSrc(photo)"-->
+          <!--              :alt=" 'photo' "-->
+          <!--              class="photo "-->
+
+          <!--          >-->
 
         </div>
 
@@ -239,10 +256,12 @@ export default defineComponent({
   background-color: #ef0505;
   /*opacity: 1;*/
 }
+
 .btnSize {
   display: inline;
   margin-left: 1rem;
 }
+
 /*.row {*/
 /*  display: flex;*/
 /*  justify-content: center;*/
