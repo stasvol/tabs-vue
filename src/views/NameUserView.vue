@@ -34,7 +34,7 @@
         <label for="inputPassword" class="col-sm-6 col-form-label">Password
           <div class="col-lg-12">
             <input v-model.trim="password" type="password" class="form-control validate" id="inputPassword"
-                   placeholder="password">
+                   placeholder="password" autocomplete="current password">
           </div>
         </label>
         <small

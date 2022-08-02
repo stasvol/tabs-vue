@@ -5,7 +5,6 @@ export default function usePhotos ()  {
     const maxSize = 5
     let photos = ref([])
     const input = ref()
-    // const photosValue = []
 
     const onFileSelected =({target}) => {
 
@@ -16,7 +15,6 @@ export default function usePhotos ()  {
         if(input.value) {
             input.value.value = ''
         }
-
 
     };
 

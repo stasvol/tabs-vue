@@ -10,9 +10,9 @@ export default createStore({
   //   description: '',
   //   photo: []
   // },
-  state: {
-    checks: []
-  },
+  // state: {
+  //   checks: []
+  // },
   getters: {
 
     error: state => state.error,
