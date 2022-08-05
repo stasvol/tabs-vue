@@ -1,4 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
-module.exports = {
+module.exports = defineConfig({
+  transpileDependencies: true,
   publicPath: '/tabs-vue/'
-}
+})
