@@ -12,6 +12,7 @@
                 type="file"
                 id="formFile"
                 multiple
+                accept=".png, .jpg, .jpeg"
             >
           </div>
         </label>
@@ -57,9 +58,9 @@
                 class="photo "
 
             >
-<!--            <div class="">-->
-<!--              <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>-->
-<!--            </div>-->
+            <div class="">
+              <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
+            </div>
           </div>
 
           <!--          <img-->

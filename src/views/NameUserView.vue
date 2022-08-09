@@ -22,29 +22,29 @@
             <input v-model.trim="email" type="email" class="form-control validate" id="inputEmail" placeholder="email">
           </div>
         </label>
-        <small
-            class="helper-text invalid"
-            v-if="v$.email.$error"
-        >
-          Email field required. &nbsp; HAS AN ERROR !
-        </small>
+<!--        <small-->
+<!--            class="helper-text invalid"-->
+<!--            v-if="v$.email.$error"-->
+<!--        >-->
+<!--          Email field required. &nbsp; HAS AN ERROR !-->
+<!--        </small>-->
 
       </div>
-      <div class="mb-3 row">
-        <label for="inputPassword" class="col-sm-6 col-form-label">Password
-          <div class="col-lg-12">
-            <input v-model.trim="password" type="password" class="form-control validate" id="inputPassword"
-                   placeholder="password" autocomplete="current password">
-          </div>
-        </label>
-        <small
-            class="invalid"
-            v-if="v$.password.$error"
-        >
-          Password field is required and length {{ password.length }} - should be:
-          {{ v$.password.minLength.$params.min }}.&nbsp; HAS AN ERROR !
-        </small>
-      </div>
+<!--      <div class="mb-3 row">-->
+<!--        <label for="inputPassword" class="col-sm-6 col-form-label">Password-->
+<!--          <div class="col-lg-12">-->
+<!--            <input v-model.trim="password" type="password" class="form-control validate" id="inputPassword"-->
+<!--                   placeholder="password" autocomplete="current password">-->
+<!--          </div>-->
+<!--        </label>-->
+<!--        <small-->
+<!--            class="invalid"-->
+<!--            v-if="v$.password.$error"-->
+<!--        >-->
+<!--          Password field is required and length {{ password.length }} - should be:-->
+<!--          {{ v$.password.minLength.$params.min }}.&nbsp; HAS AN ERROR !-->
+<!--        </small>-->
+<!--      </div>-->
       <div class="form-check form-switch">
         <label class="form-check-label" for="switchCheck">{{ checkToggle ? 'ON' : 'OF'}}
           <input
@@ -97,11 +97,27 @@ export default {
   name: 'nameUser',
 
   data: () => ({
-    name: '',
-    email: '',
+    name: [],
+    email: [],
     password: '',
     checkToggle: null
   }),
+
+  // mounted() {
+  //   if (localStorage.name && localStorage.email) {
+  //     this.name = localStorage.name;
+  //     this.email = localStorage.email;
+  //   }
+  // },
+  // watch: {
+  //   name(newName) {
+  //     localStorage.name = newName;
+  //
+  //   },
+  //   email(newEmail) {
+  //     localStorage.email = newEmail;
+  //   }
+  // },
 
   setup: () => ({v$: useVuelidate()}),
   // setup() {
@@ -110,8 +126,8 @@ export default {
   validations() {
     return {
       name: {required},
-      email: {required, email},
-      password: {required, minLength: minLength(6)}
+      // email: {required, email},
+      // password: {required, minLength: minLength(6)}
     }
   },
 
@@ -139,7 +155,6 @@ export default {
         password: this.password,
         checkToggle: this.checkToggle
       }
-
       try {
         // this.getName(formData)
         this.$store.dispatch('getName', formData)
@@ -151,8 +166,7 @@ export default {
       }
       //   if (this.v$.$error === false) {
       //     this.$router.push('/phone')
-      this.name = this.email = this.password = ''
-
+      // this.name = this.email = this.password = ''
     },
   },
 }

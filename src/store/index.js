@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   // state: {
   //   error: null,
-  //   name: '',
+  //   name: JSON.parse(localStorage.getItem('name') || ''),
   //   email: '',
   //   check: false,
   //   phone: null,
@@ -11,7 +11,7 @@ export default createStore({
   //   photo: []
   // },
   // state: {
-  //   checks: []
+  //   name: JSON.parse(localStorage.getItem('name') || []),
   // },
   getters: {
 
@@ -47,6 +47,7 @@ export default createStore({
       state.name = name
       state.email = email
       state.checkToggle = checkToggle
+      // localStorage.setItem('name',JSON.stringify(state.name))
     },
 
     getPhone(state, phone, description) {
@@ -93,3 +94,5 @@ export default createStore({
   modules: {
   }
 })
+
+

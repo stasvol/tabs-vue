@@ -58,6 +58,22 @@ export default {
     description: ''
   }),
 
+  // mounted() {
+  //   if (localStorage.phone && localStorage.description) {
+  //     this.phone = localStorage.phone;
+  //     this.description = localStorage.description;
+  //   }
+  // },
+  // watch: {
+  //   phone(newPhone) {
+  //     localStorage.phone = newPhone;
+  //
+  //   },
+  //   description( newDescription) {
+  //     localStorage.description = newDescription;
+  //   }
+  // },
+
   setup:() => ({ v$: useVuelidate()}),
   validations:()=> ({phone: {required}}),
 
@@ -88,7 +104,7 @@ export default {
       } catch (e) {
         throw new Error(e)
       }
-      this.phone = this.description = ''
+      // this.phone = this.description = ''
     },
   }
 }
