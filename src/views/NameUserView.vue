@@ -97,8 +97,8 @@ export default {
   name: 'nameUser',
 
   data: () => ({
-    name: [],
-    email: [],
+    name: '',
+    email: '',
     password: '',
     checkToggle: null
   }),
@@ -135,15 +135,11 @@ export default {
 
   // methods: mapActions(['getName']),
   methods: {
+
     toggleCheck() {
-      // console.log(this.check)
       this.checkToggle = !this.checkToggle
     },
-    // patchPhone() {
-    //   if (this.v$.$error === false) {
-    //     this.$router.push('/phone')
-    //   }
-    // },
+
     onSubmit() {
       if (this.v$.$invalid) {
         this.v$.$touch()

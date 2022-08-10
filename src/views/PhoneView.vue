@@ -26,7 +26,7 @@
       </div>
 
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
-        <button @click="$router.push('/')" type="button" class="btn btn-warning">Prev</button>
+        <button @click="$router.push('/')" type="button" class="btn btn-warning">Prev </button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
         <button type="submit" class="btn btn-success">Next</button>
       </div>
@@ -50,9 +50,12 @@
 // @ is an alias to /src
 import useVuelidate from "@vuelidate/core";
 import {required} from "@vuelidate/validators";
+import {createRouter as $router} from "vue-router";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'phone',
+
   data:() => ({
     phone: null,
     description: ''
@@ -84,6 +87,7 @@ export default {
   // },
 
   methods: {
+
     onSubmit() {
       if (this.v$.$invalid) {
         this.v$.$touch()
@@ -105,8 +109,10 @@ export default {
         throw new Error(e)
       }
       // this.phone = this.description = ''
-    },
-  }
+
+    }
+  },
+  computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
 }
 </script>
 <style scoped>

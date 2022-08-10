@@ -43,7 +43,6 @@ export default createStore({
     },
 
     getName(state, name, email, checkToggle) {
-
       state.name = name
       state.email = email
       state.checkToggle = checkToggle
