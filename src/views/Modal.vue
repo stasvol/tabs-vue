@@ -15,31 +15,43 @@
           </div>
           <div class="modal-body">
             <div>
-            <div class="mod" >
+            <div class="mod">
               <span>Name:<strong>{{getName.name?.name}}</strong></span>
             </div>
             <div class="mod">
-              <span>Email: <strong>{{getName.name?.email }}</strong></span>
+              <span>Email: <strong  v-if="getName.name?.email">{{getName.name?.email }}</strong>
+                <i v-else>Not selected</i>
+              </span>
             </div>
             <div class="mod">
-              <span>Check: <strong>{{getName.name?.checkToggle }}</strong></span>
+              <span>Check: <strong v-if="getName.name?.checkToggle"> Yes selected
+<!--                {{getName.name?.checkToggle }}-->
+              </strong>
+                <i v-else>Not selected</i>
+              </span>
             </div>
             </div>
-            <div class="mod">
+            <div class="mod" v-if=" getPhone.phone?.phone">
               <span>Phone: <strong>{{ getPhone.phone?.phone}}</strong></span>
             </div>
-            <div class="mod">
-              <span>Description: <strong>{{ $store.state.phone?.description}}</strong></span>
+            <div class="mod" >
+              <span>Description: <strong v-if="$store.state.phone?.description">{{ $store.state.phone?.description}}</strong>
+                <i v-else>Not selected</i>
+              </span>
             </div>
-            <div class="mod">
+            <div class="mod" >
 <!--              <Choose v-model="checkList" />-->
 <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
-              <span>Check choose: <b>{{ checkValue.check?.join(',') }}</b></span>
+              <span >Check choose: <strong v-if="checkValue.check?.join(',')">{{ checkValue.check?.join(',') }}</strong>
+               <i v-else>Not selected</i>
+              </span>
+
             </div>
-            <div class="mod">Photo:
+
+            <div class="mod" > Photo:
 <!--              {{getPhoto.photos?.photos[0].name}}-->
 <!--              {{photos}}-->
-              <div
+              <div  v-if="getPhoto.photos?.photos[0]"
                    class="photoSize"
                    v-for="(photo,index) in getPhoto.photos?.photos"
                    :key="photo"
@@ -52,7 +64,9 @@
                     class="photo "
 
                 >
+
             </div>
+              <i v-else>Not selected</i>
 
             </div>
 
@@ -118,6 +132,7 @@ export default {
 
     closeModal() {
       this.$router.push('/')
+      f
     }
   },
 

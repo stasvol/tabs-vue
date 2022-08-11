@@ -7,7 +7,7 @@
       <div class="mb-3 row">
         <label for="inputPhone" class="col-sm-6 col-form-label">Phone
           <div class="col-lg-12">
-        <input v-model.trim.number="phone" type="tel" class="form-control" id="inputPhone" placeholder="phone">
+        <input v-model.trim.number="phone" :phone="getPhone.phone?.phone" :placeholder="getPhone.phone?.phone || 'phone'" type="tel" class="form-control" id="inputPhone" >
           </div>
         </label>
         <small
@@ -20,13 +20,13 @@
       <div class="mb-3 row">
         <label for="textarea" class="col-sm-6 col-form-label">Description
           <div class="col-lg-12">
-        <textarea v-model="description" class="form-control" id="textarea" rows="3"></textarea>
+        <textarea v-model="description" :placeholder="getPhone.phone?.description || 'description'" class="form-control" id="textarea" rows="3"></textarea>
           </div>
         </label>
       </div>
 
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
-        <button @click="$router.push('/')" type="button" class="btn btn-warning">Prev </button>
+        <button @click="namePath" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
         <button type="submit" class="btn btn-success">Next</button>
       </div>
@@ -57,6 +57,7 @@ export default {
   name: 'phone',
 
   data:() => ({
+    // name:'',
     phone: null,
     description: ''
   }),
@@ -87,6 +88,9 @@ export default {
   // },
 
   methods: {
+    namePath() {
+      this.$router.push('/')
+    },
 
     onSubmit() {
       if (this.v$.$invalid) {

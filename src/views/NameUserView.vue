@@ -6,7 +6,7 @@
       <div class="mb-3 row">
         <label for="inputName" class="col-sm-6 col-form-label">Name
           <div class="col-lg-12">
-            <input v-model.trim="name" type="text" class="form-control validate" id="inputName" placeholder="name">
+            <input v-model.trim="name" :name="getName.name?.name" :placeholder="getName.name?.name || 'name'" type="text" class="form-control validate" id="inputName">
           </div>
         </label>
         <small
@@ -19,7 +19,7 @@
       <div class="mb-3 row">
         <label for="inputEmail" class="col-sm-6 col-form-label">Email
           <div class="col-lg-12">
-            <input v-model.trim="email" type="email" class="form-control validate" id="inputEmail" placeholder="email">
+            <input v-model.trim="email" :name="getName.name?.email" :placeholder="getName.name?.email || 'email'" type="email" class="form-control validate" id="inputEmail" placeholder="email">
           </div>
         </label>
 <!--        <small-->
@@ -91,7 +91,7 @@
 // import mapGetters from "vuex";
 import useVuelidate from "@vuelidate/core";
 import {email, minLength, required} from "@vuelidate/validators";
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'nameUser',
@@ -133,6 +133,8 @@ export default {
 
   components: {},
 
+  computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
+
   // methods: mapActions(['getName']),
   methods: {
 
@@ -163,6 +165,7 @@ export default {
       //   if (this.v$.$error === false) {
       //     this.$router.push('/phone')
       // this.name = this.email = this.password = ''
+
     },
   },
 }
