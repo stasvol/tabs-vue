@@ -61,7 +61,7 @@
 <!--          </label>-->
 <!--        </div>-->
         <div class="btn-group-lg" role="group" aria-label="Basic mixed styles example">
-          <button @click="$router.push('/photo')" type="button" class="btn btn-warning">Prev</button>
+          <button @click="prevPath" type="button" class="btn btn-warning">Prev</button>
           <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
 
           <!--        <router-link to="/modal" tag="button" class="btn btn-primary">Save</router-link>-->
@@ -74,6 +74,8 @@
 </template>
 <script>
 import Modal from "@/views/Modal";
+import {mapGetters} from "vuex";
+import usePhotos from "@/utils/photo";
 export default {
   name: 'choose',
   // props: ['modelValue'],
@@ -96,11 +98,35 @@ export default {
   //   }
   // }
 
+  setup() {
+
+    const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
+
+    return {
+      maxSize,
+      removePhoto,
+      // uploadFile,
+      needUpload,
+      input,
+      getSrc,
+      photos,
+      onFileSelected,
+    }
+  },
+
   data:() => ({
     check: [],
   }),
 
+  computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
+
   methods: {
+
+    prevPath() {
+
+      this.$router.push('/photo')
+
+    },
 
     onSubmit() {
 
@@ -116,7 +142,8 @@ export default {
      }
 
     }
-  }
+  },
+
 }
 </script>
 <style scoped>

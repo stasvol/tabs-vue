@@ -13,6 +13,7 @@
                 id="formFile"
                 multiple
                 accept=".png, .jpg, .jpeg"
+
             >
           </div>
         </label>
@@ -36,7 +37,7 @@
           >
           <div class="">
             <!--      <slot v-bind:item="photo"></slot>-->
-            <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
+            <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
           </div>
         </div>
         <div v-else>
@@ -73,18 +74,21 @@
 
         </div>
 
+
+
         <!--    </template>-->
         <!--    </photo-slots>-->
       </div>
 
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
-        <button @click="$router.push('/phone')" type="button" class="btn btn-warning">Prev</button>
+        <button @click="prevPatch" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button type="submit" class="btn btn-success ">Next</button>
+        <button type="submit" class="btn btn-success">Next</button>
 
       </div>
 
     </form>
+
 
   </div>
 
@@ -93,6 +97,7 @@
 import {computed, defineComponent, ref, toRefs} from "vue";
 import Modal from "@/views/Modal";
 import usePhotos from "@/utils/photo";
+import {mapGetters} from "vuex";
 
 export default defineComponent({
 
@@ -107,7 +112,14 @@ export default defineComponent({
 
   methods: {
 
+    prevPatch() {
+      console.log(this.getPhone?.phone?.phone)
+      this.$router.push('/phone')
+      // this.getPhone?.phone?.phone
+    },
+
     onSubmit() {
+
       const formData = {
         photos: this.photos,
         // getSrc: this.getSrc,
@@ -125,20 +137,17 @@ export default defineComponent({
         throw new Error(e)
       }
 
-
     },
     clearPhoto() {
       this.photos = ''
     }
 
   },
-  // const onSubmit = (e) =>  {
-  //   console.log(e)
-  //   alert(e)
-  //   $router.push('/choose')
-  // }
+
+  computed: mapGetters(['getName', 'getPhone', 'getPhoto', 'checkValue']),
 
   setup() {
+
     const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
     return {

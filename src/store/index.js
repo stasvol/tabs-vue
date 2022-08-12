@@ -1,97 +1,97 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
 
 export default createStore({
-  // state: {
-  //   error: null,
-  //   name: JSON.parse(localStorage.getItem('name') || ''),
-  //   email: '',
-  //   check: false,
-  //   phone: null,
-  //   description: '',
-  //   photo: []
-  // },
-  // state: {
-  //   name: JSON.parse(localStorage.getItem('name') || []),
-  // },
-  getters: {
+    // state: {
+    //   error: null,
+    //   name: JSON.parse(localStorage.getItem('name') || ''),
+    //   email: '',
+    //   check: false,
+    //   phone: null,
+    //   description: '',
+    //   photo: []
+    // },
+    // state: {
+    //   name: JSON.parse(localStorage.getItem('name') || []),
+    // },
 
-    error: state => state.error,
+    getters: {
 
-    getName({name, email, checkToggle}) {
-      return {name, email, checkToggle}
+        error: state => state.error,
+
+        getName({name, email, checkToggle}) {
+            return {name, email, checkToggle}
+        },
+
+        getPhone({phone, description}) {
+            return {phone, description}
+        },
+
+        checkValue({check}) {
+            return {check}
+        },
+
+        getPhoto({photos}) {
+            return {photos}
+        }
     },
 
-    getPhone({phone, description}) {
-      return {phone, description}
-    },
+    mutations: {
+        setError(state, error) {
+            state.error = error
+        },
+        clearError(state) {
+            state.error = null
+        },
 
-    checkValue({check}) {
-      return {check}
-    },
+        getName(state, name, email, checkToggle) {
+            state.name = name
+            state.email = email
+            state.checkToggle = checkToggle
+            // localStorage.setItem('name',JSON.stringify(state.name))
+        },
 
-    getPhoto({photos}) {
-      return {photos}
-    }
-    },
+        getPhone(state, phone, description) {
+            state.phone = phone
+            state.description = description
+        },
 
-  mutations: {
-    setError(state, error) {
-      state.error = error
-    },
-    clearError(state) {
-      state.error = null
-    },
+        checkValue(state, check) {
 
-    getName(state, name, email, checkToggle) {
-      state.name = name
-      state.email = email
-      state.checkToggle = checkToggle
-      // localStorage.setItem('name',JSON.stringify(state.name))
-    },
+            state.check = check
+            // state.check.name = check.name
 
-    getPhone(state, phone, description) {
-      state.phone = phone
-      state.description = description
-    },
+            // state.checks = state.checks.push({check:value})
+            // state.check = {check:value}
 
-    checkValue(state, check) {
+        },
+        getPhoto(state, photos) {
+            state.photos = photos
+            // state.getSrc = getSrc
 
-        state.check = check
-        // state.check.name = check.name
-
-      // state.checks = state.checks.push({check:value})
-      // state.check = {check:value}
+        }
 
     },
-    getPhoto(state,photos) {
-      state.photos = photos
-      // state.getSrc = getSrc
 
-    }
-
-  },
-
-  actions: {
-    getName({commit}, {name, email, checkToggle}) {
-      return commit('getName', {name, email, checkToggle})
+    actions: {
+        getName({commit}, {name, email, checkToggle}) {
+            return commit('getName', {name, email, checkToggle})
 
 
-    },
-    getPhone({commit}, {phone, description}) {
-      return commit('getPhone', {phone, description})
-    },
+        },
+        getPhone({commit}, {phone, description}) {
+            return commit('getPhone', {phone, description})
+        },
 
-    checkValue({commit}, {check}) {
-      return commit('checkValue',check)
+        checkValue({commit}, {check}) {
+            return commit('checkValue', check)
+        },
+
+        getPhoto({commit}, {photos}) {
+            return commit('getPhoto', {photos})
+        }
     },
 
-    getPhoto({commit}, {photos}) {
-      return commit('getPhoto', {photos})
-    }
-  },
-
-  modules: {
-  }
+    modules: {}
 })
 
 

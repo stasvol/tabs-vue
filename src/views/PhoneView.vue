@@ -7,7 +7,8 @@
       <div class="mb-3 row">
         <label for="inputPhone" class="col-sm-6 col-form-label">Phone
           <div class="col-lg-12">
-        <input v-model.trim.number="phone" :phone="getPhone.phone?.phone" :placeholder="getPhone.phone?.phone || 'phone'" type="tel" class="form-control" id="inputPhone" >
+        <input v-model.trim.number="phone"  :placeholder="getPhone.phone?.phone || 'phone'" type="tel" class="form-control" id="inputPhone" >
+
           </div>
         </label>
         <small

@@ -19,7 +19,7 @@
       <div class="mb-3 row">
         <label for="inputEmail" class="col-sm-6 col-form-label">Email
           <div class="col-lg-12">
-            <input v-model.trim="email" :name="getName.name?.email" :placeholder="getName.name?.email || 'email'" type="email" class="form-control validate" id="inputEmail" placeholder="email">
+            <input v-model.trim="email" :placeholder="getName.name?.email || 'email'" type="email" class="form-control validate" id="inputEmail" placeholder="email">
           </div>
         </label>
 <!--        <small-->
@@ -164,12 +164,12 @@ export default {
       }
       //   if (this.v$.$error === false) {
       //     this.$router.push('/phone')
-      // this.name = this.email = this.password = ''
-
+      this.name = this.email = this.password = ''
     },
   },
 }
 </script>
+
 <style scoped>
 .form-check {
   display: flex;
