@@ -88,8 +88,6 @@
       </div>
 
     </form>
-
-
   </div>
 
 </template>
@@ -119,7 +117,6 @@ export default defineComponent({
     },
 
     onSubmit() {
-
       const formData = {
         photos: this.photos,
         // getSrc: this.getSrc,
