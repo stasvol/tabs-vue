@@ -16,7 +16,9 @@
           <div class="modal-body">
             <div>
             <div class="mod">
-              <span>Name:<strong>{{getName.name?.name}}</strong></span>
+              <span>Name:<strong v-if="getName.name?.name">{{getName.name?.name}}</strong>
+                <i v-else>Not selected</i>
+              </span>
             </div>
             <div class="mod">
               <span>Email: <strong  v-if="getName.name?.email">{{getName.name?.email }}</strong>
@@ -58,10 +60,9 @@
               >
 
                 <img
-
                     :src="getSrc(photo)"
                     :alt="`Photo ${index}`"
-                    class="photo "
+                    class="photo"
 
                 >
 

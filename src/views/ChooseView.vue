@@ -123,9 +123,8 @@ export default {
   methods: {
 
     prevPath() {
-
       this.$router.push('/photo')
-
+      // this.getPhoto?.photos?.photos[0]
     },
 
     onSubmit() {
