@@ -80,6 +80,7 @@ export default {
   // },
 
   setup:() => ({ v$: useVuelidate()}),
+
   validations:()=> ({phone: {required}}),
 
   // computed: {
@@ -104,16 +105,14 @@ export default {
        }
       try {
          this.$store.dispatch('getPhone', formData)
-        // await this.$store.dispatch('getInfo')
-        // console.log(this.$store.getters.info.locale)
-        // await this.$router.push('/')
+
         if (!this.v$.$error) {
            this.$router.push('/photo')
         }
       } catch (e) {
         throw new Error(e)
       }
-      // this.phone = this.description = ''
+      this.phone = this.description = ''
 
     }
   },

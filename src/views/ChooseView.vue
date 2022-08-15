@@ -75,7 +75,6 @@
 <script>
 import Modal from "@/views/Modal";
 import {mapGetters} from "vuex";
-import usePhotos from "@/utils/photo";
 export default {
   name: 'choose',
   // props: ['modelValue'],
@@ -97,22 +96,6 @@ export default {
   //     }
   //   }
   // }
-
-  setup() {
-
-    const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
-
-    return {
-      maxSize,
-      removePhoto,
-      // uploadFile,
-      needUpload,
-      input,
-      getSrc,
-      photos,
-      onFileSelected,
-    }
-  },
 
   data:() => ({
     check: [],
@@ -158,12 +141,4 @@ export default {
   padding: 10px;
 }
 
-.rows {
-  /*display: flex;*/
-  /*justify-content: center;*/
-  /*  align-items: center;*/
-}
-
-.col {
-}
 </style>
