@@ -1,6 +1,9 @@
 <template>
   <nav>
     <ul class="nav nav-tabs" >
+<!--      <li v-for="(value,i) in ['Add Names','Add Phone','Add Photo','Choose'] ">-->
+<!--        <router-link exact active-class="active" class="nav-link" to="/">{{value}}</router-link>-->
+<!--      </li>-->
       <li class="nav-item"  >
         <router-link exact active-class="active" class="nav-link" to="/">Add Names</router-link>
       </li>
@@ -26,5 +29,10 @@
   </nav>
 </template>
 <script>
+export default {
+  data:() =>({
+
+  })
+}
 
 </script>
