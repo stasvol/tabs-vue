@@ -6,7 +6,7 @@
       <div class="mb-3 row">
         <label for="inputName" class="col-sm-6 col-form-label">Name
           <div class="col-lg-12">
-            <input v-model.trim="name" :name="getName.name?.name" :placeholder="getName.name?.name || 'name'" type="text" class="form-control validate" id="inputName">
+            <input v-model.trim="name"  :placeholder="getName.name?.name || 'name'" type="text" class="form-control validate" id="inputName">
           </div>
         </label>
         <small
@@ -100,7 +100,7 @@ export default {
     name: '',
     email: '',
     password: '',
-    checkToggle: null
+    checkToggle: null,
   }),
 
   // mounted() {
@@ -153,11 +153,13 @@ export default {
         password: this.password,
         checkToggle: this.checkToggle
       }
+
       try {
         // this.getName(formData)
         this.$store.dispatch('getName', formData)
         if (!this.v$.$error) {
           this.$router.push('/phone')
+
         }
       } catch (e) {
         throw new Error(e)
@@ -165,6 +167,8 @@ export default {
       //   if (this.v$.$error === false) {
       //     this.$router.push('/phone')
       this.name = this.email = this.password = ''
+      // this.name = this.$store.state?.name?.name
+      // console.log(this.$store.state?.name?.name)
     },
   },
 }

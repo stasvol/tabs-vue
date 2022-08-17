@@ -5,7 +5,7 @@
 <!--        <router-link exact active-class="active" class="nav-link" to="/">{{value}}</router-link>-->
 <!--      </li>-->
       <li class="nav-item"  >
-        <router-link exact active-class="active" class="nav-link" to="/">Add Names</router-link>
+        <router-link exact active-class="active" class="nav-link disabled" to="/">Add Names</router-link>
       </li>
       <li class="nav-item">
         <router-link

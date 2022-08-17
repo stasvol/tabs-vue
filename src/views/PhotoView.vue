@@ -71,7 +71,7 @@
           <div
                 class="photoSize"
                 v-for="(photo,index) in getPhoto.photos?.photos"
-                :key="photo"
+                :key="index"
           >
 
             <img
@@ -81,6 +81,9 @@
                 class="photo"
 
             >
+            <div class="">
+              <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
+            </div>
 
           </div>
 
@@ -154,7 +157,7 @@ export default defineComponent({
       }
 
     },
-    clearPhoto() {
+    clearPhoto(index) {
       this.photos = ''
     }
 
