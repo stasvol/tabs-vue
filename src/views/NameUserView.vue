@@ -3,10 +3,11 @@
     <h1 class="header">Names page</h1>
 
     <form @submit.prevent="onSubmit">
+
       <div class="mb-3 row">
         <label for="inputName" class="col-sm-6 col-form-label">Name
-          <div class="col-lg-12">
-            <input v-model.trim="name"  :placeholder="getName.name?.name || 'name'" type="text" class="form-control validate" id="inputName" >
+          <div class="col-lg-12" >
+            <input v-model.trim="name" :placeholder="getName.name?.name || 'name'" type="text" class="form-control validate" id="inputName" >
           </div>
         </label>
         <small
@@ -151,7 +152,7 @@ export default {
         name: this.name,
         email: this.email,
         password: this.password,
-        checkToggle: this.checkToggle
+        checkToggle: this.checkToggle,
       }
 
       try {
@@ -159,8 +160,8 @@ export default {
         this.$store.dispatch('getName', formData)
         if (!this.v$.$error) {
           this.$router.push('/phone')
-
         }
+
       } catch (e) {
         throw new Error(e)
       }
@@ -169,6 +170,7 @@ export default {
       // this.name = this.email = this.password = ''
       // this.name = this.$store.state?.name?.name
       // console.log(this.$store.state?.name?.name)
+
     },
   },
 }
