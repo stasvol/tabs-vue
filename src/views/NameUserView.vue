@@ -139,6 +139,7 @@ export default {
   // methods: mapActions(['getName']),
   methods: {
 
+
     toggleCheck() {
       this.checkToggle = !this.checkToggle
     },
