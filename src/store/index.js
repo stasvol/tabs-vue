@@ -3,7 +3,8 @@ import {createStore} from 'vuex'
 export default createStore({
     // state: {
     //   error: null,
-    //   name: JSON.parse(localStorage.getItem('name') || ''),
+    //   name: state.name,
+    //   // name: JSON.parse(localStorage.getItem('name') || ''),
     //   email: '',
     //   check: false,
     //   phone: null,
