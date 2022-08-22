@@ -75,10 +75,9 @@ export default createStore({
     },
 
     actions: {
+
         getName({commit}, {name, email, checkToggle}) {
             return commit('getName', {name, email, checkToggle})
-
-
         },
         getPhone({commit}, {phone, description}) {
             return commit('getPhone', {phone, description})
