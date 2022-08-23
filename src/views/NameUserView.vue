@@ -7,7 +7,7 @@
       <div class="mb-3 row">
         <label for="inputName" class="col-sm-6 col-form-label">Name
           <div class="col-lg-12" >
-            <input v-model.trim="name" :placeholder="getName.name?.name || 'name'" type="text"  class="form-control validate" id="inputName" >
+            <input v-model.trim="name"  :placeholder="getName.name?.name || 'name'" type="text"  class="form-control validate" id="inputName" >
           </div>
         </label>
         <small
