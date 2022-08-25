@@ -21,7 +21,7 @@
 <!--&lt;!&ndash;    <router-link to="/">Home</router-link> |&ndash;&gt;-->
 <!--&lt;!&ndash;    <router-link to="/about">About</router-link>&ndash;&gt;-->
 <!--  </nav>-->
-  <router-view :key="$route.hash" />
+  <router-view />
 </template>
 <script>
 import NavBar from '@/views/NavBar'

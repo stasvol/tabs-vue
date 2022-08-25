@@ -7,7 +7,15 @@
       <div class="mb-3 row">
         <label for="inputName" class="col-sm-6 col-form-label">Name
           <div class="col-lg-12" >
-            <input v-model.trim="name"  :placeholder="getName.name?.name || 'name'" type="text"  class="form-control validate" id="inputName" >
+
+            <input
+                :is="getName.name?.name"
+                @input="getName.name?.name"
+                v-model.trim="name"
+                :placeholder="getName.name?.name || 'name'"
+                type="text"
+                class="form-control validate"
+                id="inputName" >
           </div>
         </label>
         <small
@@ -96,6 +104,8 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'nameUser',
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
 
   data: () => ({
     name: '',
@@ -155,9 +165,8 @@ export default {
         password: this.password,
         checkToggle: this.checkToggle,
       }
-
+      // this.$emit('submit',  formData )
       try {
-        // this.getName(formData)
         this.$store.dispatch('getName', formData)
         if (!this.v$.$error) {
           this.$router.push('/phone')
