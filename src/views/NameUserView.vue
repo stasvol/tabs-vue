@@ -5,19 +5,21 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-        <label for="inputName" class="col-sm-6 col-form-label">Name
-          <div class="col-lg-12" >
+     <CustomInput v-model.trim="name" :defaultValue="getName.name?.name"/>
 
-            <input
-                :is="getName.name?.name"
-                @input="getName.name?.name"
-                v-model.trim="name"
-                :placeholder="getName.name?.name || 'name'"
-                type="text"
-                class="form-control validate"
-                id="inputName" >
-          </div>
-        </label>
+<!--        <label for="inputName" class="col-sm-6 col-form-label">Name-->
+<!--          <div class="col-lg-12" >-->
+
+<!--            <input-->
+
+<!--                :placeholder="getName.name?.name || 'name'"-->
+<!--                type="text"-->
+<!--                class="form-control validate"-->
+<!--                id="inputName" >-->
+<!--&lt;!&ndash;            :is="getName.name?.name"&ndash;&gt;-->
+<!--&lt;!&ndash;            @input="getName.name?.name"&ndash;&gt;-->
+<!--          </div>-->
+<!--        </label>-->
         <small
             class="helper-text invalid"
             v-if="v$.name.$error"
@@ -28,7 +30,11 @@
       <div class="mb-3 row">
         <label for="inputEmail" class="col-sm-6 col-form-label">Email
           <div class="col-lg-12">
-            <input v-model.trim="email" :placeholder="getName.name?.email || 'email'" type="email" class="form-control validate" id="inputEmail" placeholder="email">
+            <input v-model.trim="email"
+                   :placeholder="getName.name?.email || 'email'"
+                   type="email" class="form-control validate"
+                   id="inputEmail"
+                   placeholder="email">
           </div>
         </label>
 <!--        <small-->
@@ -101,11 +107,12 @@
 import useVuelidate from "@vuelidate/core";
 import {email, minLength, required} from "@vuelidate/validators";
 import {mapActions, mapGetters} from "vuex";
+import CustomInput from "@/components/CustomInput";
 
 export default {
   name: 'nameUser',
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
+  props: ['modelValue', 'defaultValue'],
+  // emits: ['update:modelValue'],
 
   data: () => ({
     name: '',
@@ -133,7 +140,7 @@ export default {
   setup: () => ({v$: useVuelidate()}),
   // setup() {
   //   return {v$: useVuelidate()}
-  // },
+  // },z
   validations() {
     return {
       name: {required},
@@ -142,7 +149,7 @@ export default {
     }
   },
 
-  components: {},
+  components: {CustomInput},
 
   computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
 
