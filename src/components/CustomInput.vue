@@ -3,18 +3,18 @@
             <div class="col-lg-12" >
 
               <input
-                  :value="modelValue"
+                  :value="modelValue || getName.name?.name"
                   @input="$emit('update:modelValue', $event.target.value)"
                   :placeholder="getName.name?.name || 'name'"
                   type="text"
                   class="form-control validate"
                   id="inputName"
-
               >
   <!--            :is="getName.name?.name"-->
   <!--            @input="getName.name?.name"-->
             </div>
           </label>
+
 <!--  <label for="inputName" class="col-sm-6 col-form-label">Name-->
 <!--    <div class="col-lg-12" >-->
 
@@ -32,14 +32,22 @@
 </template>
 <script>
 import {mapGetters} from "vuex";
+import useVuelidate from "@vuelidate/core";
+import {required} from "@vuelidate/validators";
 
 export default {
   props: ['modelValue'],
   emits: ['update:modelValue'],
-  data:() => ({
-    defaultValue: '' || this?.$store.state.name.name
-  }),
-
+  // data:() => ({
+  //   modelValue: ''
+  // }),
+  // setup: () => ({v$: useVuelidate()}),
+  //
+  // validations() {
+  //   return {
+  //     modelValue: {required},
+  //   }
+  // },
   computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
 }
 

@@ -5,7 +5,8 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-     <CustomInput v-model.trim="name" :defaultValue="getName.name?.name"/>
+     <CustomInput v-model.trim="name" />
+        <Input/>
 
 <!--        <label for="inputName" class="col-sm-6 col-form-label">Name-->
 <!--          <div class="col-lg-12" >-->
@@ -37,6 +38,7 @@
                    placeholder="email">
           </div>
         </label>
+
 <!--        <small-->
 <!--            class="helper-text invalid"-->
 <!--            v-if="v$.email.$error"-->
@@ -108,11 +110,12 @@ import useVuelidate from "@vuelidate/core";
 import {email, minLength, required} from "@vuelidate/validators";
 import {mapActions, mapGetters} from "vuex";
 import CustomInput from "@/components/CustomInput";
+import Input from "@/components/Input";
 
 export default {
   name: 'nameUser',
-  props: ['modelValue', 'defaultValue'],
-  // emits: ['update:modelValue'],
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
 
   data: () => ({
     name: '',
@@ -149,7 +152,7 @@ export default {
     }
   },
 
-  components: {CustomInput},
+  components: {Input, CustomInput},
 
   computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
 
