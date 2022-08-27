@@ -53,10 +53,11 @@ import useVuelidate from "@vuelidate/core";
 import {required} from "@vuelidate/validators";
 import {createRouter as $router} from "vue-router";
 import {mapGetters} from "vuex";
+import CustomInput from "@/components/CustomInput";
 
 export default {
   name: 'phone',
-
+  components: {CustomInput},
   data:() => ({
     // name:'',
     phone: null,

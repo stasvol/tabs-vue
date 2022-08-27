@@ -6,7 +6,7 @@
 
       <div class="mb-3 row">
      <CustomInput v-model.trim="name" />
-        <Input/>
+<!--        <Input />-->
 
 <!--        <label for="inputName" class="col-sm-6 col-form-label">Name-->
 <!--          <div class="col-lg-12" >-->
@@ -23,7 +23,7 @@
 <!--        </label>-->
         <small
             class="helper-text invalid"
-            v-if="v$.name.$error"
+            v-if="v$.name?.$error"
         >
           Name field required. &nbsp; HAS AN ERROR !
         </small>
@@ -146,7 +146,7 @@ export default {
   // },z
   validations() {
     return {
-      name: {required},
+      // name: {required},
       // email: {required, email},
       // password: {required, minLength: minLength(6)}
     }
