@@ -5,14 +5,12 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-     <CustomInput v-model.trim="name" />
-<!--        <Input />-->
+     <NamesInput v-model.trim="name" />
 
 <!--        <label for="inputName" class="col-sm-6 col-form-label">Name-->
 <!--          <div class="col-lg-12" >-->
 
 <!--            <input-->
-
 <!--                :placeholder="getName.name?.name || 'name'"-->
 <!--                type="text"-->
 <!--                class="form-control validate"-->
@@ -29,15 +27,20 @@
         </small>
       </div>
       <div class="mb-3 row">
-        <label for="inputEmail" class="col-sm-6 col-form-label">Email
+        <label for="textarea" class="col-sm-6 col-form-label">Description
           <div class="col-lg-12">
-            <input v-model.trim="email"
-                   :placeholder="getName.name?.email || 'email'"
-                   type="email" class="form-control validate"
-                   id="inputEmail"
-                   placeholder="email">
+            <textarea v-model="description" :placeholder="getName.name?.description || 'description'" class="form-control" id="textarea" rows="3"></textarea>
           </div>
         </label>
+<!--        <label for="inputEmail" class="col-sm-6 col-form-label">Email-->
+<!--          <div class="col-lg-12">-->
+<!--            <input v-model.trim="email"-->
+<!--                   :placeholder="getName.name?.email || 'email'"-->
+<!--                   type="email" class="form-control validate"-->
+<!--                   id="inputEmail"-->
+<!--                   placeholder="email">-->
+<!--          </div>-->
+<!--        </label>-->
 
 <!--        <small-->
 <!--            class="helper-text invalid"-->
@@ -105,12 +108,11 @@
 <script>
 // @ is an alias to /src
 
-// import mapGetters from "vuex";
 import useVuelidate from "@vuelidate/core";
 import {email, minLength, required} from "@vuelidate/validators";
 import {mapActions, mapGetters} from "vuex";
-import CustomInput from "@/components/CustomInput";
 import Input from "@/components/Input";
+import NamesInput from "@/components/NamesInput";
 
 export default {
   name: 'nameUser',
@@ -119,7 +121,8 @@ export default {
 
   data: () => ({
     name: '',
-    email: '',
+    description: '',
+    // email: '',
     password: '',
     checkToggle: null,
   }),
@@ -152,7 +155,7 @@ export default {
     }
   },
 
-  components: {Input, CustomInput},
+  components: {Input, NamesInput},
 
   computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
 
@@ -171,7 +174,8 @@ export default {
       }
       const formData = {
         name: this.name,
-        email: this.email,
+        description: this.description,
+        // email: this.email,
         password: this.password,
         checkToggle: this.checkToggle,
       }

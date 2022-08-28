@@ -5,25 +5,35 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-        <label for="inputPhone" class="col-sm-6 col-form-label">Phone
-          <div class="col-lg-12">
-        <input v-model.trim.number="phone"  :placeholder="getPhone.phone?.phone || 'phone'" type="tel" class="form-control" id="inputPhone" >
+        <PhoneInput v-model.number.trim="phone" />
+<!--        <label for="inputPhone" class="col-sm-6 col-form-label">Phone-->
+<!--          <div class="col-lg-12">-->
+<!--        <input v-model.trim.number="phone"  :placeholder="getPhone.phone?.phone || 'phone'" type="tel" class="form-control" id="inputPhone" >-->
 
-          </div>
-        </label>
-        <small
-            class="helper-text invalid"
-            v-if="v$.phone.$error"
-        >
-          Phone field required,  must be a number. &nbsp; HAS AN ERROR !
-        </small>
+<!--          </div>-->
+<!--        </label>-->
+<!--        <small-->
+<!--            class="helper-text invalid"-->
+<!--            v-if="v$.phone.$error"-->
+<!--        >-->
+<!--          Phone field required,  must be a number. &nbsp; HAS AN ERROR !-->
+<!--        </small>-->
       </div>
       <div class="mb-3 row">
-        <label for="textarea" class="col-sm-6 col-form-label">Description
+        <label for="inputEmail" class="col-sm-6 col-form-label">Email
           <div class="col-lg-12">
-        <textarea v-model="description" :placeholder="getPhone.phone?.description || 'description'" class="form-control" id="textarea" rows="3"></textarea>
+            <input v-model.trim="email"
+                   :placeholder="getPhone.phone?.email || 'email'"
+                   type="email" class="form-control validate"
+                   id="inputEmail"
+                   placeholder="email">
           </div>
         </label>
+<!--        <label for="textarea" class="col-sm-6 col-form-label">Description-->
+<!--          <div class="col-lg-12">-->
+<!--        <textarea v-model="description" :placeholder="getPhone.phone?.description || 'description'" class="form-control" id="textarea" rows="3"></textarea>-->
+<!--          </div>-->
+<!--        </label>-->
       </div>
 
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
@@ -53,15 +63,17 @@ import useVuelidate from "@vuelidate/core";
 import {required} from "@vuelidate/validators";
 import {createRouter as $router} from "vue-router";
 import {mapGetters} from "vuex";
-import CustomInput from "@/components/CustomInput";
+import CustomInput from "@/components/NamesInput";
+import PhoneInput from "@/components/PhoneInput";
 
 export default {
   name: 'phone',
-  components: {CustomInput},
+  components: {PhoneInput, CustomInput},
   data:() => ({
     // name:'',
     phone: null,
-    description: ''
+    email: ''
+    // description: ''
   }),
 
   // mounted() {
@@ -82,7 +94,7 @@ export default {
 
   setup:() => ({ v$: useVuelidate()}),
 
-  validations:()=> ({phone: {required}}),
+  // validations:()=> ({phone: {required}}),
 
   // computed: {
   //   getPhone() {
@@ -102,7 +114,8 @@ export default {
       }
       const formData = {
          phone: this.phone,
-         description: this.description
+         email: this.email,
+         // description: this.description
        }
       try {
          this.$store.dispatch('getPhone', formData)
@@ -113,7 +126,7 @@ export default {
       } catch (e) {
         throw new Error(e)
       }
-      this.phone = this.description = ''
+      // this.phone = this.description = ''
 
     }
   },

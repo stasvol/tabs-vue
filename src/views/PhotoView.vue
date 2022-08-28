@@ -1,7 +1,7 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div class="card-header">
     <h1 class="header">Photo page</h1>
-    <form @submit.prevent="onSubmit">
+<!--    <form @submit.prevent="onSubmit">-->
       <div class="mb-3 row">
         <label for="formFile" class="col-sm-6 col-form-label">Choose files
           <div class="col-lg-10">
@@ -33,6 +33,7 @@
               :src="getSrc(photo)"
               :alt="`Photo ${index}`"
               class="photo "
+              :key="photo"
 
           >
           <div class="">
@@ -49,19 +50,22 @@
 
           <div
               class="photoSize"
-              v-for="(photo,index) in photos"
+              v-for="(photo,index) in photos "
               :key="index"
           >
-
+           <div v-if="needUpload">
             <img
+
                 :src="getSrc(photo)"
                 :alt="`Photo ${index}`"
                 class="photo "
+                :key="photo"
 
             >
             <div class="">
               <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
             </div>
+          </div>
           </div>
 
         </div>
@@ -73,28 +77,28 @@
                 v-for="(photo,index) in getPhoto.photos?.photos"
                 :key="index"
           >
-
+<!--            <div v-if="needUpload === 5">-->
             <img
 
                 :src="getSrc(photo)"
                 :alt="`Photo ${index}`"
                 class="photo"
-
+                :key="photo"
             >
-            <div class="">
-              <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
+            <div >
+              <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
             </div>
-
+<!--            </div>-->
           </div>
 
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="prevPatch" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button type="submit" class="btn btn-success">Next</button>
+        <button @click="onSubmit" type="button" class="btn btn-success">Next</button>
 
       </div>
 
-    </form>
+<!--    </form>-->
 <!--    <div-->
 <!--          class="photoSize"-->
 <!--          v-for="(photo,index) in getPhoto.photos?.photos"-->

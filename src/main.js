@@ -10,6 +10,6 @@ import 'bootstrap/dist/js/bootstrap'
 
 // export const bus = new Vue()
 // Vue.config.productionTip = false
-
+// export const bus = new createApp(App)
 createApp(App).use('photo', usePhotos).use(useVuelidate).use(store).use(router).mount('#app')
 

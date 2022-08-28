@@ -3,7 +3,7 @@
             <div class="col-lg-12" >
 
               <input
-                  :value="modelValue || getName.name?.name "
+                  :value="modelValue || getName.name?.name || '' "
                   @input="$emit('update:modelValue', $event.target.value)"
                   :placeholder="getName.name?.name || 'name'"
                   type="text"

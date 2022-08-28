@@ -21,7 +21,7 @@
               </span>
             </div>
             <div class="mod">
-              <span>Email: <strong  v-if="getName.name?.email">{{getName.name?.email }}</strong>
+              <span>Description: <strong  v-if="getName.name?.description">{{getName.name?.description }}</strong>
                 <i v-else>Not selected</i>
               </span>
             </div>
@@ -37,7 +37,7 @@
               <span>Phone: <strong>{{ getPhone.phone?.phone}}</strong></span>
             </div>
             <div class="mod" >
-              <span>Description: <strong v-if="$store.state.phone?.description">{{ $store.state.phone?.description}}</strong>
+              <span>Email: <strong v-if="$store.state.phone?.email">{{ $store.state.phone?.email}}</strong>
                 <i v-else>Not selected</i>
               </span>
             </div>

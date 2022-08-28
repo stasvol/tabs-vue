@@ -19,12 +19,12 @@ export default createStore({
 
         error: state => state.error,
 
-        getName({name, email, checkToggle}) {
-            return {name, email, checkToggle}
+        getName({name, description, checkToggle}) {
+            return {name, description, checkToggle}
         },
 
-        getPhone({phone, description}) {
-            return {phone, description}
+        getPhone({phone, email}) {
+            return {phone, email}
         },
 
         checkValue({check}) {
@@ -44,17 +44,18 @@ export default createStore({
             state.error = null
         },
 
-        getName(state, name, email, checkToggle) {
+        getName(state, name, description, checkToggle) {
             state.name = name
-            state.email = email
+            state.description = description
+            // state.email = email
             state.checkToggle = checkToggle
             // localStorage.setItem('name',JSON.stringify(state.name))
             // console.log(state.name)
         },
 
-        getPhone(state, phone, description) {
+        getPhone(state, phone, email) {
             state.phone = phone
-            state.description = description
+            state.description = email
         },
 
         checkValue(state, check) {
@@ -76,11 +77,11 @@ export default createStore({
 
     actions: {
 
-        getName({commit}, {name, email, checkToggle}) {
-            return commit('getName', {name, email, checkToggle})
+        getName({commit}, {name, description, checkToggle}) {
+            return commit('getName', {name, description, checkToggle})
         },
-        getPhone({commit}, {phone, description}) {
-            return commit('getPhone', {phone, description})
+        getPhone({commit}, {phone, email}) {
+            return commit('getPhone', {phone, email})
         },
 
         checkValue({commit}, {check}) {
