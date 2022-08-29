@@ -1,11 +1,11 @@
 <template>
   <div class="col">
     <!-- Button trigger modal -->
-<!--   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-<!--      Launch demo modal-->
-<!--    </button>-->
+    <!--   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+    <!--      Launch demo modal-->
+    <!--    </button>-->
     <!-- Modal -->
-<!--    <h1>{{files.length}}</h1>-->
+    <!--    <h1>{{files.length}}</h1>-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -15,45 +15,45 @@
           </div>
           <div class="modal-body">
             <div>
-            <div class="mod">
-              <span>Name:<strong v-if="getName.name?.name">{{getName.name?.name}}</strong>
+              <div class="mod">
+              <span>Name:<strong v-if="getName.name?.name">{{ getName.name?.name }}</strong>
                 <i v-else>Not selected</i>
               </span>
-            </div>
-            <div class="mod">
-              <span>Description: <strong  v-if="getName.name?.description">{{getName.name?.description }}</strong>
+              </div>
+              <div class="mod">
+              <span>Description: <strong v-if="getName.name?.description">{{ getName.name?.description }}</strong>
                 <i v-else>Not selected</i>
               </span>
-            </div>
-            <div class="mod">
+              </div>
+              <div class="mod">
               <span>Check: <strong v-if="getName.name?.checkToggle"> Yes selected
-<!--                {{getName.name?.checkToggle }}-->
+                <!--                {{getName.name?.checkToggle }}-->
               </strong>
                 <i v-else>Not selected</i>
               </span>
-            </div>
+              </div>
             </div>
             <div class="mod" v-if=" getPhone.phone?.phone">
-              <span>Phone: <strong>{{ getPhone.phone?.phone}}</strong></span>
+              <span>Phone: <strong>{{ getPhone.phone?.phone }}</strong></span>
             </div>
-            <div class="mod" >
-              <span>Email: <strong v-if="$store.state.phone?.email">{{ $store.state.phone?.email}}</strong>
+            <div class="mod">
+              <span>Email: <strong v-if="$store.state.phone?.email">{{ $store.state.phone?.email }}</strong>
                 <i v-else>Not selected</i>
               </span>
             </div>
-            <div class="mod" >
-<!--              <Choose v-model="checkList" />-->
-<!--              <span>Check choose: <b>{{checkList}}</b></span>-->
-              <span >Check choose: <strong v-if="checkValue.check?.join(',')">{{ checkValue.check?.join(',') }}</strong>
+            <div class="mod">
+              <!--              <Choose v-model="checkList" />-->
+              <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
+              <span>Check choose: <strong v-if="checkValue.check?.join(',')">{{ checkValue.check?.join(',') }}</strong>
                <i v-else>Not selected</i>
               </span>
 
             </div>
 
-            <div class="mod" > Photo:
-<!--              {{getPhoto.photos?.photos[0].name}}-->
-<!--              {{photos}}-->
-              <div  v-if="getPhoto.photos?.photos[0]"
+            <div class="mod"> Photo:
+              <!--              {{getPhoto.photos?.photos[0].name}}-->
+              <!--              {{photos}}-->
+              <div v-if="getPhoto.photos"
                    class="photoSize"
                    v-for="(photo,index) in getPhoto.photos?.photos"
                    :key="photo"
@@ -66,7 +66,7 @@
 
                 >
 
-            </div>
+              </div>
               <i v-else>Not selected</i>
 
             </div>
@@ -74,7 +74,8 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button @click="closeModal" data-bs-dismiss="modal" type="button" class="btn btn-primary">Save changes</button>
+            <button @click="closeModal" data-bs-dismiss="modal" type="button" class="btn btn-primary">Save changes
+            </button>
           </div>
         </div>
       </div>
@@ -82,12 +83,12 @@
   </div>
 </template>
 <script>
- import {mapGetters} from "vuex";
- import {ref} from "vue";
- // import PhotoView from "@/views/PhotoView";
- import usePhotos from "@/utils/photo";
- // import Choose from "@/views/ChooseView";
- // import {computed} from "vue/dist/vue";
+import {mapGetters} from "vuex";
+import {ref} from "vue";
+// import PhotoView from "@/views/PhotoView";
+import usePhotos from "@/utils/photo";
+// import Choose from "@/views/ChooseView";
+// import {computed} from "vue/dist/vue";
 
 
 export default {
@@ -137,7 +138,7 @@ export default {
     }
   },
 
-  computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
+  computed: mapGetters(['getName', 'getPhone', 'getPhoto', 'checkValue']),
   // computed: {
   //   getName() {
   //    return  this.$store.getters.getName

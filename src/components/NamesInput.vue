@@ -1,6 +1,6 @@
 <template>
           <label for="inputName" class="col-sm-6 col-form-label">Name
-            <div class="col-lg-12" >
+            <div class="col-lg-12">
 
               <input
                   :value="modelValue || getName.name?.name || '' "
@@ -14,6 +14,7 @@
   <!--            :is="getName.name?.name"-->
   <!--            @input="getName.name?.name"-->
             </div>
+
           </label>
 
 <!--  <label for="inputName" class="col-sm-6 col-form-label">Name-->

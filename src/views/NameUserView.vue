@@ -29,7 +29,11 @@
       <div class="mb-3 row">
         <label for="textarea" class="col-sm-6 col-form-label">Description
           <div class="col-lg-12">
-            <textarea v-model="description" :placeholder="getName.name?.description || 'description'" class="form-control" id="textarea" rows="3"></textarea>
+            <textarea v-model.trim="description"
+                      :placeholder="getName.name?.description || 'description'"
+                      class="form-control" id="textarea" rows="3">
+
+            </textarea>
           </div>
         </label>
 <!--        <label for="inputEmail" class="col-sm-6 col-form-label">Email-->
