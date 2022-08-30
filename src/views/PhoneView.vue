@@ -19,22 +19,23 @@
 <!--          Phone field required,  must be a number. &nbsp; HAS AN ERROR !-->
 <!--        </small>-->
       </div>
-      <div class="mb-3 row">
-        <label for="inputEmail" class="col-sm-6 col-form-label">Email
-          <div class="col-lg-12">
-            <input v-model.trim="email"
-                   :placeholder="getPhone.phone?.email || 'email'"
-                   type="email" class="form-control validate"
-                   id="inputEmail"
-                   placeholder="email">
-          </div>
-        </label>
-<!--        <label for="textarea" class="col-sm-6 col-form-label">Description-->
+      <EmailInput v-model.trim="email" />
+<!--      <div class="mb-3 row">-->
+<!--        <label for="inputEmail" class="col-sm-6 col-form-label">Email-->
 <!--          <div class="col-lg-12">-->
-<!--        <textarea v-model="description" :placeholder="getPhone.phone?.description || 'description'" class="form-control" id="textarea" rows="3"></textarea>-->
+<!--            <input v-model.trim="email"-->
+<!--                   :placeholder="getPhone.phone?.email || 'email'"-->
+<!--                   type="email" class="form-control validate"-->
+<!--                   id="inputEmail"-->
+<!--                   placeholder="email">-->
 <!--          </div>-->
 <!--        </label>-->
-      </div>
+<!--&lt;!&ndash;        <label for="textarea" class="col-sm-6 col-form-label">Description&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-lg-12">&ndash;&gt;-->
+<!--&lt;!&ndash;        <textarea v-model="description" :placeholder="getPhone.phone?.description || 'description'" class="form-control" id="textarea" rows="3"></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </label>&ndash;&gt;-->
+<!--      </div>-->
 
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="namePath" type="button" class="btn btn-warning">Prev</button>
@@ -65,10 +66,11 @@ import {createRouter as $router} from "vue-router";
 import {mapGetters} from "vuex";
 import CustomInput from "@/components/NamesInput";
 import PhoneInput from "@/components/PhoneInput";
+import EmailInput from "@/components/EmailInput";
 
 export default {
   name: 'phone',
-  components: {PhoneInput, CustomInput},
+  components: {EmailInput, PhoneInput, CustomInput},
   data:() => ({
     // name:'',
     phone: null,

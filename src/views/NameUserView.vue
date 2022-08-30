@@ -26,34 +26,35 @@
           Name field required. &nbsp; HAS AN ERROR !
         </small>
       </div>
-      <div class="mb-3 row">
-        <label for="textarea" class="col-sm-6 col-form-label">Description
-          <div class="col-lg-12">
-            <textarea v-model.trim="description"
-                      :placeholder="getName.name?.description || 'description'"
-                      class="form-control" id="textarea" rows="3">
-
-            </textarea>
-          </div>
-        </label>
-<!--        <label for="inputEmail" class="col-sm-6 col-form-label">Email-->
+      <DescriptionsInput v-model.trim="description"/>
+<!--      <div class="mb-3 row">-->
+<!--        <label for="textarea" class="col-sm-6 col-form-label">Description-->
 <!--          <div class="col-lg-12">-->
-<!--            <input v-model.trim="email"-->
-<!--                   :placeholder="getName.name?.email || 'email'"-->
-<!--                   type="email" class="form-control validate"-->
-<!--                   id="inputEmail"-->
-<!--                   placeholder="email">-->
+<!--            <textarea v-model.trim="description"-->
+<!--                      :placeholder="getName.name?.description || 'description'"-->
+<!--                      class="form-control" id="textarea" rows="3">-->
+
+<!--            </textarea>-->
 <!--          </div>-->
 <!--        </label>-->
+<!--&lt;!&ndash;        <label for="inputEmail" class="col-sm-6 col-form-label">Email&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-lg-12">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input v-model.trim="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                   :placeholder="getName.name?.email || 'email'"&ndash;&gt;-->
+<!--&lt;!&ndash;                   type="email" class="form-control validate"&ndash;&gt;-->
+<!--&lt;!&ndash;                   id="inputEmail"&ndash;&gt;-->
+<!--&lt;!&ndash;                   placeholder="email">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </label>&ndash;&gt;-->
 
-<!--        <small-->
-<!--            class="helper-text invalid"-->
-<!--            v-if="v$.email.$error"-->
-<!--        >-->
-<!--          Email field required. &nbsp; HAS AN ERROR !-->
-<!--        </small>-->
+<!--&lt;!&ndash;        <small&ndash;&gt;-->
+<!--&lt;!&ndash;            class="helper-text invalid"&ndash;&gt;-->
+<!--&lt;!&ndash;            v-if="v$.email.$error"&ndash;&gt;-->
+<!--&lt;!&ndash;        >&ndash;&gt;-->
+<!--&lt;!&ndash;          Email field required. &nbsp; HAS AN ERROR !&ndash;&gt;-->
+<!--&lt;!&ndash;        </small>&ndash;&gt;-->
 
-      </div>
+<!--      </div>-->
 <!--      <div class="mb-3 row">-->
 <!--        <label for="inputPassword" class="col-sm-6 col-form-label">Password-->
 <!--          <div class="col-lg-12">-->
@@ -115,8 +116,9 @@
 import useVuelidate from "@vuelidate/core";
 import {email, minLength, required} from "@vuelidate/validators";
 import {mapActions, mapGetters} from "vuex";
-import Input from "@/components/Input";
+import Input from "@/components/EmailInput";
 import NamesInput from "@/components/NamesInput";
+import DescriptionsInput from "@/components/DescriptionsInput";
 
 export default {
   name: 'nameUser',
@@ -159,7 +161,7 @@ export default {
     }
   },
 
-  components: {Input, NamesInput},
+  components: {DescriptionsInput, Input, NamesInput},
 
   computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
 

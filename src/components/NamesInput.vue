@@ -3,7 +3,7 @@
             <div class="col-lg-12">
 
               <input
-                  :value="modelValue || getName.name?.name || '' "
+                  :value="modelValue || getName.name?.name "
                   @input="$emit('update:modelValue', $event.target.value)"
                   :placeholder="getName.name?.name || 'name'"
                   type="text"
@@ -22,7 +22,7 @@
 
 <!--      <input-->
 <!--          :value="modelValue"-->
-<!--          @input="$emit('update:modelValue:', $event.target.value)"-->
+<!--          @input="$emit('update:modelValue', $event.target.value)"-->
 <!--          :placeholder="getName.name?.name || 'name'"-->
 <!--          type="text"-->
 <!--          class="form-control validate"-->
@@ -50,7 +50,7 @@ export default {
   //     modelValue: {required},
   //   }
   // },
-  computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
+  computed: mapGetters(['getName']),
 }
 
 

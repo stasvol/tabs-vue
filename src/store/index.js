@@ -32,7 +32,8 @@ export default createStore({
         },
 
         getPhoto({photos}) {
-            return {photos}
+            const removePhoto =(index) => photos.value =  photos.value.filter((photo, i) => i != index)
+            return {photos, removePhoto}
         }
     },
 
@@ -70,7 +71,11 @@ export default createStore({
         getPhoto(state, photos) {
             state.photos = photos
             // state.getSrc = getSrc
-
+            const removePhoto =(index) => photos.value =  photos.value.filter((photo, i) => i != index)
+            return {
+                photos: photos,
+                removePhoto
+            }
         }
 
     },
