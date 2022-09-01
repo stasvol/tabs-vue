@@ -60,7 +60,6 @@ export default createStore({
         },
 
         checkValue(state, check) {
-
             state.check = check
             // state.check.name = check.name
 

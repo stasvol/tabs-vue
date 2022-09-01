@@ -44,11 +44,12 @@
         <div v-else>
 
           <h3 class="head"> Max length photos - {{ maxSize }}photo
-<!--            <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear all photos</button>-->
+            <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear all photos</button>
 
           </h3>
 
           <div
+              v-if="maxSize <=5 "
               class="photoSize"
               v-for="(photo,index) in getPhoto.photos?.photos  "
               :key="index"
@@ -67,12 +68,12 @@
             </div>
           </div>
           </div>
-
         </div>
         <!--    </template>-->
         <!--    </photo-slots>-->
       </div>
           <div
+                v-if="maxSize <= 5"
                 class="photoSize"
                 v-for="(photo,index) in getPhoto.photos?.photos"
                 :key="index"

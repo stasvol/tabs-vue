@@ -5,7 +5,7 @@
       <input
           :value="modelValue || getPhone.phone?.phone || '' "
           @input="$emit('update:modelValue', $event.target.value)"
-          :placeholder="getPhone.phone?.phone || 'phone'"
+          placeholder="phone"
           type="tel"
           class="form-control validate"
           id="inputName"

@@ -16,7 +16,8 @@
 <!--                  :value="value"-->
 <!--                  :checked="modelValue.includes(value)"-->
 <!--                  @change="evt => onChange(evt.target.value)"-->
-<!--              >-->
+<!--              >  -->
+<!--              <CheckField v-model="check" :value="value || checkValue.check"/>-->
               <input
                   v-model="check"
                   :value="value || checkValue.check"
@@ -75,12 +76,13 @@
 <script>
 import Modal from "@/views/Modal";
 import {mapGetters} from "vuex";
+import CheckField from "@/components/CheckField";
 export default {
   name: 'choose',
   // props: ['modelValue'],
   // emits: ['update:modelValue'],
 
-  components: {Modal},
+  components: {CheckField, Modal},
 
   // props: {
   //   value: { type: String, default: null, },

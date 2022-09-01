@@ -8,7 +8,7 @@
       <!--                  @change="evt => onChange(evt.target.value)"-->
       <!--              >-->
       <input
-          :value="modelValue"
+          :value="modelValue || checkValue.check"
           @input="$emit('update:modelValue', $event.target.value)"
           class="form-check-input"
           type="checkbox"
