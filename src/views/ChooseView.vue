@@ -19,7 +19,7 @@
 <!--              >-->
               <input
                   v-model="check"
-                  :value="value"
+                  :value="value || checkValue.check"
                   class="form-check-input"
                   type="checkbox"
                   id="flexCheckDefault{{value}}"

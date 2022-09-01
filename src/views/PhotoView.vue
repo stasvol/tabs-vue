@@ -12,7 +12,7 @@
                 type="file"
                 id="formFile"
                 multiple
-                accept=".png, .jpg, .jpeg"
+                accept=".png, .jpg, .jpeg, .ico, .webp"
 
             >
           </div>
@@ -295,13 +295,4 @@ export default defineComponent({
   margin-left: 1rem;
 }
 
-/*.row {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*}*/
-/*.header {*/
-/*  text-align: center;*/
-/*  color: #030350;*/
-/*  margin: 2rem;*/
-/*}*/
 </style>
