@@ -182,7 +182,7 @@ export default {
         name: this.name,
         description: this.description,
         // email: this.email,
-        password: this.password,
+        // password: this.password,
         checkToggle: this.checkToggle,
       }
       // this.$emit('submit',  formData )

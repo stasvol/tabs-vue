@@ -3,13 +3,14 @@
             <div class="col-lg-12">
 
               <input
-                  :value="modelValue || getName.name?.name || '' "
+                  :value="modelValue || getName.name?.name || ''  "
                   @input="$emit('update:modelValue', $event.target.value)"
                   placeholder="name"
                   type="text"
                   class="form-control validate"
                   id="inputName"
                   required
+                  @focus="clearInput"
               >
   <!--            :is="getName.name?.name"-->
   <!--            @input="getName.name?.name"-->
@@ -40,6 +41,11 @@ import {required} from "@vuelidate/validators";
 export default {
   props: ['modelValue'],
   emits: ['update:modelValue'],
+  methods: {
+    clearInput() {
+      this.modelValue = this.$store.state.name.name = ''
+    }
+  },
   data:() => ({
     // modelValue: this?.$store.state.name?.name
   }),
