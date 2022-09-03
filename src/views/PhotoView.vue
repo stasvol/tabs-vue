@@ -12,7 +12,7 @@
                 type="file"
                 id="formFile"
                 multiple
-                accept=".png, .jpg, .jpeg, .ico, .webp"
+                accept=".png, .jpg, .jpeg"
 
             >
           </div>
@@ -41,7 +41,7 @@
             <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
           </div>
         </div>
-        <div v-else>
+        <div v-else-if="maxSize ===5">
 
           <h3 class="head"> Max length photos - {{ maxSize }}photo
             <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear all photos</button>
@@ -49,31 +49,30 @@
           </h3>
 
           <div
-              v-if="maxSize <=5 "
               class="photoSize"
-              v-for="(photo,index) in getPhoto.photos?.photos  "
+              v-for="(photo,index) in getPhoto.photos?.photos <= 5 "
               :key="index"
           >
-           <div >
+
             <img
 
                 :src="getSrc(photo)"
                 :alt="`Photo ${index}`"
                 class="photo "
-                :key="photo"
+                :key="index"
 
             >
             <div class="">
               <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
             </div>
           </div>
-          </div>
+
         </div>
         <!--    </template>-->
         <!--    </photo-slots>-->
       </div>
           <div
-                v-if="maxSize <= 5"
+
                 class="photoSize"
                 v-for="(photo,index) in getPhoto.photos?.photos"
                 :key="index"

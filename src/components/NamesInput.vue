@@ -10,6 +10,7 @@
                   class="form-control validate"
                   id="inputName"
                   required
+
                   @focus="clearInput"
               >
   <!--            :is="getName.name?.name"-->
