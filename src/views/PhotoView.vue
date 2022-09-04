@@ -1,6 +1,6 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div class="card-header">
-    <h1 class="header">Photo page</h1>
+    <h1 class="header">Photos page</h1>
 <!--    <form @submit.prevent="onSubmit">-->
       <div class="mb-3 row">
         <label for="formFile" class="col-sm-6 col-form-label">Choose files
@@ -41,7 +41,7 @@
             <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
           </div>
         </div>
-        <div v-else-if="maxSize ===5">
+        <div v-else>
 
           <h3 class="head"> Max length photos - {{ maxSize }}photo
             <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear all photos</button>
@@ -50,11 +50,11 @@
 
           <div
               class="photoSize"
-              v-for="(photo,index) in getPhoto.photos?.photos <= 5 "
+              v-for="(photo,index) in photos"
               :key="index"
           >
 
-            <img
+            <img v-if="photos.length <= 5"
 
                 :src="getSrc(photo)"
                 :alt="`Photo ${index}`"
@@ -62,6 +62,7 @@
                 :key="index"
 
             >
+
             <div class="">
               <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
             </div>

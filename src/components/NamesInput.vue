@@ -11,7 +11,6 @@
                   id="inputName"
                   required
 
-                  @focus="clearInput"
               >
   <!--            :is="getName.name?.name"-->
   <!--            @input="getName.name?.name"-->

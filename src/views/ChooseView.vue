@@ -8,9 +8,11 @@
     <h1 class="header">Choose page</h1>
     <div class="checked">
       <form @submit.prevent="onSubmit">
-        <div class="form-check  mb-3 " v-for="(value,i) in 5" :key="i">
+        <div class="form-check  mb-3 " v-for="(value,i) in 5  :key="i">
           <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">
             <div>
+              Value: {{checkValue?.check
+              }}
 <!--              <input-->
 <!--                  type="checkbox"-->
 <!--                  :value="value"-->
@@ -20,7 +22,7 @@
 <!--              <CheckField v-model="check" :value="value || checkValue.check"/>-->
               <input
                   v-model="check"
-                  :value="value || checkValue.check"
+                  :value="value || $store.state.check.value"
                   class="form-check-input"
                   type="checkbox"
                   id="flexCheckDefault{{value}}"
