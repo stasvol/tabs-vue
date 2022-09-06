@@ -8,12 +8,14 @@
       <!--                  @change="evt => onChange(evt.target.value)"-->
       <!--              >-->
       <input
-          :value="modelValue || checkValue.check"
-          @input="$emit('update:modelValue', $event.target.value)"
+          :value="value"
+          :checked="modelValue?.includes(value)"
+          @change="event=>onChange(event.target.value)"
           class="form-check-input"
           type="checkbox"
-          id="flexCheckDefault{{value}}"
+          id="flexCheckDefault"
       >
+<!--      :value="modelValue || checkValue.check-->
       <!--              <input-->
       <!--                  :value="modelValue"-->
       <!--                  @update:modelValue="newValue => value = newValue"-->
@@ -23,7 +25,7 @@
       <!--                  type="checkbox"-->
       <!--              >-->
     </div>
-    Add Data  <b>{{value}}</b>
+<!--    Add Data  <b>{{value}}</b>-->
   </label>
 </template>
 <script>
@@ -33,10 +35,21 @@ export default {
   // data:() => ({
   //   check: [],
   // }),
+  // props: ['modelValue','value'],
+  // emits: ['update:modelValue'],
 
-  props: ['modelValue','value'],
-  emits: ['update:modelValue'],
+  props: {
+    value: null,
+    modelValue: []
+  },
 
   computed: mapGetters(['checkValue']),
+  methods: {
+    onChange(value) {
+      if (this.modelValue.includes(this.value)) this.$emit('update:modelValue',this.modelValue?.filter(cv => cv !== value ))
+      else this.$emit('update:modelValue',this.modelValue?.concat(value))
+    }
+
+  }
 }
 </script>

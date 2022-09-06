@@ -8,11 +8,11 @@
     <h1 class="header">Choose page</h1>
     <div class="checked">
       <form @submit.prevent="onSubmit">
-        <div class="form-check  mb-3 " v-for="(value,i) in 5  :key="i">
+
+        <div class="form-check  mb-3 " v-for="(value,i) in 5 " :key="i">
           <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">
             <div>
-              Value: {{checkValue?.check
-              }}
+<!--              Value: {{checkValue?.check }}-->
 <!--              <input-->
 <!--                  type="checkbox"-->
 <!--                  :value="value"-->
@@ -22,19 +22,19 @@
 <!--              <CheckField v-model="check" :value="value || checkValue.check"/>-->
               <input
                   v-model="check"
-                  :value="value || $store.state.check.value"
+                  :value="value || checkValue.check"
                   class="form-check-input"
                   type="checkbox"
                   id="flexCheckDefault{{value}}"
-              >
-<!--              <input-->
-<!--                  :value="modelValue"-->
-<!--                  @update:modelValue="newValue => value = newValue"-->
-<!--                  @input="$emit('update: modelValue', $event.target.value)"-->
-<!--                  @click="check=!check"-->
-<!--                  class="form-check-input"-->
-<!--                  type="checkbox"-->
-<!--              >-->
+              />
+<!--&lt;!&ndash;              <input&ndash;&gt;-->
+<!--&lt;!&ndash;                  :value="modelValue"&ndash;&gt;-->
+<!--&lt;!&ndash;                  @update:modelValue="newValue => value = newValue"&ndash;&gt;-->
+<!--&lt;!&ndash;                  @input="$emit('update: modelValue', $event.target.value)"&ndash;&gt;-->
+<!--&lt;!&ndash;                  @click="check=!check"&ndash;&gt;-->
+<!--&lt;!&ndash;                  class="form-check-input"&ndash;&gt;-->
+<!--&lt;!&ndash;                  type="checkbox"&ndash;&gt;-->
+<!--&lt;!&ndash;              >&ndash;&gt;-->
             </div>
             Add Data  <b>{{value}}</b>
           </label>
