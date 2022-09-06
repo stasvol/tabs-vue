@@ -13,7 +13,7 @@
           @change="event=>onChange(event.target.value)"
           class="form-check-input"
           type="checkbox"
-          id="flexCheckDefault"
+          id="flexCheckDefault{{value}}"
       >
 <!--      :value="modelValue || checkValue.check-->
       <!--              <input-->
@@ -25,7 +25,7 @@
       <!--                  type="checkbox"-->
       <!--              >-->
     </div>
-<!--    Add Data  <b>{{value}}</b>-->
+    Add Data  <b>{{value}}</b>
   </label>
 </template>
 <script>

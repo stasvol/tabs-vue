@@ -1,10 +1,10 @@
 <template>
   <div class="card-header">
     <Modal v-model="check" />
-<!--             :value="modelValue"-->
-<!--             @input="$emit('update:modelValue', $event.target.value)"/>-->
-<!--        :modelValue="check.value"-->
-<!--           @update:modelValue="check.value = $event"/>-->
+    <!--             :value="modelValue"-->
+    <!--             @input="$emit('update:modelValue', $event.target.value)"/>-->
+    <!--             :modelValue="check.value"-->
+    <!--             @update:modelValue="check.value = $event"/>-->
     <h1 class="header">Choose page</h1>
     <div class="checked">
       <form @submit.prevent="onSubmit">
@@ -12,14 +12,14 @@
         <div class="form-check  mb-3 " v-for="(value,i) in 5 " :key="i">
           <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">
             <div>
-<!--              Value: {{checkValue?.check }}-->
-<!--              <input-->
-<!--                  type="checkbox"-->
-<!--                  :value="value"-->
-<!--                  :checked="modelValue.includes(value)"-->
-<!--                  @change="evt => onChange(evt.target.value)"-->
-<!--              >  -->
-<!--              <CheckField v-model="check" :value="value || checkValue.check"/>-->
+              <!--              Value: {{checkValue?.check }}-->
+              <!--              <input-->
+              <!--                  type="checkbox"-->
+              <!--                  :value="value"-->
+              <!--                  :checked="modelValue.includes(value)"-->
+              <!--                  @change="evt => onChange(evt.target.value)"-->
+              <!--              >  -->
+              <!--              <CheckField v-model="check" :value="value || checkValue.check"/>-->
               <input
                   v-model="check"
                   :value="value || checkValue.check"
@@ -27,45 +27,46 @@
                   type="checkbox"
                   id="flexCheckDefault{{value}}"
               />
-<!--&lt;!&ndash;              <input&ndash;&gt;-->
-<!--&lt;!&ndash;                  :value="modelValue"&ndash;&gt;-->
-<!--&lt;!&ndash;                  @update:modelValue="newValue => value = newValue"&ndash;&gt;-->
-<!--&lt;!&ndash;                  @input="$emit('update: modelValue', $event.target.value)"&ndash;&gt;-->
-<!--&lt;!&ndash;                  @click="check=!check"&ndash;&gt;-->
-<!--&lt;!&ndash;                  class="form-check-input"&ndash;&gt;-->
-<!--&lt;!&ndash;                  type="checkbox"&ndash;&gt;-->
-<!--&lt;!&ndash;              >&ndash;&gt;-->
+              <!--&lt;!&ndash;              <input&ndash;&gt;-->
+              <!--&lt;!&ndash;                  :value="modelValue"&ndash;&gt;-->
+              <!--&lt;!&ndash;                  @update:modelValue="newValue => value = newValue"&ndash;&gt;-->
+              <!--&lt;!&ndash;                  @input="$emit('update: modelValue', $event.target.value)"&ndash;&gt;-->
+              <!--&lt;!&ndash;                  @click="check=!check"&ndash;&gt;-->
+              <!--&lt;!&ndash;                  class="form-check-input"&ndash;&gt;-->
+              <!--&lt;!&ndash;                  type="checkbox"&ndash;&gt;-->
+              <!--&lt;!&ndash;              >&ndash;&gt;-->
             </div>
-            Add Data  <b>{{value}}</b>
+            Add Data <b>{{ value }}</b>
           </label>
         </div>
-<!--        <div class="form-check  mb-3">-->
-<!--          <label class="form-check-label col-sm-1 " for="flexCheckDefault1">-->
-<!--            <div>-->
-<!--              <input v-model="check" class="form-check-input" name="one" type="checkbox" value="1" id="flexCheckDefault1">-->
-<!--            </div>-->
-<!--            Add-->
-<!--          </label>-->
-<!--        </div>-->
-<!--        <div class="form-check mb-3">-->
-<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault2">-->
-<!--            <div>-->
-<!--              <input v-model="check" class="form-check-input" name="two" type="checkbox" value="2" id="flexCheckDefault2">-->
-<!--            </div>-->
-<!--            Add-->
-<!--          </label>-->
-<!--        </div>-->
-<!--        <div class="form-check mb-3">-->
-<!--          <label class="form-check-label col-sm-1" for="flexCheckDefault3">-->
-<!--            <div>-->
-<!--              <input v-model="check" class="form-check-input" name="three" type="checkbox" value="3" id="flexCheckDefault3">-->
-<!--            </div>-->
-<!--            Add-->
-<!--          </label>-->
-<!--        </div>-->
+        <!--        <div class="form-check  mb-3">-->
+        <!--          <label class="form-check-label col-sm-1 " for="flexCheckDefault1">-->
+        <!--            <div>-->
+        <!--              <input v-model="check" class="form-check-input" name="one" type="checkbox" value="1" id="flexCheckDefault1">-->
+        <!--            </div>-->
+        <!--            Add-->
+        <!--          </label>-->
+        <!--        </div>-->
+        <!--        <div class="form-check mb-3">-->
+        <!--          <label class="form-check-label col-sm-1" for="flexCheckDefault2">-->
+        <!--            <div>-->
+        <!--              <input v-model="check" class="form-check-input" name="two" type="checkbox" value="2" id="flexCheckDefault2">-->
+        <!--            </div>-->
+        <!--            Add-->
+        <!--          </label>-->
+        <!--        </div>-->
+        <!--        <div class="form-check mb-3">-->
+        <!--          <label class="form-check-label col-sm-1" for="flexCheckDefault3">-->
+        <!--            <div>-->
+        <!--              <input v-model="check" class="form-check-input" name="three" type="checkbox" value="3" id="flexCheckDefault3">-->
+        <!--            </div>-->
+        <!--            Add-->
+        <!--          </label>-->
+        <!--        </div>-->
         <div class="btn-group-lg" role="group" aria-label="Basic mixed styles example">
           <button @click="prevPath" type="button" class="btn btn-warning">Prev</button>
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save
+          </button>
 
           <!--        <router-link to="/modal" tag="button" class="btn btn-primary">Save</router-link>-->
         </div>
@@ -79,6 +80,7 @@
 import Modal from "@/views/Modal";
 import {mapGetters} from "vuex";
 import CheckField from "@/components/CheckField";
+
 export default {
   name: 'choose',
   // props: ['modelValue'],
@@ -101,11 +103,11 @@ export default {
   //   }
   // }
 
-  data:() => ({
+  data: () => ({
     check: [],
   }),
 
-  computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
+  computed: mapGetters(['getName', 'getPhone', 'getPhoto', 'checkValue']),
 
   methods: {
 
@@ -120,12 +122,12 @@ export default {
         check: this.check,
       }
 
-     try {
-        this.$store.dispatch('checkValue',formData)
+      try {
+        this.$store.dispatch('checkValue', formData)
 
-     }catch (e) {
+      } catch (e) {
         throw new Error(e)
-     }
+      }
 
     }
   },
