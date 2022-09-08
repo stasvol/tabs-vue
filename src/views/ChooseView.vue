@@ -22,11 +22,11 @@
               <!--              <CheckField v-model="check" :value="value || checkValue.check"/>-->
               <input
                   v-model="check"
-                  :value="value || checkValue.check"
+                  :value="value || modelValue"
                   class="form-check-input"
                   type="checkbox"
                   id="flexCheckDefault{{value}}"
-              />
+              /> {{checkValue?.check?.check}}
               <!--&lt;!&ndash;              <input&ndash;&gt;-->
               <!--&lt;!&ndash;                  :value="modelValue"&ndash;&gt;-->
               <!--&lt;!&ndash;                  @update:modelValue="newValue => value = newValue"&ndash;&gt;-->
@@ -36,7 +36,7 @@
               <!--&lt;!&ndash;                  type="checkbox"&ndash;&gt;-->
               <!--&lt;!&ndash;              >&ndash;&gt;-->
             </div>
-            Add Data <b>{{ value }}</b>
+            Add data <b>{{ value }}</b>
           </label>
         </div>
         <!--        <div class="form-check  mb-3">-->
@@ -83,7 +83,7 @@ import CheckField from "@/components/CheckField";
 
 export default {
   name: 'choose',
-  // props: ['modelValue'],
+  props: ['modelValue'],
   // emits: ['update:modelValue'],
 
   components: {CheckField, Modal},
@@ -116,7 +116,7 @@ export default {
       // this.getPhoto?.photos?.photos[0]
     },
 
-    onSubmit() {
+    onSubmit(i) {
 
       const formData = {
         check: this.check,

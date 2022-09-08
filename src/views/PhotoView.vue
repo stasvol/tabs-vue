@@ -45,26 +45,25 @@
 
           <h3 class="head"> Max length photos - {{ maxSize }}photo
             <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear all photos</button>
-
           </h3>
 
           <div
               class="photoSize"
-              v-for="(photo,index) in photos"
+              v-for="(photo,index) in photos "
               :key="index"
           >
 
             <img v-if="photos.length <= 5"
 
                 :src="getSrc(photo)"
-                :alt="`Photo ${index}`"
+                :alt="`Photo: ${getPhoto.photos?.photos[0].name}`"
                 class="photo "
                 :key="index"
 
             >
 
             <div class="">
-              <button @click="removePhoto(index)" class="btn btn-close position  " type="button"></button>
+              <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
             </div>
           </div>
 
@@ -78,11 +77,12 @@
                 v-for="(photo,index) in getPhoto.photos?.photos"
                 :key="index"
           >
+
 <!--            <div v-if="needUpload === 5">-->
             <img
 
                 :src="getSrc(photo)"
-                :alt="`Photo ${index}`"
+                :alt="  getPhoto.photos.photos[0].name"
                 class="photo"
                 :key="photo"
             >
@@ -134,7 +134,6 @@ export default defineComponent({
   // },
   // emits: ['update: modelValue'],
 
-
   methods: {
 
     prevPatch() {
@@ -162,7 +161,8 @@ export default defineComponent({
       }
 
     },
-    clearPhoto(index) {
+    clearPhoto() {
+
       this.photos = ''
     }
 
