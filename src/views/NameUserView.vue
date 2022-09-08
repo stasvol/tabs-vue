@@ -1,5 +1,5 @@
 <template>
-  <div class="card-header">
+  <div class="card-header" id="inputName">
     <h1 class="header">Names page</h1>
 
     <form @submit.prevent="onSubmit">

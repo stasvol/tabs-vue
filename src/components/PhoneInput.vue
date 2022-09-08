@@ -1,14 +1,14 @@
 <template>
-  <label for="inputName" class="col-sm-6 col-form-label">Phone
+  <label for="inputPhone" class="col-sm-6 col-form-label">Phone
     <div class="col-lg-12" >
 
       <input
           :value="modelValue || getPhone.phone?.phone || '' "
-          @input="$emit('update:modelValue', $event.target.value)"
+          @input="$emit('update:modelValue', $event.target.value || $event.target.value === null)"
           placeholder="phone"
           type="tel"
           class="form-control validate"
-          id="inputName"
+          id="inputPhone"
           required
       >
       <!--            :is="getName.name?.name"-->

@@ -1,5 +1,5 @@
 <template xmlns="http://www.w3.org/1999/html">
-  <div class="card-header">
+  <div class="card-header" id="photoFile">
     <h1 class="header">Photos page</h1>
 <!--    <form @submit.prevent="onSubmit">-->
       <div class="mb-3 row">

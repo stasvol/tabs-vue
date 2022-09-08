@@ -1,5 +1,5 @@
 <template>
-  <div class="card-header">
+  <div class="card-header" id="inputPhone">
     <h1 class="header">Phone page</h1>
 
     <form @submit.prevent="onSubmit">

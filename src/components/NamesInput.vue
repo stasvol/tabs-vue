@@ -1,10 +1,11 @@
 <template>
+
           <label for="inputName" class="col-sm-6 col-form-label">Name
             <div class="col-lg-12">
 
               <input
-                  :value="modelValue || getName.name?.name || ''  "
-                  @input="$emit('update:modelValue', $event.target.value)"
+                  :value="modelValue || getName.name?.name "
+                  @input="$emit('update:modelValue', $event.target.value || $event.target.value === '' )"
                   placeholder="name"
                   type="text"
                   class="form-control validate"
@@ -43,7 +44,7 @@ export default {
   emits: ['update:modelValue'],
   methods: {
     clearInput() {
-      this.modelValue = this.$store.state.name.name = ''
+      this.modelValue = this.$store.state.name.name = null
     }
   },
   data:() => ({

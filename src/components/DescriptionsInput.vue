@@ -4,7 +4,7 @@
       <div class="col-lg-12">
             <textarea
                       :value="modelValue || getName.name?.description || '' "
-                      @input="$emit('update:modelValue', $event.target.value)"
+                      @input="$emit('update:modelValue', $event.target.value || $event.target.value === '')"
                       placeholder="description"
                       class="form-control"
                       id="textarea"

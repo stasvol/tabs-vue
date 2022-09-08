@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <input
                :value="modelValue || getPhone.phone?.email || '' "
-               @input="$emit('update:modelValue', $event.target.value)"
+               @input="$emit('update:modelValue', $event.target.value || $event.target.value === '')"
                placeholder="email"
                type="email"
                class="form-control validate"
