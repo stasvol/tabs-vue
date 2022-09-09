@@ -15,7 +15,8 @@
           type="checkbox"
           id="flexCheckDefault{{value}}"
       >
-<!--      :value="modelValue || checkValue.check-->
+
+      <!--      :value="modelValue || checkValue.check-->
       <!--              <input-->
       <!--                  :value="modelValue"-->
       <!--                  @update:modelValue="newValue => value = newValue"-->
@@ -25,7 +26,7 @@
       <!--                  type="checkbox"-->
       <!--              >-->
     </div>
-    Add Data  <b>{{value}}</b>
+    Add Data <b>{{ value }}</b>
   </label>
 </template>
 <script>
@@ -40,14 +41,15 @@ export default {
 
   props: {
     value: null,
-    modelValue: []
+    modelValue: [],
   },
+  emits: ['update:modelValue'],
 
   computed: mapGetters(['checkValue']),
   methods: {
     onChange(value) {
-      if (this.modelValue.includes(this.value)) this.$emit('update:modelValue',this.modelValue?.filter(cv => cv !== value ))
-      else this.$emit('update:modelValue',this.modelValue?.concat(value))
+      if (this.modelValue.includes(this.value)) this.$emit('update:modelValue', this.modelValue?.filter(cv => cv !== value))
+      else this.$emit('update:modelValue', this.modelValue?.concat(value))
     }
 
   }

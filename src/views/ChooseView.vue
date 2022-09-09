@@ -1,6 +1,6 @@
 <template>
   <div class="card-header" id="checkChoose ">
-    <Modal v-model="check" />
+    <Modal v-model="checked" />
     <!--             :value="modelValue"-->
     <!--             @input="$emit('update:modelValue', $event.target.value)"/>-->
     <!--             :modelValue="check.value"-->
@@ -12,6 +12,7 @@
         <div class="form-check  mb-3 " v-for="(value,i) in 5 " :key="i">
           <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">
             <div>
+
               <!--              Value: {{checkValue?.check }}-->
               <!--              <input-->
               <!--                  type="checkbox"-->
@@ -19,14 +20,15 @@
               <!--                  :checked="modelValue.includes(value)"-->
               <!--                  @change="evt => onChange(evt.target.value)"-->
               <!--              >  -->
-              <!--              <CheckField v-model="check" :value="value || checkValue.check"/>-->
+<!--                            <CheckField v-model="check" :value="value || checkValue.check"/>-->
               <input
-                  v-model="check"
-                  :value="value || modelValue"
+                  v-model="checked"
+                  :value="value || checkValue?.checked"
                   class="form-check-input"
                   type="checkbox"
                   id="flexCheckDefault{{value}}"
-              /> {{checkValue?.check?.check}}
+
+              /> {{checkValue?.checked}}
               <!--&lt;!&ndash;              <input&ndash;&gt;-->
               <!--&lt;!&ndash;                  :value="modelValue"&ndash;&gt;-->
               <!--&lt;!&ndash;                  @update:modelValue="newValue => value = newValue"&ndash;&gt;-->
@@ -104,7 +106,7 @@ export default {
   // }
 
   data: () => ({
-    check: [],
+    checked: [],
   }),
 
   computed: mapGetters(['getName', 'getPhone', 'getPhoto', 'checkValue']),
@@ -116,10 +118,10 @@ export default {
       // this.getPhoto?.photos?.photos[0]
     },
 
-    onSubmit(i) {
+    onSubmit() {
 
       const formData = {
-        check: this.check,
+        checked: this.checked,
       }
 
       try {

@@ -44,7 +44,7 @@
             <div class="mod">
               <!--              <Choose v-model="checkList" />-->
               <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
-              <span>Check choose: <strong v-if="checkValue.check">{{ checkValue.check?.join(',') }}</strong>
+              <span>Check choose: <strong v-if="checkValue.checked">{{ checkValue.checked?.join(',') }}</strong>
                <i v-else>Not selected</i>
               </span>
 

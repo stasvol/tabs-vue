@@ -27,8 +27,8 @@ export default createStore({
             return {phone, email}
         },
 
-        checkValue({check}) {
-            return {check}
+        checkValue({checked}) {
+            return {checked}
         },
 
         getPhoto({photos}) {
@@ -59,8 +59,9 @@ export default createStore({
             state.description = email
         },
 
-        checkValue(state, check) {
-            state.check = check
+        checkValue(state, checked) {
+            state.checked = checked
+
             // state.check.name = check.name
 
             // state.checks = state.checks.push({check:value})
@@ -88,8 +89,8 @@ export default createStore({
             return commit('getPhone', {phone, email})
         },
 
-        checkValue({commit}, {check}) {
-            return commit('checkValue', check)
+        checkValue({commit}, {checked}) {
+            return commit('checkValue', checked)
         },
 
         getPhoto({commit}, {photos}) {
