@@ -20,7 +20,7 @@
               <!--                  :checked="modelValue.includes(value)"-->
               <!--                  @change="evt => onChange(evt.target.value)"-->
               <!--              >  -->
-<!--                            <CheckField v-model="check" :value="value || checkValue.check"/>-->
+                            <CheckField v-model="check" :value="value || checkValue.check"/>
               <input
                   v-model="checked"
                   :value="value || checkValue?.checked"
