@@ -20,15 +20,15 @@
               <!--                  :checked="modelValue.includes(value)"-->
               <!--                  @change="evt => onChange(evt.target.value)"-->
               <!--              >  -->
-                            <CheckField v-model="check" :value="value || checkValue.check"/>
+<!--                            <CheckField v-model="check" :value="value || checkValue.check"/>-->
               <input
                   v-model="checked"
                   :value="value || checkValue?.checked"
                   class="form-check-input"
                   type="checkbox"
                   id="flexCheckDefault{{value}}"
-
-              /> {{checkValue?.checked}}
+                  @change="onChange"
+              />
               <!--&lt;!&ndash;              <input&ndash;&gt;-->
               <!--&lt;!&ndash;                  :value="modelValue"&ndash;&gt;-->
               <!--&lt;!&ndash;                  @update:modelValue="newValue => value = newValue"&ndash;&gt;-->
@@ -112,6 +112,12 @@ export default {
   computed: mapGetters(['getName', 'getPhone', 'getPhoto', 'checkValue']),
 
   methods: {
+
+    onChange(e) {
+      const data = e.target.value
+      console.log(e.target)
+      console.log(data)
+    },
 
     prevPath() {
       this.$router.push('/photo')
