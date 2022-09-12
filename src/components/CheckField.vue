@@ -1,5 +1,5 @@
 <template>
-  <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">
+<!--  <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">-->
     <div>
       <!--              <input-->
       <!--                  type="checkbox"-->
@@ -8,7 +8,7 @@
       <!--                  @change="evt => onChange(evt.target.value)"-->
       <!--              >-->
       <input
-          :value="value"
+          :value="value || checkValue?.checked"
           :checked="modelValue?.includes(value)"
           @change="event=>onChange(event.target.value)"
           class="form-check-input"
@@ -26,8 +26,8 @@
       <!--                  type="checkbox"-->
       <!--              >-->
     </div>
-    Add Data <b>{{ value }}</b>
-  </label>
+<!--    Add Data <b>{{ value }}</b>-->
+<!--  </label>-->
 </template>
 <script>
 import {mapGetters} from "vuex";
@@ -48,10 +48,12 @@ export default {
   computed: mapGetters(['checkValue']),
   methods: {
     onChange(value) {
-      if (this.modelValue.includes(this.value)) this.$emit('update:modelValue', this.modelValue?.filter(cv => cv !== value))
-      else this.$emit('update:modelValue', this.modelValue?.concat(value))
+      if (this.modelValue.includes(this.value)) {
+        this.$emit('update:modelValue', this.modelValue?.filter(cv => cv !== value))
+      } else {
+        this.$emit('update:modelValue', this.modelValue?.concat(value))
+      }
     }
-
   }
 }
 </script>

@@ -43,7 +43,7 @@
         </div>
         <div v-else>
 
-          <h3 class="head"> Max length photos - {{ maxSize }}photo
+          <h3 class="head"> Max length photos - {{ maxSize }}photo. Please delete {{photos.length - maxSize}} photos.
             <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear all photos</button>
           </h3>
 
@@ -82,7 +82,7 @@
             <img
 
                 :src="getSrc(photo)"
-                :alt="  getPhoto.photos.photos[0].name"
+                :alt=" getPhoto.photos.photos[0].name"
                 class="photo"
                 :key="photo"
             >
@@ -95,7 +95,7 @@
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="prevPatch" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button @click="onSubmit" type="button" class="btn btn-success">Next</button>
+        <button @click="onSubmit" type="button"  class="btn btn-success">Next</button>
 
       </div>
 

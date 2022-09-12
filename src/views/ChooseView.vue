@@ -20,15 +20,16 @@
               <!--                  :checked="modelValue.includes(value)"-->
               <!--                  @change="evt => onChange(evt.target.value)"-->
               <!--              >  -->
-<!--                            <CheckField v-model="check" :value="value || checkValue.check"/>-->
-              <input
-                  v-model="checked"
-                  :value="value || checkValue?.checked"
-                  class="form-check-input"
-                  type="checkbox"
-                  id="flexCheckDefault{{value}}"
-                  @change="onChange"
-              />
+                            <CheckField v-model="checked" :value="value"/>
+<!--              <input-->
+<!--                  v-model="checked"-->
+<!--                  :value="value || checkValue?.checked"-->
+<!--                  class="form-check-input"-->
+<!--                  type="checkbox"-->
+<!--                  id="flexCheckDefault{{value}}"-->
+<!--                  @change="onChange"-->
+<!--                  :checked="value || checked || checkValue?.checked"-->
+<!--              /> {{checked}}-->
               <!--&lt;!&ndash;              <input&ndash;&gt;-->
               <!--&lt;!&ndash;                  :value="modelValue"&ndash;&gt;-->
               <!--&lt;!&ndash;                  @update:modelValue="newValue => value = newValue"&ndash;&gt;-->
@@ -38,6 +39,8 @@
               <!--&lt;!&ndash;                  type="checkbox"&ndash;&gt;-->
               <!--&lt;!&ndash;              >&ndash;&gt;-->
             </div>
+
+
             Add data <b>{{ value }}</b>
           </label>
         </div>
@@ -115,7 +118,7 @@ export default {
 
     onChange(e) {
       const data = e.target.value
-      console.log(e.target)
+      console.log(e)
       console.log(data)
     },
 
