@@ -8,14 +8,14 @@
       <!--                  @change="evt => onChange(evt.target.value)"-->
       <!--              >-->
       <input
-          :value="value || checkValue?.checked"
-          :checked="modelValue?.includes(value)"
+          :value="value"
+          :checked="modelValue?.includes(value) || checkValue.checked"
           @change="event=>onChange(event.target.value)"
           class="form-check-input"
           type="checkbox"
           id="flexCheckDefault{{value}}"
       >
-
+  {{checkValue?.checked}}
       <!--      :value="modelValue || checkValue.check-->
       <!--              <input-->
       <!--                  :value="modelValue"-->
@@ -40,7 +40,7 @@ export default {
   // emits: ['update:modelValue'],
 
   props: {
-    value: null,
+    value: null ,
     modelValue: [],
   },
   emits: ['update:modelValue'],
@@ -50,7 +50,9 @@ export default {
     onChange(value) {
       if (this.modelValue.includes(this.value)) {
         this.$emit('update:modelValue', this.modelValue?.filter(cv => cv !== value))
-      } else {
+
+      }
+      else {
         this.$emit('update:modelValue', this.modelValue?.concat(value))
       }
     }

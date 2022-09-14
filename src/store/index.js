@@ -93,7 +93,7 @@ export default createStore({
             return commit('checkValue', checked)
         },
 
-        getPhoto({commit}, {photos}) {
+        getPhoto({commit}, {photos} ) {
             return commit('getPhoto', {photos})
         }
     },

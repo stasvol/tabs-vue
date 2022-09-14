@@ -25,7 +25,7 @@
         <div
             v-if="needUpload"
             class="photoSize"
-            v-for="(photo,index) in photos"
+            v-for="(photo,index) in photos "
             :key="index"
         >
 
@@ -44,7 +44,7 @@
         <div v-else>
 
           <h3 class="head"> Max length photos - {{ maxSize }}photo. Please delete {{photos.length - maxSize}} photos.
-            <button class="btn btn-outline-danger btnSize " @click.prevent.stop="clearPhoto">Clear all photos</button>
+            <button class="btn btn-outline-danger btnSize " @click="clearPhoto">Clear all photos</button>
           </h3>
 
           <div
@@ -56,7 +56,7 @@
             <img v-if="photos.length <= 5"
 
                 :src="getSrc(photo)"
-                :alt="`Photo: ${getPhoto.photos?.photos[0].name}`"
+                :alt="`Photo: ${getPhoto.photos?.photos[0,1,2,3,4].name}`"
                 class="photo "
                 :key="index"
 
@@ -77,7 +77,7 @@
                 v-for="(photo,index) in getPhoto.photos?.photos"
                 :key="index"
           >
-
+            {{getPhoto.photos.photos.name}}
 <!--            <div v-if="needUpload === 5">-->
             <img
 
@@ -88,6 +88,7 @@
             >
             <div >
               <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
+
             </div>
 <!--            </div>-->
           </div>
@@ -95,7 +96,7 @@
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <button @click="prevPatch" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button @click="onSubmit" type="button"  class="btn btn-success">Next</button>
+        <button @click="onSubmit" type="button"  class="btn btn-success" :class="photos?.length > 5 ? 'disabled' : 'btn btn-success'">Next</button>
 
       </div>
 
