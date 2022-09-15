@@ -9,7 +9,7 @@
       <!--              >-->
       <input
           :value="value"
-          :checked="modelValue?.includes(value) || checkValue.checked"
+          :checked="modelValue?.includes(value) || checkValue?.checked"
           @change="event=>onChange(event.target.value)"
           class="form-check-input"
           type="checkbox"
@@ -40,7 +40,7 @@ export default {
   // emits: ['update:modelValue'],
 
   props: {
-    value: null ,
+    value: null,
     modelValue: [],
   },
   emits: ['update:modelValue'],

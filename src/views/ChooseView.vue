@@ -139,7 +139,7 @@ export default {
       } catch (e) {
         throw new Error(e)
       }
-
+      console.log(this.check)
     }
   },
 
