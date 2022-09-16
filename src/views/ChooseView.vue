@@ -92,7 +92,6 @@ export default {
   // emits: ['update:modelValue'],
 
   components: {CheckField, Modal},
-
   // props: {
   //   value: { type: String, default: null, },
   //   modelValue: { type: Array, default: () => [], },
