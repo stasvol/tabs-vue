@@ -113,6 +113,17 @@ export default {
 
   computed: mapGetters(['getName', 'getPhone', 'getPhoto', 'checkValue']),
 
+  mounted() {
+    if (localStorage.checked) {
+      this.checked = localStorage.checked;
+    }
+  },
+  watch: {
+    checked(newChecked) {
+      localStorage.checked = newChecked;
+    },
+  },
+
   methods: {
 
     onChange(e) {

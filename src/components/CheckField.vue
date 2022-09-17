@@ -9,7 +9,7 @@
       <!--              >-->
       <input
           :value="value"
-          :checked="modelValue?.includes(value) || checkValue?.checked"
+          :checked="modelValue?.includes(value)"
           @change="event=>onChange(event.target.value)"
           class="form-check-input"
           type="checkbox"
@@ -46,6 +46,9 @@ export default {
   emits: ['update:modelValue'],
 
   computed: mapGetters(['checkValue']),
+
+
+
   methods: {
     onChange(value) {
       if (this.modelValue.includes(this.value)) {
