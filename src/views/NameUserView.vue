@@ -70,19 +70,21 @@
 <!--          {{ v$.password.minLength.$params.min }}.&nbsp; HAS AN ERROR !-->
 <!--        </small>-->
 <!--      </div>-->
-      <CheckToggle v-model="checkToggle" />
-<!--      <div class="form-check form-switch">-->
-<!--        <label class="form-check-label" for="switchCheck" > {{checkToggle ? 'ON' : 'OF'}}-->
-<!--          <input-->
-<!--              v-model="checkToggle"-->
-<!--              class="form-check-input"-->
-<!--              type="checkbox" role="switch"-->
-<!--              id="switchCheck"-->
-<!--              @click="toggleCheck"-->
-<!--              value="checkToggle"-->
-<!--          >-->
-<!--        </label>-->
-<!--      </div>-->
+
+<!--      <CheckToggle v-model="checkToggle" />-->
+
+      <div class="form-check form-switch">
+        <label class="form-check-label" for="switchCheck" > {{checkToggle ? 'ON' : 'OF'}}
+          <input
+              v-model="checkToggle"
+              class="form-check-input"
+              type="checkbox" role="switch"
+              id="switchCheck"
+              @click="toggleCheck"
+              value="checkToggle"
+          >
+        </label>
+      </div>
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <!--      <button type="button" class="btn btn-warning">Prev</button>-->
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
@@ -135,23 +137,25 @@ export default {
     password: '',
     checkToggle: null,
   }),
+
   mounted() {
     if (localStorage.checkToggle) {
       this.checkToggle = localStorage.checkToggle;
     }
   },
+
   watch: {
     checkToggle: {
       handler(newCheckToggle) {
         localStorage.checkToggle = newCheckToggle;
-        // if (localStorage.checkToggle === newCheckToggle) {
-        //   // localStorage.clear()
-        //   localStorage.removeItem('checkToggle')
-        // }
+        if (localStorage.checkToggle === newCheckToggle) {
+          // localStorage.clear()
+          localStorage.removeItem('checkToggle')
+        }
       },
-      deep: true
+      deep: true,
+    }
     },
-  },
   // watch: {
   //   checked:{
   //     handler(newChecked) {
@@ -161,26 +165,11 @@ export default {
   //   },
   // }
 
-  // mounted() {
-  //   if (localStorage.name && localStorage.email) {
-  //     this.name = localStorage.name;
-  //     this.email = localStorage.email;
-  //   }
-  // },
-  // watch: {
-  //   name(newName) {
-  //     localStorage.name = newName;
-  //
-  //   },
-  //   email(newEmail) {
-  //     localStorage.email = newEmail;
-  //   }
-  // },
 
   setup: () => ({v$: useVuelidate()}),
   // setup() {
   //   return {v$: useVuelidate()}
-  // },z
+  // },
   validations() {
     return {
       // name: {required},
@@ -195,7 +184,6 @@ export default {
 
   // methods: mapActions(['getName']),
   methods: {
-
 
     toggleCheck() {
       this.checkToggle = !this.checkToggle

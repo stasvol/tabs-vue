@@ -123,11 +123,10 @@ export default {
     checked(newChecked) {
       localStorage.checked = newChecked;
       if (localStorage.checked === newChecked) {
-        // localStorage.clear()
-        localStorage.removeItem('checked')
+        localStorage.clear()
+        // localStorage.removeItem('checked')
       }
     },
-
   },
   // watch: {
   //   checked:{
