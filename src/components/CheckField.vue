@@ -15,7 +15,6 @@
           type="checkbox"
           id="flexCheckDefault{{value}}"
       >
-  {{checkValue?.checked}}
       <!--      :value="modelValue || checkValue.check-->
       <!--              <input-->
       <!--                  :value="modelValue"-->

@@ -70,18 +70,19 @@
 <!--          {{ v$.password.minLength.$params.min }}.&nbsp; HAS AN ERROR !-->
 <!--        </small>-->
 <!--      </div>-->
-      <div class="form-check form-switch">
-        <label class="form-check-label" for="switchCheck">
-          <input
-              v-model="checkToggle"
-              class="form-check-input"
-              type="checkbox" role="switch"
-              id="switchCheck"
-              @click="toggleCheck"
-              value="checkToggle"
-          >
-        </label>
-      </div>
+      <CheckToggle v-model="checkToggle" />
+<!--      <div class="form-check form-switch">-->
+<!--        <label class="form-check-label" for="switchCheck" > {{checkToggle ? 'ON' : 'OF'}}-->
+<!--          <input-->
+<!--              v-model="checkToggle"-->
+<!--              class="form-check-input"-->
+<!--              type="checkbox" role="switch"-->
+<!--              id="switchCheck"-->
+<!--              @click="toggleCheck"-->
+<!--              value="checkToggle"-->
+<!--          >-->
+<!--        </label>-->
+<!--      </div>-->
       <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
         <!--      <button type="button" class="btn btn-warning">Prev</button>-->
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
@@ -119,6 +120,8 @@ import {mapActions, mapGetters} from "vuex";
 import Input from "@/components/EmailInput";
 import NamesInput from "@/components/NamesInput";
 import DescriptionsInput from "@/components/DescriptionsInput";
+import CheckField from "@/components/CheckField";
+import CheckToggle from "@/components/CheckToggle";
 
 export default {
   name: 'nameUser',
@@ -132,6 +135,31 @@ export default {
     password: '',
     checkToggle: null,
   }),
+  mounted() {
+    if (localStorage.checkToggle) {
+      this.checkToggle = localStorage.checkToggle;
+    }
+  },
+  watch: {
+    checkToggle: {
+      handler(newCheckToggle) {
+        localStorage.checkToggle = newCheckToggle;
+        // if (localStorage.checkToggle === newCheckToggle) {
+        //   // localStorage.clear()
+        //   localStorage.removeItem('checkToggle')
+        // }
+      },
+      deep: true
+    },
+  },
+  // watch: {
+  //   checked:{
+  //     handler(newChecked) {
+  //       localStorage.checked = JSON.stringify(newChecked);
+  //     },
+  //     deep:true
+  //   },
+  // }
 
   // mounted() {
   //   if (localStorage.name && localStorage.email) {
@@ -161,7 +189,7 @@ export default {
     }
   },
 
-  components: {DescriptionsInput, Input, NamesInput},
+  components: {CheckToggle, CheckField, DescriptionsInput, Input, NamesInput},
 
   computed: mapGetters(['getName','getPhone','getPhoto', 'checkValue']),
 
