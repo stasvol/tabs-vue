@@ -58,6 +58,7 @@ export default {
   //   }
   // },
   computed: mapGetters(['getName']),
+  setup: () => ({ v$: useVuelidate()}),
 }
 
 

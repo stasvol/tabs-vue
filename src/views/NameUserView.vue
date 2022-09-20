@@ -5,7 +5,7 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-     <NamesInput v-model.trim="name" />
+     <NamesInput v-model.trim="name"  />
 
 <!--        <label for="inputName" class="col-sm-6 col-form-label">Name-->
 <!--          <div class="col-lg-12" >-->
@@ -127,8 +127,8 @@ import CheckToggle from "@/components/CheckToggle";
 
 export default {
   name: 'nameUser',
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
+  // props: ['modelValue'],
+  // emits: ['update:modelValue'],
 
   data: () => ({
     name: '',
@@ -194,6 +194,7 @@ export default {
         this.v$.$touch()
         return
       }
+
       const formData = {
         name: this.name,
         description: this.description,
