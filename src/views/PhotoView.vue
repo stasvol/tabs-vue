@@ -52,11 +52,10 @@
               v-for="(photo,index) in photos "
               :key="index"
           >
-
-            <img v-if="photos.length <= 5"
-
-                :src="getSrc(photo)"
-                :alt="`Photo: ${getPhoto.photos?.photos[0,1,2,3,4].name}`"
+<!--            photos.length <= 5-->
+            <img v-if="maxSize"
+                 :src="getSrc(photo)"
+                :alt="`Photo: ${getPhoto.photos?.photos.name}`"
                 class="photo "
                 :key="index"
 

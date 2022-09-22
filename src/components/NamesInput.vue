@@ -10,7 +10,7 @@
                   type="text"
                   class="form-control validate"
                   id="inputName"
-
+                  required
 
               >
   <!--            :is="getName.name?.name"-->

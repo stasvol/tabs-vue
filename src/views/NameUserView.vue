@@ -173,7 +173,7 @@ export default {
   // },
   validations() {
     return {
-      name: {required},
+      // name: {required},
       // email: {required, email},
       // password: {required, minLength: minLength(6)}
     }
