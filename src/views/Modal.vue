@@ -42,9 +42,8 @@
               </span>
             </div>
             <div class="mod">
-              <!--              <Choose v-model="checkList" />-->
-              <!--              <span>Check choose: <b>{{checkList}}</b></span>-->
-              <span>Check choose: <strong v-if="checkValue.checked">{{ checkValue.checked?.join(',') }}</strong>
+
+              <span>Check choose: <strong v-if="checkValue.checked">{{ checkValue.checked?.toString()}}</strong>
                <i v-else>Not selected</i>
               </span>
 
@@ -107,7 +106,6 @@ export default {
 
   setup() {
 
-
     // const photos = ref([])
     // // const input = ref()
     //
@@ -127,7 +125,6 @@ export default {
     const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
     return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
-
 
   },
   methods: {
@@ -153,7 +150,9 @@ export default {
   //   return {files}
   // }
 }
+
 </script>
+
 <style scoped>
 .mod {
   border: 1px solid #c2c1c1;

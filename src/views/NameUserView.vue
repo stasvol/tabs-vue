@@ -5,12 +5,13 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-     <NamesInput v-model.trim="name"  />
+     <NamesInput v-model.trim="name" :value="getName?.name?.name" />
 
 <!--        <label for="inputName" class="col-sm-6 col-form-label">Name-->
 <!--          <div class="col-lg-12" >-->
 
 <!--            <input-->
+<!--                v-model.trim="name"-->
 <!--                :placeholder="getName.name?.name || 'name'"-->
 <!--                type="text"-->
 <!--                class="form-control validate"-->
@@ -172,7 +173,7 @@ export default {
   // },
   validations() {
     return {
-      // name: {required},
+      name: {required},
       // email: {required, email},
       // password: {required, minLength: minLength(6)}
     }
