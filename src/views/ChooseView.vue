@@ -1,6 +1,6 @@
 <template>
   <div class="card-header" id="checkChoose ">
-    <Modal v-model="checked" />
+    <Modal v-model="checked"  />
     <!--             :value="modelValue"-->
     <!--             @input="$emit('update:modelValue', $event.target.value)"/>-->
     <!--             :modelValue="check.value"-->
@@ -9,8 +9,8 @@
     <div class="checked">
       <form @submit.prevent="onSubmit">
 
-        <div class="form-check  mb-3 " v-for="(value,i) in 5 " :key="i">
-          <label class="form-check-label col-sm-1 for='flexCheckDefault{{value}}' ">
+        <div class="form-check  mb-3 " v-for="(value,i) in ['React','Angular', 'Vue', 'Node','Ember'] " :key="i">
+          <label class="form-check-label col-sm-3 for='flexCheckDefault{{value}}' ">
             <div>
 
               <!--              Value: {{checkValue?.check }}-->
@@ -41,7 +41,7 @@
             </div>
 
 
-            Add data <b>{{ value }}</b>
+            <i>Add framework</i> : &nbsp; <b>{{ value }}</b>
           </label>
         </div>
         <!--        <div class="form-check  mb-3">-->
@@ -68,7 +68,7 @@
         <!--            Add-->
         <!--          </label>-->
         <!--        </div>-->
-        <div class="btn-group-lg" role="group" aria-label="Basic mixed styles example">
+        <div class="btn-group-lg col-sm-10" role="group"  aria-label="Basic mixed styles example">
           <button @click="prevPath" type="button" class="btn btn-warning">Prev</button>
 <!--          <button @click="clearLocStor" type="button" class="btn btn-success">Clear</button>-->
           <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save

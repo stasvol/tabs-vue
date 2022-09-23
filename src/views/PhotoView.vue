@@ -154,7 +154,12 @@ export default defineComponent({
 
       try {
         this.$store.dispatch('getPhoto', formData)
-        this.$router.push('/choose')
+        if (this.getName.name.name) {
+          this.$router.push('/choose')
+        }else if (!this.getName.name.name){
+          this.$router.push('/')
+        }
+
 
       } catch (e) {
         throw new Error(e)

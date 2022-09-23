@@ -122,9 +122,12 @@ export default {
       try {
          this.$store.dispatch('getPhone', formData)
 
-        if (!this.v$.$error) {
+        if (this.getName.name.name) {
            this.$router.push('/photo')
+        }else if (!this.getName.name.name) {
+          this.$router.push('/')
         }
+
       } catch (e) {
         throw new Error(e)
       }
