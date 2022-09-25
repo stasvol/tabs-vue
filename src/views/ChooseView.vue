@@ -124,6 +124,7 @@ export default {
       localStorage.checked = newChecked;
       if (localStorage.checked === newChecked) {
         // localStorage.clear()
+        localStorage.removeItem('newChecked')
         localStorage.removeItem('checked')
       }
     },
@@ -136,6 +137,10 @@ export default {
   //     deep:true
   //   },
   // },
+
+  onMounted()  {
+    localStorage.clear()
+  },
 
   methods: {
 

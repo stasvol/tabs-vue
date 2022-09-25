@@ -151,7 +151,9 @@ export default {
         localStorage.checkToggle = newCheckToggle;
         if (localStorage.checkToggle === newCheckToggle) {
           // localStorage.clear()
+          localStorage.removeItem('newCheckToggle')
           localStorage.removeItem('checkToggle')
+
         }
       },
       deep: true,
@@ -166,6 +168,9 @@ export default {
   //   },
   // }
 
+  onMounted()  {
+    localStorage.clear()
+  },
 
   setup: () => ({v$: useVuelidate()}),
   // setup() {
