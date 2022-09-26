@@ -51,7 +51,6 @@ export default createStore({
             // state.email = email
             state.checkToggle = checkToggle
             // localStorage.setItem('name',JSON.stringify(state.name))
-            // console.log(state.name)
         },
 
         getPhone(state, phone, email) {

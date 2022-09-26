@@ -11,7 +11,6 @@
                   class="form-control validate"
                   id="inputName"
                   required
-
               >
   <!--            :is="getName.name?.name"-->
   <!--            @input="getName.name?.name"-->
@@ -43,9 +42,9 @@ export default {
   props: ['modelValue'],
   emits: ['update:modelValue'],
   methods: {
-    clearInput() {
-      this.modelValue = this.$store.state.name.name = null
-    }
+    // clearInput() {
+    //   this.modelValue = this.$store.state.name.name = null
+    // }
   },
   data:() => ({
     // modelValue: this?.$store.state.name?.name

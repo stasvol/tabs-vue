@@ -5,7 +5,7 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-     <NamesInput v-model.trim="name" :value="getName?.name?.name" />
+     <NamesInput v-model.trim="name" />
 
 <!--        <label for="inputName" class="col-sm-6 col-form-label">Name-->
 <!--          <div class="col-lg-12" >-->
@@ -140,12 +140,23 @@ export default {
   }),
 
   mounted() {
-    if (localStorage.checkToggle) {
-      this.checkToggle = localStorage.checkToggle;
+    // if (localStorage.checkToggle) {
+    //   this.checkToggle = localStorage.checkToggle;
+    // }
+    if (localStorage.name) {
+      this.name = localStorage.name;
     }
   },
 
   watch: {
+    name(newName) {
+      localStorage.name = newName;
+      if (localStorage.name === newName) {
+        // localStorage.clear()
+        localStorage.removeItem('newName')
+        // localStorage.removeItem('name')
+      }
+    },
     checkToggle: {
       handler(newCheckToggle) {
         localStorage.checkToggle = newCheckToggle;
@@ -218,11 +229,8 @@ export default {
       } catch (e) {
         throw new Error(e)
       }
-      //   if (this.v$.$error === false) {
-      //     this.$router.push('/phone')
+
       // this.name = this.email = this.password = ''
-      // this.name = this.$store.state?.name?.name
-      // console.log(this.$store.state?.name?.name)
 
     },
   },
@@ -235,13 +243,6 @@ export default {
   justify-content: center;
 }
 
-.checkVal {
-  content: "ON";
-}
-
-.nodCheck {
-  content: "OF";
-}
 /*.validate {*/
 /*  color: #a90f0f;*/
 /*}*/
