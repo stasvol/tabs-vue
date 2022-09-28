@@ -154,9 +154,9 @@ export default defineComponent({
 
       try {
         this.$store.dispatch('getPhoto', formData)
-        if (this.getName.name.name) {
+        if (this.getName.name?.name) {
           this.$router.push('/choose')
-        }else if (!this.getName.name.name){
+        }else if (!this.getName.name?.name){
           this.$router.push('/')
         }
 

@@ -21,7 +21,11 @@
 <!--&lt;!&ndash;    <router-link to="/">Home</router-link> |&ndash;&gt;-->
 <!--&lt;!&ndash;    <router-link to="/about">About</router-link>&ndash;&gt;-->
 <!--  </nav>-->
-  <router-view />
+  <transition>
+    <keep-alive>
+      <router-view />
+    </keep-alive>
+  </transition>
 </template>
 <script>
 import NavBar from '@/views/NavBar'

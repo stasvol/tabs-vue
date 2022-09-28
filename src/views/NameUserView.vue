@@ -140,9 +140,9 @@ export default {
   }),
 
   mounted() {
-    // if (localStorage.checkToggle) {
-    //   this.checkToggle = localStorage.checkToggle;
-    // }
+    if (localStorage.checkToggle) {
+      this.checkToggle = localStorage.checkToggle;
+    }
     if (localStorage.name) {
       this.name = localStorage.name;
     }
@@ -164,11 +164,14 @@ export default {
           // localStorage.clear()
           localStorage.removeItem('newCheckToggle')
           localStorage.removeItem('checkToggle')
+          // localStorage.checkToggle=false
 
         }
       },
       deep: true,
+
     }
+
     },
   // watch: {
   //   checked:{

@@ -5,11 +5,11 @@
 <!--        <router-link exact active-class="active" class="nav-link" to="/">{{value}}</router-link>-->
 <!--      </li>-->
       <li class="nav-item" >
-        <router-link exact active-class="active" class="nav-link disabled" :to="{name:'name',params: {id: 'id'}, hash:'#inputName'}">Add Names</router-link>
+        <router-link active-class="active" class="nav-link disabled" :to="{name:'name',params: {id: 'id'}, hash: '#inputName'}" exact >Add Names</router-link>
       </li>
       <li class="nav-item">
         <router-link
-            active-class="active" class="nav-link disabled" :to="{name:'phone',params: {id: 'id'}, hash:'#inputPhone'}">Add Phone</router-link>
+            active-class="active" class="nav-link disabled" :to="{name:'phone',params: {id: 'id'}, hash: '#inputPhone'}" >Add Phone</router-link>
 <!--        :class="!$store.state.name  ? 'disabled': 'nav-link'"-->
       </li>
       <li class="nav-item">

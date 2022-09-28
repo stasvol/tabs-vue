@@ -71,7 +71,7 @@
         <div class="btn-group-lg col-sm-10" role="group"  aria-label="Basic mixed styles example">
           <button @click="prevPath" type="button" class="btn btn-warning">Prev</button>
 <!--          <button @click="clearLocStor" type="button" class="btn btn-success">Clear</button>-->
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target=" getName.name?.name ? '#exampleModal' : '#inputName'">Save
           </button>
 
           <!--        <router-link to="/modal" tag="button" class="btn btn-primary">Save</router-link>-->
@@ -163,6 +163,9 @@ export default {
 
       try {
         this.$store.dispatch('checkValue', formData)
+        if (!this.getName.name?.name) {
+          this.$router.push('/')
+        }
 
       } catch (e) {
         throw new Error(e)
