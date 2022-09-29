@@ -143,18 +143,18 @@ export default {
     if (localStorage.checkToggle) {
       this.checkToggle = localStorage.checkToggle;
     }
-    if (localStorage.name) {
-      this.name = localStorage.name;
+    if (sessionStorage.name) {
+      this.name = sessionStorage.name;
     }
   },
 
   watch: {
     name(newName) {
-      localStorage.name = newName;
-      if (localStorage.name === newName) {
-        // localStorage.clear()
-        localStorage.removeItem('newName')
-        // localStorage.removeItem('name')
+      sessionStorage.name = newName;
+      if (sessionStorage.name !== 0) {
+        // sessionStorage.clear()
+        sessionStorage.removeItem('newName')
+        // sessionStorage.removeItem('name')
       }
     },
     checkToggle: {
