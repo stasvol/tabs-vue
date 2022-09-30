@@ -4,7 +4,7 @@
             <div class="col-lg-12">
 
               <input
-                  :value="modelValue || getName.name?.name "
+                  :value="modelValue  || getName.name?.name "
                   @input="$emit('update:modelValue', $event.target.value || $event.target.value === '' )"
                   placeholder="name"
                   type="text"
@@ -34,30 +34,15 @@
 <!--  </label>-->
 </template>
 <script>
+
 import {mapGetters} from "vuex";
-import useVuelidate from "@vuelidate/core";
-import {required} from "@vuelidate/validators";
 
 export default {
   props: ['modelValue'],
   emits: ['update:modelValue'],
-  methods: {
-    // clearInput() {
-    //   this.modelValue = this.$store.state.name.name = null
-    // }
-  },
-  data:() => ({
-    // modelValue: this?.$store.state.name?.name
-  }),
-  // setup: () => ({v$: useVuelidate()}),
-  //
-  // validations() {
-  //   return {
-  //     modelValue: {required},
-  //   }
-  // },
+
   computed: mapGetters(['getName']),
-  setup: () => ({ v$: useVuelidate()}),
+
 }
 
 

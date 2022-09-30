@@ -20,6 +20,7 @@ export default createStore({
         error: state => state.error,
 
         getName({name, description, checkToggle}) {
+            console.log('Getters -'  +   name?.name)
             return {name, description, checkToggle}
         },
 
@@ -51,6 +52,7 @@ export default createStore({
             // state.email = email
             state.checkToggle = checkToggle
             // localStorage.setItem('name',JSON.stringify(state.name))
+            console.log('Mutations -'  +  name.name)
         },
 
         getPhone(state, phone, email) {
@@ -82,6 +84,7 @@ export default createStore({
     actions: {
 
         getName({commit}, {name, description, checkToggle}) {
+            console.log('Actions -' + name)
             return commit('getName', {name, description, checkToggle})
         },
         getPhone({commit}, {phone, email}) {
