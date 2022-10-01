@@ -32,7 +32,10 @@ import NavBar from '@/views/NavBar'
 export default {
   components: {
     NavBar
-  }
+  },
+  // onMounted()  {
+  //   localStorage.clear()
+  // },
 }
 </script>
 
