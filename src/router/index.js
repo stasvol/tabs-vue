@@ -1,4 +1,5 @@
 import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
+import store from "@/store";
 
 const routes = [
   {
@@ -37,5 +38,12 @@ const router = createRouter({
   history:  createWebHashHistory(process.env.BASE_URL),
   routes
 })
+
+// router.beforeEach((to, from, next)=> {
+//   if (store.state) {
+//     console.log(store.state)
+//   }
+//
+// })
 
 export default router

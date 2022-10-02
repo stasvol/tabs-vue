@@ -125,7 +125,7 @@ export default {
         if (this.getName.name?.name) {
            this.$router.push('/photo')
         }else if (!this.getName.name?.name) {
-          this.$router.push('/')
+          this.$router.go(-1)
         }
 
       } catch (e) {
