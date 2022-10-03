@@ -134,6 +134,19 @@ export default defineComponent({
   // },
   // emits: ['update: modelValue'],
 
+  // mounted() {
+  //
+  //   if (localStorage.photos) {
+  //     this.photos = localStorage.photos;
+  //   }
+  // },
+  // watch: {
+  //   photos(newPhotos) {
+  //     localStorage.photos = newPhotos;
+  //
+  //   },
+  // },
+
   methods: {
 
     prevPatch() {

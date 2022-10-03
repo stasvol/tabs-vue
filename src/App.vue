@@ -26,9 +26,11 @@
       <router-view />
     </keep-alive>
   </transition>
+
 </template>
 <script>
 import NavBar from '@/views/NavBar'
+import store from "@/store";
 export default {
   components: {
     NavBar

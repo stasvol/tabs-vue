@@ -8,6 +8,7 @@ import usePhotos  from "@/utils/photo";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap'
 
+
 // export const bus = new Vue()
 // Vue.config.productionTip = false
 // export const bus = new createApp(App)
