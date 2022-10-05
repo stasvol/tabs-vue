@@ -143,15 +143,15 @@ export default {
     if (localStorage.checkToggle) {
       this.checkToggle = localStorage.checkToggle;
     }
-    if (sessionStorage.name) {
-      this.name = sessionStorage.name;
-    }
+    // if (sessionStorage.name) {
+    //   this.name = sessionStorage.name;
+    // }
   },
 
   watch: {
     name(newName) {
       sessionStorage.name = newName;
-      if (sessionStorage.name !== 0) {
+      if (sessionStorage.name === newName) {
         // sessionStorage.clear()
         sessionStorage.removeItem('newName')
         // sessionStorage.removeItem('name')

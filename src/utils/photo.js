@@ -10,7 +10,8 @@ export default function usePhotos ()  {
 
         if (target.files) {
           photos.value =  [...photos.value, ...Array.from(target.files)]
-
+          // localStorage.setItem('photos', photos.value)
+          //   console.log(photos.value[0])
         }
         if(input.value) {
             input.value.value = ''
