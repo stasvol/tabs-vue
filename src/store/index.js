@@ -1,16 +1,18 @@
 import {createStore} from 'vuex'
+import {getState} from "core-js/modules/web.url-search-params.constructor";
 
 export default createStore({
-    // state: {
-    //   error: null,
-    //   name: state.name,
-    //   // name: JSON.parse(localStorage.getItem('name') || ''),
-    //   email: '',
-    //   check: false,
-    //   phone: null,
-    //   description: '',
-    //   photo: []
-    // },
+    state: {
+      error: null,
+      name:'',
+      // name: JSON.parse(localStorage.getItem('name') || ''),
+      email: '',
+      check: [],
+      checked: [],
+      phone: null,
+      description: '',
+      photo: []
+    },
     // state: {
     //   name: JSON.parse(localStorage.getItem('name') || []),
     // },

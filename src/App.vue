@@ -21,11 +21,11 @@
 <!--&lt;!&ndash;    <router-link to="/">Home</router-link> |&ndash;&gt;-->
 <!--&lt;!&ndash;    <router-link to="/about">About</router-link>&ndash;&gt;-->
 <!--  </nav>-->
-  <transition>
-    <keep-alive>
+<!--  <transition>-->
+<!--    <keep-alive>-->
       <router-view />
-    </keep-alive>
-  </transition>
+<!--    </keep-alive>-->
+<!--  </transition>-->
 
 </template>
 <script>

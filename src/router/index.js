@@ -36,17 +36,17 @@ const routes = [
 
 // const routerPatch = store.state?.name?.name
 // let router
-
+console.log(store.state)
   const router = createRouter({
     history:  createWebHashHistory(process.env.BASE_URL),
     routes
   })
 
 // router.beforeEach((to, from, next)=> {
-//   if (store.state) {
-//     console.log(store.state)
+//   if (store.state.name) {
+//     console.log(store.state.name)
 //   }
-//
 // })
 
 export default router
+

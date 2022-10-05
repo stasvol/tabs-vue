@@ -163,9 +163,6 @@ export default {
 
       try {
         this.$store.dispatch('checkValue', formData)
-        if (!this.getName.name?.name) {
-          this.$router.push('/')
-        }
 
       } catch (e) {
         throw new Error(e)
