@@ -1,4 +1,5 @@
 import {computed, ref} from "vue";
+import store from "@/store";
 
 export default function usePhotos ()  {
 
@@ -20,6 +21,7 @@ export default function usePhotos ()  {
     };
 
     const  getSrc = (photo) => URL.createObjectURL(photo)
+
     const needUpload = computed(() =>photos.value?.length <= 5 )
     // const maxPhoto = computed(() => {if (needUpload) return photos.value && 'max photos 5'})
     const removePhoto =(index) => photos.value =  photos.value.filter((photo, i) => i != index)

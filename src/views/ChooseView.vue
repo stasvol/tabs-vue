@@ -163,7 +163,6 @@ export default {
 
       try {
         this.$store.dispatch('checkValue', formData)
-
       } catch (e) {
         throw new Error(e)
       }
