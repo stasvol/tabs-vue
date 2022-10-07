@@ -123,6 +123,7 @@ import {computed, defineComponent, ref, toRefs} from "vue";
 import Modal from "@/views/Modal";
 import usePhotos from "@/utils/photo";
 import {mapGetters} from "vuex";
+import store from "@/store";
 
 export default defineComponent({
 
@@ -164,7 +165,7 @@ export default defineComponent({
         // onFileSelected: this.onFileSelected,
         // needUpload: this.needUpload,
       }
-
+      console.log(store.state.photo)
       try {
         this.$store.dispatch('getPhoto', formData)
 

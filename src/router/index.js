@@ -19,7 +19,8 @@ const routes = [
   {
     path: '/photo',
     name: 'photo',
-    component: () => import('@/views/PhotoView')
+    component: () => import('@/views/PhotoView'),
+    store: store.state.photo
   },
   {
     path: '/choose',
