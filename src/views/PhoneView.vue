@@ -5,7 +5,7 @@
     <form @submit.prevent="onSubmit">
 
       <div class="mb-3 row">
-        <PhoneInput v-model.number.trim="phone" />
+        <PhoneInput v-model.number.trim="phone"/>
 <!--        <label for="inputPhone" class="col-sm-6 col-form-label">Phone-->
 <!--          <div class="col-lg-12">-->
 <!--        <input v-model.trim.number="phone"  :placeholder="getPhone.phone?.phone || 'phone'" type="tel" class="form-control" id="inputPhone" >-->

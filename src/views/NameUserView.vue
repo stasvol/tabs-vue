@@ -2,7 +2,7 @@
   <div class="card-header" id="inputName">
     <h1 class="header">Names page</h1>
 
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent ="onSubmit" >
 
       <div class="mb-3 row">
      <NamesInput v-model.trim="name" />
@@ -92,6 +92,7 @@
         <button
             type="submit"
             class="btn btn-success"
+            @click="getName.name?.name"
         >
           Next
         </button>
@@ -225,7 +226,7 @@ export default {
       // this.$emit('submit',  formData )
       try {
         this.$store.dispatch('getName', formData)
-        console.log('Submit -'+ this.name)
+        // console.log('Submit -'+ this.name)
         if (!this.v$.$error) {
           this.$router.push('/phone')
         }
