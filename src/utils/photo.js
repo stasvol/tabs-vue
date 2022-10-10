@@ -1,7 +1,7 @@
 import {computed, ref} from "vue";
 import store from "@/store";
 
-export default function usePhotos ()  {
+const  usePhotos = () => {
 
     const maxSize = 5
     let photos = ref([])
@@ -31,4 +31,4 @@ export default function usePhotos ()  {
     return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
 
 }
-
+export default usePhotos

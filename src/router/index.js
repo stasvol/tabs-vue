@@ -20,7 +20,6 @@ const routes = [
     path: '/photo',
     name: 'photo',
     component: () => import('@/views/PhotoView'),
-    store: store.state.photo
   },
   {
     path: '/choose',
@@ -40,6 +39,7 @@ const routes = [
 
   const router = createRouter({
       history: createWebHashHistory(process.env.BASE_URL),
+      // hash: createWebHashHistory(),
       routes
   })
 
