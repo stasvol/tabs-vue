@@ -38,9 +38,9 @@ const routes = [
 // let router
 
   const router = createRouter({
-      history: createWebHashHistory(process.env.BASE_URL),
+        history: createWebHashHistory(process.env.BASE_URL),
       // hash: createWebHashHistory(),
-      routes
+        routes
   })
 
 // router.beforeEach((to, from, next)=> {
