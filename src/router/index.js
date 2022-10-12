@@ -37,11 +37,19 @@ const routes = [
 // const routerPatch = store.state?.name?.name
 // let router
 
-  const router = createRouter({
+ const router = createRouter({
         history: createWebHashHistory(process.env.BASE_URL),
       // hash: createWebHashHistory(),
         routes
   })
+
+// if (store.state?.name?.name) {
+//     router = createRouter({
+//     history: createWebHashHistory(process.env.BASE_URL),
+//     // hash: createWebHashHistory(),
+//     routes
+//   })
+// }
 
 // router.beforeEach((to, from, next)=> {
 //   if (store.state.name) {

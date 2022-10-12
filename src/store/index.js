@@ -15,7 +15,7 @@ export default createStore({
     // },
     // state: {
     //   name: JSON.parse(localStorage.getItem('name') || []),
-    // },
+    // },,
 
     getters: {
 
@@ -49,10 +49,12 @@ export default createStore({
         },
 
         getName(state, name, description, checkToggle) {
+
             state.name = name
             state.description = description
             // state.email = email
             state.checkToggle = checkToggle
+            // saveName = name.name;
             // localStorage.setItem('name',JSON.stringify(state.name))
             // console.log('Mutations -'  +  name.name)
         },
