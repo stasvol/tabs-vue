@@ -96,8 +96,8 @@
         <button @click="prevPatch" type="button" class="btn btn-warning">Prev</button>
         <!--      <button type="button" class="btn btn-warning">Middle</button>-->
         <button @click="onSubmit" type="button"  class="btn btn-success" :class="photos?.length > 5 ? 'disabled' : 'btn btn-success'">Next</button>
-
       </div>
+
 
 <!--    </form>-->
 <!--    <div-->

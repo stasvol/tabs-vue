@@ -26,8 +26,6 @@ const  usePhotos = () => {
     // const maxPhoto = computed(() => {if (needUpload) return photos.value && 'max photos 5'})
     const removePhoto =(index) => photos.value =  photos.value.filter((photo, i) => i != index)
 
-
-
     return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
 
 }
