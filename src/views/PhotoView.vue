@@ -115,6 +115,9 @@
 <!--      >-->
 
 <!--    </div>-->
+
+     <input type = "file" id="photo" />
+     <img id = "img" :src = "imageUrl" alt = "" />
   </div>
 
 </template>
@@ -178,7 +181,7 @@ export default defineComponent({
     },
     clearPhoto() {
 
-      this.photos = ''
+      this.photos = null
     }
 
   },
@@ -199,7 +202,7 @@ export default defineComponent({
       photos,
       onFileSelected,
     }
-  }
+  },
 
   // setup(props, {emit}) {
   //
@@ -245,6 +248,25 @@ export default defineComponent({
   //     onFileSelected,
   //   }
   // }
+  mounted() {
+    document.querySelector("#photo").addEventListener("change", function () {
+      const reader = new FileReader();
+
+      reader.addEventListener('load', () => {
+        console.log(reader.result)
+        localStorage.setItem('images', reader.result)
+
+      })
+      reader.readAsDataURL(this.files[0])
+
+    })
+    document.addEventListener('DOMContentLoaded', () => {
+      const imageUrl = localStorage.getItem('image')
+      if (imageUrl) {
+        document.querySelector('#img').setAttribute('src', imageUrl)
+      }
+    })
+  }
 
 })
 // @ is an alias to /src

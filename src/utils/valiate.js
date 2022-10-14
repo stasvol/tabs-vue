@@ -1,4 +1,4 @@
-export default function useValidate () {
+// export default function useValidate () {
 
     export const required = value =>
         !value && !value.length ? 'Field is required' : undefined;
@@ -9,4 +9,4 @@ export default function useValidate () {
     export const minLength = min => value =>
         value && value.length < min ? `Length is < ${min} symbol ` : undefined;
 
-}
+// }
