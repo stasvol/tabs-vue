@@ -117,7 +117,7 @@
 <!--    </div>-->
 
      <input type = "file" id="photo" />
-     <img id = "img" :src = "imageUrl" alt = "" />
+     <img id = "imgFile" src=""  alt = "" >
   </div>
 
 </template>
@@ -181,7 +181,7 @@ export default defineComponent({
     },
     clearPhoto() {
 
-      this.photos = null
+      this.photos.length = null
     }
 
   },
@@ -253,18 +253,17 @@ export default defineComponent({
       const reader = new FileReader();
 
       reader.addEventListener('load', () => {
-        console.log(reader.result)
-        localStorage.setItem('images', reader.result)
-
+        // console.log(reader.result)
+        localStorage.setItem('imagesKey', reader.result)
       })
       reader.readAsDataURL(this.files[0])
 
-    })
-    document.addEventListener('DOMContentLoaded', () => {
-      const imageUrl = localStorage.getItem('image')
-      if (imageUrl) {
-        document.querySelector('#img').setAttribute('src', imageUrl)
-      }
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+      const imageUrl = localStorage.getItem('imagesKey')
+         if (imageUrl) {
+           document.querySelector("#imgFile").setAttribute("src", imageUrl)
+         }
     })
   }
 
