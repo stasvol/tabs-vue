@@ -115,9 +115,12 @@
 <!--      >-->
 
 <!--    </div>-->
+    <div class="img-wrapper">
+      <input type = "file" id="photoFiles" />
+<!--      <img id = "imgFile" src=""  alt = "" >-->
 
-     <input type = "file" id="photo" />
-     <img id = "imgFile" src=""  alt = "" >
+    </div>
+
   </div>
 
 </template>
@@ -249,22 +252,25 @@ export default defineComponent({
   //   }
   // }
   mounted() {
-    document.querySelector("#photo").addEventListener("change", function () {
+    document.querySelector("#photoFiles").addEventListener("change", function () {
       const reader = new FileReader();
-
+      const file = this.files[0]
       reader.addEventListener('load', () => {
         // console.log(reader.result)
         localStorage.setItem('imagesKey', reader.result)
       })
-      reader.readAsDataURL(this.files[0])
+      reader.readAsDataURL(file)
 
     });
     document.addEventListener("DOMContentLoaded", () => {
+
       const imageUrl = localStorage.getItem('imagesKey')
          if (imageUrl) {
            document.querySelector("#imgFile").setAttribute("src", imageUrl)
          }
+
     })
+
   }
 
 })
