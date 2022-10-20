@@ -262,12 +262,12 @@ export default defineComponent({
       })
       reader.readAsDataURL(file)
 
-      reader.onload = function (){
+      reader.onload = function () {
+
         const imageUrl = localStorage.getItem('imagesKey')
         if (imageUrl) {
           document.getElementById("imgFile")?.setAttribute("src", imageUrl)
         }
-
       }
 
       })
