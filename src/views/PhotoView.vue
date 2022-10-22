@@ -117,7 +117,7 @@
 <!--    </div>-->
     <div class="img-wrapper">
       <input type = "file" id="photoFiles" />
-      <img id = "imgFile" src=""  alt = "" >
+      <img id = "imgFile"  src=""  alt = "" >
 
     </div>
 
@@ -253,6 +253,23 @@ export default defineComponent({
   // }
   mounted() {
 
+    // document.getElementById('photoFiles').addEventListener('change', () => {
+    //
+    //   let file = document.getElementById('photoFiles').files[0]
+    //   let reader = new FileReader();
+    //
+    //   reader.onload = function (){
+    //   //   const imageUrl = reader.result
+    //   //   reader.addEventListener('load', ()=>{
+    //       localStorage.setItem('imagesFiles', reader.result)
+    //     // })
+    //   // reader.readAsDataURL(file)
+    //
+    //   }
+    //   reader.readAsDataURL(file)
+    // })
+
+
     document.querySelector("#photoFiles").addEventListener("change", function () {
       const reader = new FileReader();
       const file = this.files[0]
@@ -263,22 +280,18 @@ export default defineComponent({
       reader.readAsDataURL(file)
 
       reader.onload = function () {
-
         const imageUrl = localStorage.getItem('imagesKey')
         if (imageUrl) {
           document.getElementById("imgFile")?.setAttribute("src", imageUrl)
         }
       }
-
-      })
+    })
 
     document.addEventListener("DOMContentLoaded", () => {
-
       const imageUrl = localStorage.getItem('imagesKey')
          if (imageUrl) {
            document.querySelector("#imgFile").setAttribute("src", imageUrl)
          }
-
     })
 
   }
