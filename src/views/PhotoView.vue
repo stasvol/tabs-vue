@@ -117,7 +117,7 @@
 <!--    </div>-->
     <div class="img-wrapper">
       <input type = "file" id="photoFiles" />
-      <img id = "imgFile"  src=""  alt = "" >
+      <img id = "imgFile" src=""  alt = "" >
 
     </div>
 
@@ -279,23 +279,27 @@ export default defineComponent({
       })
       reader.readAsDataURL(file)
 
-      reader.onload = function () {
+      // reader.onload = function () {
+      //   const imageUrl = localStorage.getItem('imagesKey')
+      //   if (imageUrl) {
+      //     document.getElementById("imgFile")?.setAttribute("src", imageUrl)
+      //   }
+      // }
+
+    })
+
+      document.addEventListener("DOMContentLoaded", () => {
+
         const imageUrl = localStorage.getItem('imagesKey')
+
         if (imageUrl) {
-          document.getElementById("imgFile")?.setAttribute("src", imageUrl)
+          document.getElementById("imgFile").setAttribute("src", imageUrl)
+
         }
-      }
-    })
+        console.log(imageUrl)
+      })
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const imageUrl = localStorage.getItem('imagesKey')
-         if (imageUrl) {
-           document.querySelector("#imgFile").setAttribute("src", imageUrl)
-         }
-    })
-
-  }
-
+    }
 })
 // @ is an alias to /src
 // export default {
