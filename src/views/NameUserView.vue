@@ -141,12 +141,15 @@ export default {
   }),
 
   mounted() {
-    if (localStorage.checkToggle) {
-      this.checkToggle = localStorage.checkToggle;
+    if (sessionStorage.checkToggle) {
+      this.checkToggle = sessionStorage.checkToggle;
     }
-    // if (sessionStorage.name) {
-    //   this.name = sessionStorage.name;
-    // }
+    if (sessionStorage.name) {
+      this.name = sessionStorage.name;
+    }
+    if (sessionStorage.description) {
+      this.description = sessionStorage.description;
+    }
   },
 
   watch: {
@@ -154,17 +157,23 @@ export default {
       sessionStorage.name = newName;
       if (sessionStorage.name === newName) {
         // sessionStorage.clear()
-        sessionStorage.removeItem('newName')
+        // sessionStorage.removeItem('newName')
         // sessionStorage.removeItem('name')
+      }
+    },
+    description(newDescription) {
+      sessionStorage.description = newDescription;
+      if (sessionStorage.description === newDescription) {
+
       }
     },
     checkToggle: {
       handler(newCheckToggle) {
-        localStorage.checkToggle = newCheckToggle;
-        if (localStorage.checkToggle === newCheckToggle) {
+        sessionStorage.checkToggle = newCheckToggle;
+        if (sessionStorage.checkToggle === newCheckToggle) {
           // localStorage.clear()
-          localStorage.removeItem('newCheckToggle')
-          localStorage.removeItem('checkToggle')
+          // localStorage.removeItem('newCheckToggle')
+          // localStorage.removeItem('checkToggle')
           // localStorage.checkToggle=false
 
         }

@@ -71,7 +71,8 @@
         <div class="btn-group-lg col-sm-10" role="group"  aria-label="Basic mixed styles example">
           <button @click="prevPath" type="button" class="btn btn-warning">Prev</button>
 <!--          <button @click="clearLocStor" type="button" class="btn btn-success">Clear</button>-->
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target=" getName.name?.name ? '#exampleModal' : '#inputName'">Save
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save
+<!--          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target=" getName.name?.name ? '#exampleModal' : '#inputName'">Save-->
           </button>
 
           <!--        <router-link to="/modal" tag="button" class="btn btn-primary">Save</router-link>-->
@@ -115,32 +116,32 @@ export default {
   computed: mapGetters(['getName', 'getPhone', 'getPhoto', 'checkValue']),
 
   mounted() {
-    if (localStorage.checked) {
-      this.checked = localStorage.checked;
+    if (sessionStorage.checked) {
+      this.checked = sessionStorage.checked;
     }
   },
   watch: {
     checked(newChecked) {
-      localStorage.checked = newChecked;
-      if (localStorage.checked === newChecked) {
+      sessionStorage.checked = newChecked;
+      if (sessionStorage.checked === newChecked) {
         // localStorage.clear()
-        localStorage.removeItem('newChecked')
-        localStorage.removeItem('checked')
+        // localStorage.removeItem('newChecked')
+        // localStorage.removeItem('checked')
       }
     },
   },
   // watch: {
   //   checked:{
   //     handler(newChecked) {
-  //       localStorage.checked = JSON.stringify(newChecked);
+  //       sessionStorage.checked = JSON.stringify(newChecked);
   //     },
   //     deep:true
   //   },
   // },
 
-  onMounted()  {
-    localStorage.clear()
-  },
+  // onMounted()  {
+  //   localStorage.clear()
+  // },
 
   methods: {
 

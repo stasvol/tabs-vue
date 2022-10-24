@@ -104,6 +104,32 @@ export default {
   //   }
   // },
 
+  mounted() {
+    if (sessionStorage.phone) {
+      this.phone = sessionStorage.phone;
+    }
+    if (sessionStorage.email) {
+      this.email = sessionStorage.email;
+    }
+  },
+
+  watch: {
+    phone(newPhone) {
+      sessionStorage.phone = newPhone;
+      if (sessionStorage.phone === newPhone) {
+        // sessionStorage.clear()
+        // sessionStorage.removeItem('newName')
+        // sessionStorage.removeItem('name')
+      }
+    },
+    email(newEmail) {
+      sessionStorage.email = newEmail
+
+
+    }
+
+  },
+
   methods: {
     namePath() {
       this.$router.push('/')

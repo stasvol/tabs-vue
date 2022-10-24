@@ -116,7 +116,11 @@
 
 <!--    </div>-->
     <div class="img-wrapper">
-      <input type = "file" id="photoFiles" />
+      <input
+
+          type = "file"
+          id="photoFiles"
+      />
       <img id = "imgFile" src=""  alt = "" >
 
     </div>
@@ -171,7 +175,6 @@ export default defineComponent({
         // onFileSelected: this.onFileSelected,
         // needUpload: this.needUpload,
       }
-      console.log(store.state.photo)
       try {
         this.$store.dispatch('getPhoto', formData)
 
@@ -275,7 +278,10 @@ export default defineComponent({
       const file = this.files[0]
       reader.addEventListener('load', () => {
         // console.log(reader.result)
-        localStorage.setItem('imagesKey', reader.result)
+        document.getElementById("imgFile")?.setAttribute("src", reader.result)
+
+        sessionStorage.setItem('imagesKey', reader.result)
+
       })
       reader.readAsDataURL(file)
 
@@ -288,18 +294,14 @@ export default defineComponent({
 
     })
 
-      document.addEventListener("DOMContentLoaded", () => {
-
-        const imageUrl = localStorage.getItem('imagesKey')
+         const imageUrl = sessionStorage.getItem('imagesKey')
 
         if (imageUrl) {
           document.getElementById("imgFile").setAttribute("src", imageUrl)
 
         }
         console.log(imageUrl)
-      })
-
-    }
+  }
 })
 // @ is an alias to /src
 // export default {
