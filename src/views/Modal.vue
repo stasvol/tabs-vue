@@ -59,6 +59,7 @@
               >
 
                 <img
+                    id="imgFile"
                     :src="getSrc(photo)"
                     :alt="`Photo ${index}`"
                     class="photo"
