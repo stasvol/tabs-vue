@@ -121,7 +121,15 @@
           type = "file"
           id="photoFiles"
       />
-      <img id = "imgFile" src=""  alt = "" >
+      <div
+          class="photoSize"
+      >
+        <img class="photo" id = "imgFile" src=""  alt = "" >
+<!--        <div>-->
+<!--          <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>-->
+<!--        </div>-->
+      </div>
+
 
     </div>
 
@@ -208,6 +216,8 @@ export default defineComponent({
       photos,
       onFileSelected,
     }
+
+
   },
 
   // setup(props, {emit}) {
@@ -254,6 +264,7 @@ export default defineComponent({
   //     onFileSelected,
   //   }
   // }
+
   mounted() {
 
     // document.getElementById('photoFiles').addEventListener('change', () => {
@@ -272,10 +283,10 @@ export default defineComponent({
     //   reader.readAsDataURL(file)
     // })
 
-
     document.querySelector("#photoFiles").addEventListener("change", function () {
       const reader = new FileReader();
       const file = this.files[0]
+      this.photos = file
       reader.addEventListener('load', () => {
         // console.log(reader.result)
         document.getElementById("imgFile")?.setAttribute("src", reader.result)
@@ -283,8 +294,8 @@ export default defineComponent({
         sessionStorage.setItem('imagesKey', reader.result)
 
       })
-      reader.readAsDataURL(file)
-
+      reader.readAsDataURL(this.photos)
+      console.log(file)
       // reader.onload = function () {
       //   const imageUrl = localStorage.getItem('imagesKey')
       //   if (imageUrl) {
@@ -300,7 +311,7 @@ export default defineComponent({
           document.getElementById("imgFile").setAttribute("src", imageUrl)
 
         }
-        console.log(imageUrl)
+
   }
 })
 // @ is an alias to /src
