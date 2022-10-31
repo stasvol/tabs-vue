@@ -117,9 +117,9 @@
 <!--    </div>-->
     <div class="img-wrapper">
       <input
-
           type = "file"
-          id="photoFiles"
+          id="file"
+
       />
       <div
           class="photoSize"
@@ -142,6 +142,7 @@ import Modal from "@/views/Modal";
 import usePhotos from "@/utils/photo";
 import {mapGetters} from "vuex";
 import store from "@/store";
+import photoFile from "@/utils/photoFile";
 
 export default defineComponent({
 
@@ -267,7 +268,8 @@ export default defineComponent({
 
   mounted() {
 
-    // document.getElementById('photoFiles').addEventListener('change', () => {
+    photoFile('#file')
+    // document.getElementById('photoFile').addEventListener('change', () => {
     //
     //   let file = document.getElementById('photoFiles').files[0]
     //   let reader = new FileReader();
@@ -282,37 +284,40 @@ export default defineComponent({
     //   }
     //   reader.readAsDataURL(file)
     // })
-
-    document.querySelector("#photoFiles").addEventListener("change", function () {
-      const reader = new FileReader();
-      const file = this.files[0]
-      this.photos = file
-      reader.addEventListener('load', () => {
-        // console.log(reader.result)
-        document.getElementById("imgFile")?.setAttribute("src", reader.result)
-
-        sessionStorage.setItem('imagesKey', reader.result)
-
-      })
-      reader.readAsDataURL(this.photos)
-      console.log(file)
-      // reader.onload = function () {
-      //   const imageUrl = localStorage.getItem('imagesKey')
-      //   if (imageUrl) {
-      //     document.getElementById("imgFile")?.setAttribute("src", imageUrl)
-      //   }
-      // }
-
-    })
-
-         const imageUrl = sessionStorage.getItem('imagesKey')
-
-        if (imageUrl) {
-          document.getElementById("imgFile").setAttribute("src", imageUrl)
-
-        }
+    //
+    // document.querySelector("#photoFiles").addEventListener("change", function () {
+    //   const reader = new FileReader();
+    //   const file = this.files[0]
+    //   // const file = Array.from(this.files[0])
+    //   console.log(file)
+    //   this.photos = file
+    //   reader.addEventListener('load', () => {
+    //     // console.log(reader.result)
+    //     document.getElementById("imgFile")?.setAttribute("src", reader.result)
+    //
+    //     sessionStorage.setItem('imagesKey', reader.result)
+    //
+    //   })
+    //   reader.readAsDataURL(this.photos)
+    //   console.log(file)
+    //   // reader.onload = function () {
+    //   //   const imageUrl = localStorage.getItem('imagesKey')
+    //   //   if (imageUrl) {
+    //   //     document.getElementById("imgFile")?.setAttribute("src", imageUrl)
+    //   //   }
+    //   // }
+    //
+    // })
+    //
+    //      const imageUrl = sessionStorage.getItem('imagesKey')
+    //
+    //     if (imageUrl) {
+    //       document.getElementById("imgFile").setAttribute("src", imageUrl)
+    //
+    //     }
 
   }
+
 })
 // @ is an alias to /src
 // export default {

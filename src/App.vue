@@ -64,10 +64,20 @@ export default {
 .btn {
   width: 14rem;
 }
+.btnFile {
+  margin: 0 auto;
+  width: 14rem;
+  background-color: #7abae7;
+  padding: 1rem;
+  border-radius: .5rem;
+}
 .invalid {
   display: flex;
   justify-content: center;
   color: #a90f0f;
   margin-top: 5px;
+}
+input[type=file]  {
+  display: none;
 }
 </style>
