@@ -77,6 +77,11 @@ export default {
   color: #a90f0f;
   margin-top: 5px;
 }
+.photo {
+  max-width: 30%;
+  border-radius: 1rem;
+}
+
 input[type=file]  {
   display: none;
 }

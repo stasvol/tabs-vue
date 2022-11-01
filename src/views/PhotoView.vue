@@ -268,7 +268,10 @@ export default defineComponent({
 
   mounted() {
 
-    photoFile('#file')
+    photoFile('#file', {
+      multi: true,
+      accept: ['.png', '.jpg', '.jpeg', '.gif']
+    })
     // document.getElementById('photoFile').addEventListener('change', () => {
     //
     //   let file = document.getElementById('photoFiles').files[0]
