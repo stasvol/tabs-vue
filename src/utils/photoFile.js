@@ -75,6 +75,24 @@ const photoFile = (selector, options = {}) => {
         })
 
 
+
+
+        }
+
+    const imageUrl = sessionStorage.getItem('imagesKey')
+
+    console.log(imageUrl)
+
+    if (imageUrl) {
+        wrapper.insertAdjacentHTML('afterbegin', `
+                 
+                <div class="wrapper-image">
+               
+                 <img src="${imageUrl}" />
+
+                </div>
+                
+             `)
     }
 
 
