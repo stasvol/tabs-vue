@@ -1,139 +1,147 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div class="card-header" id="photoFile">
     <h1 class="header">Photos page</h1>
-<!--    <form @submit.prevent="onSubmit">-->
-      <div class="mb-3 row">
-        <label for="formFile" class="col-sm-6 col-form-label">Choose files
-          <div class="col-lg-10">
-            <input
-                ref="input"
-                @change="onFileSelected"
-                class="form-control"
-                type="file"
-                id="formFile"
-                multiple
-                accept=".png, .jpg, .jpeg"
+    <!--    <form @submit.prevent="onSubmit">-->
+    <div class="mb-3 row">
+      <label for="formFile" class="col-sm-6 col-form-label">Choose files
+        <div class="col-lg-10">
+          <input
+              ref="input"
+              @change="onFileSelected"
+              class="form-control"
+              type="file"
+              id="formFile"
+              multiple
+              accept=".png, .jpg, .jpeg"
 
-            >
-          </div>
-        </label>
+          >
+
+        </div>
+
+      </label>
+    </div>
+    <div>
+      <!--    <photo-slots>-->
+      <!--    <template #default>-->
+
+      <div
+          v-if="needUpload"
+          class="photoSize"
+          v-for="(photo,index) in photos "
+          :key="index"
+      >
+
+        <img
+            :src="getSrc(photo)"
+            :alt="`Photo ${index}`"
+            class="photo "
+            :key="photo"
+
+        >
+        <div class="">
+          <!--      <slot v-bind:item="photo"></slot>-->
+          <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
+        </div>
       </div>
-      <div>
-        <!--    <photo-slots>-->
-        <!--    <template #default>-->
+      <div v-else>
+
+        <h3 class="head"> Max length photos - {{ maxSize }}photo. Please delete {{ photos.length - maxSize }} photos.
+          <button class="btn btn-outline-danger btnSize " @click="clearPhoto">Clear all photos</button>
+        </h3>
 
         <div
-            v-if="needUpload"
             class="photoSize"
             v-for="(photo,index) in photos "
             :key="index"
         >
-
-          <img
-              :src="getSrc(photo)"
-              :alt="`Photo ${index}`"
-              class="photo "
-              :key="photo"
+          <!--            photos.length <= 5-->
+          <img v-if="maxSize"
+               :src="getSrc(photo)"
+               :alt="`Photo: ${getPhoto.photos?.photos.name}`"
+               class="photo "
+               :key="index"
 
           >
+
           <div class="">
-            <!--      <slot v-bind:item="photo"></slot>-->
             <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
           </div>
         </div>
-        <div v-else>
 
-          <h3 class="head"> Max length photos - {{ maxSize }}photo. Please delete {{photos.length - maxSize}} photos.
-            <button class="btn btn-outline-danger btnSize " @click="clearPhoto">Clear all photos</button>
-          </h3>
-
-          <div
-              class="photoSize"
-              v-for="(photo,index) in photos "
-              :key="index"
-          >
-<!--            photos.length <= 5-->
-            <img v-if="maxSize"
-                 :src="getSrc(photo)"
-                :alt="`Photo: ${getPhoto.photos?.photos.name}`"
-                class="photo "
-                :key="index"
-
-            >
-
-            <div class="">
-              <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
-            </div>
-          </div>
-
-        </div>
-        <!--    </template>-->
-        <!--    </photo-slots>-->
       </div>
-          <div
+      <!--    </template>-->
+      <!--    </photo-slots>-->
+    </div>
+    <div
 
-                class="photoSize"
-                v-for="(photo,index) in getPhoto.photos?.photos"
-                :key="index"
-          >
-            {{getPhoto.photos.photos.name}}
-<!--            <div v-if="needUpload === 5">-->
-            <img
+        class="photoSize"
+        v-for="(photo,index) in getPhoto.photos?.photos"
+        :key="index"
+    >
+      {{ getPhoto.photos.photos.name }}
+      <!--            <div v-if="needUpload === 5">-->
+      <img
 
-                :src="getSrc(photo)"
-                :alt=" getPhoto.photos.photos[0].name"
-                class="photo"
-                :key="photo"
-            >
-            <div >
-              <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
-
-            </div>
-<!--            </div>-->
-          </div>
-
-      <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
-        <button @click="prevPatch" type="button" class="btn btn-warning">Prev</button>
-        <!--      <button type="button" class="btn btn-warning">Middle</button>-->
-        <button @click="onSubmit" type="button"  class="btn btn-success" :class="photos?.length > 5 ? 'disabled' : 'btn btn-success'">Next</button>
-      </div>
-
-
-<!--    </form>-->
-<!--    <div-->
-<!--          class="photoSize"-->
-<!--          v-for="(photo,index) in getPhoto.photos?.photos"-->
-<!--          :key="photo"-->
-<!--    >-->
-
-<!--      <img-->
-
-<!--          :src="getSrc(photo)"-->
-<!--          :alt="`Photo ${index}`"-->
-<!--          class="photo"-->
-
-<!--      >-->
-
-<!--    </div>-->
-    <div class="img-wrapper">
-      <input
-          type = "file"
-          id="file"
-
-      />
-      <div
-          class="photoSize"
+          :src="getSrc(photo)"
+          :alt=" getPhoto.photos.photos[0].name"
+          class="photo"
+          :key="photo"
       >
-        <img class="photo" id = "imgFile" src=""  alt = "" >
-<!--        <div>-->
-<!--          <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>-->
-<!--        </div>-->
+      <div>
+        <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>
+
       </div>
-
-
+      <!--            </div>-->
     </div>
 
-  </div>
+    <div class=" btn-group-lg" role="group" aria-label="Basic mixed styles example">
+      <button @click="prevPatch" type="button" class="btn btn-warning">Prev</button>
+      <!--      <button type="button" class="btn btn-warning">Middle</button>-->
+      <button @click="onSubmit" type="button" class="btn btn-success"
+              :class="photos?.length > 5 ? 'disabled' : 'btn btn-success'">Next
+      </button>
+    </div>
+
+
+    <!--    </form>-->
+    <!--    <div-->
+    <!--          class="photoSize"-->
+    <!--          v-for="(photo,index) in getPhoto.photos?.photos"-->
+    <!--          :key="photo"-->
+    <!--    >-->
+
+    <!--      <img-->
+
+    <!--          :src="getSrc(photo)"-->
+    <!--          :alt="`Photo ${index}`"-->
+    <!--          class="photo"-->
+
+    <!--      >-->
+
+    <!--    </div>-->
+<!--    <div class="mb-3 row">-->
+<!--    <label for="formFile" class="col-sm-6 col-form-label">Choose files-->
+<!--      <div class="col-lg-10">-->
+<!--        <div class="img-wrapper">-->
+          <input
+              type="file"
+              id="file"
+
+          />
+          <!--    <div-->
+          <!--        class="photoSize"-->
+          <!--    >-->
+          <!--      <img class="photo" id = "imgFile" src=""  alt = "" >-->
+          <!--        <div>-->
+          <!--          <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>-->
+          <!--        </div>-->
+          <!--    </div>-->
+<!--        </div>-->
+      </div>
+<!--    </label>-->
+<!--    </div>-->
+<!--  </div>-->
+
 
 </template>
 <script>
@@ -187,7 +195,7 @@ export default defineComponent({
       try {
         this.$store.dispatch('getPhoto', formData)
 
-          this.$router.push('/choose')
+        this.$router.push('/choose')
 
       } catch (e) {
         throw new Error(e)

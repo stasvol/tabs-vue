@@ -81,8 +81,77 @@ export default {
   max-width: 30%;
   border-radius: 1rem;
 }
-
-input[type=file]  {
-  display: none;
+.photoSize {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  cursor: pointer;
 }
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap ;
+  padding: 1rem;
+}
+
+.wrapper-image {
+  position: relative;
+  margin-bottom: .5rem;
+  margin-right: .5rem;
+  overflow: hidden;
+}
+
+.wrapper-image.removing {
+  transform: scale(0);
+  transition: transform .3s;
+}
+
+.wrapper-image img {
+  width: 20rem;
+  height: auto;
+}
+
+.wrapper-image:hover .wrapper-remove {
+  opacity: 1;
+}
+
+.wrapper-image:hover .wrapper-info {
+  bottom: 0;
+}
+
+.wrapper-remove {
+  opacity: 0;
+  transition: opacity .33s;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: bold;
+  background: rgba(255,255,255, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.wrapper-info {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -3rem;
+  height: 2rem;
+  font-size: 1rem;
+  background: rgba(255,255,255, .5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .5rem;
+  transition: bottom .33s;
+}
+
+//input[type=file]  {
+//  display: none;
+//}
 </style>
