@@ -15,8 +15,9 @@
           </div>
           <div class="modal-body">
             <div>
-              <div class="mod">
+              <div class="mod"><b>{{sessionStorage?.name}}</b>
               <span>Name:<strong v-if="getName.name?.name">{{ getName.name?.name }}</strong>
+
                 <i v-else>Not selected</i>
               </span>
               </div>
@@ -43,13 +44,13 @@
             </div>
             <div class="mod">
 
-              <span>Check choose: <strong v-if="checkValue.checked">{{ checkValue.checked?.toString()}}</strong>
+              <span>Check choose: <strong v-if="checkValue.checked">{{ checkValue.checked?.toString() }}</strong>
                <i v-else>Not selected</i>
               </span>
 
             </div>
 
-            <div class="mod"> Photo:
+            <div id="Photo" class="mod"> Photo:
               <!--              {{getPhoto.photos?.photos[0].name}}-->
               <!--              {{photos}}-->
               <div v-if="getPhoto.photos"
@@ -67,9 +68,11 @@
                 >
 
               </div>
-              <i v-else>Not selected</i>
+<!--              <i v-else>Not selected</i>-->
+
 
             </div>
+
 
           </div>
           <div class="modal-footer">
@@ -87,6 +90,7 @@ import {mapGetters} from "vuex";
 import {ref} from "vue";
 // import PhotoView from "@/views/PhotoView";
 import usePhotos from "@/utils/photo";
+import photoFile from "@/utils/photoFile";
 // import Choose from "@/views/ChooseView";
 // import {computed} from "vue/dist/vue";
 
@@ -104,8 +108,66 @@ export default {
   // data:()=>({
   //   files: []
   // }),
+  mounted() {
+    const wrapper = document.createElement('div')
+
+    const div = document.querySelector('#Photo')
+    div.insertAdjacentElement('beforeend', wrapper)
+
+    const imageUrl = sessionStorage.getItem('imagesKey')
+    if (imageUrl) {
+      wrapper.insertAdjacentHTML('afterbegin', `
+
+                <div class="wrapper-image">
+                   <img src="${imageUrl}" />
+                </div>
+
+             `)
+
+    } else {
+      wrapper.insertAdjacentHTML( 'beforeend',
+      `<i v-else>Not selected</i>`)
+    }
+
+
+  },
+
+  watch: {
+    name(newName) {
+      sessionStorage.name = newName;
+      if (sessionStorage.name === newName) {
+        console.log(newName)
+        console.log(sessionStorage?.name)
+        // sessionStorage.clear()
+        // sessionStorage.removeItem('newName')
+        // sessionStorage.removeItem('name')
+      }
+    },
+    description(newDescription) {
+      sessionStorage.description = newDescription;
+      if (sessionStorage.description === newDescription) {
+
+      }
+    },
+    checkToggle: {
+      handler(newCheckToggle) {
+        sessionStorage.checkToggle = newCheckToggle;
+        if (sessionStorage.checkToggle === newCheckToggle) {
+          // localStorage.clear()
+          // localStorage.removeItem('newCheckToggle')
+          // localStorage.removeItem('checkToggle')
+          // localStorage.checkToggle=false
+
+        }
+      },
+      deep: true,
+
+    }
+
+  },
 
   setup() {
+
 
     // const photos = ref([])
     // // const input = ref()

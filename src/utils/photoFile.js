@@ -81,18 +81,20 @@ const photoFile = (selector, options = {}) => {
 
     const imageUrl = sessionStorage.getItem('imagesKey')
 
-    console.log(imageUrl)
-
     if (imageUrl) {
         wrapper.insertAdjacentHTML('afterbegin', `
                  
                 <div class="wrapper-image">
-               
+                <div class="wrapper-remove" data-name="${files.name}">&times;</div>
                  <img src="${imageUrl}" />
-
+                  <div class="wrapper-info">
+                    <span>${files.name}</span>
+                    <span>${formatBytes(files.size)}</span>
+                 </div>
                 </div>
                 
              `)
+
     }
 
 

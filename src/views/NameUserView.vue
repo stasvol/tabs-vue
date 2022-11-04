@@ -150,12 +150,15 @@ export default {
     if (sessionStorage.description) {
       this.description = sessionStorage.description;
     }
+
   },
 
   watch: {
     name(newName) {
       sessionStorage.name = newName;
       if (sessionStorage.name === newName) {
+        console.log(newName)
+        console.log(sessionStorage?.name)
         // sessionStorage.clear()
         // sessionStorage.removeItem('newName')
         // sessionStorage.removeItem('name')
