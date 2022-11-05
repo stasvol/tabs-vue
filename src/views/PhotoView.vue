@@ -5,16 +5,22 @@
     <div class="mb-3 row">
       <label for="formFile" class="col-sm-6 col-form-label">Choose files
         <div class="col-lg-10">
+<!--          <input-->
+<!--              ref="input"-->
+<!--              @change="onFileSelected"-->
+<!--              class="form-control"-->
+<!--              type="file"-->
+<!--              id="formFile"-->
+<!--              multiple-->
+<!--              accept=".png, .jpg, .jpeg"-->
+
+<!--          >-->
           <input
-              ref="input"
-              @change="onFileSelected"
               class="form-control"
               type="file"
-              id="formFile"
-              multiple
-              accept=".png, .jpg, .jpeg"
+              id="file"
 
-          >
+          />
 
         </div>
 
@@ -123,11 +129,7 @@
 <!--    <label for="formFile" class="col-sm-6 col-form-label">Choose files-->
 <!--      <div class="col-lg-10">-->
 <!--        <div class="img-wrapper">-->
-          <input
-              type="file"
-              id="file"
 
-          />
           <!--    <div-->
           <!--        class="photoSize"-->
           <!--    >-->

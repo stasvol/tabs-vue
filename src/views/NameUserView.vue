@@ -138,6 +138,7 @@ export default {
     // email: '',
     password: '',
     checkToggle: null,
+    // updateKey: 0,
   }),
 
   mounted() {
@@ -157,8 +158,6 @@ export default {
     name(newName) {
       sessionStorage.name = newName;
       if (sessionStorage.name === newName) {
-        console.log(newName)
-        console.log(sessionStorage?.name)
         // sessionStorage.clear()
         // sessionStorage.removeItem('newName')
         // sessionStorage.removeItem('name')
@@ -195,9 +194,9 @@ export default {
   //   },
   // }
 
-  onMounted()  {
-    localStorage.clear()
-  },
+  // onMounted()  {
+  //   localStorage.clear()
+  // },
 
   setup: () => ({v$: useVuelidate()}),
   // setup() {
@@ -217,6 +216,9 @@ export default {
 
   // methods: mapActions(['getName']),
   methods: {
+    // forceUpdate() {
+    //   this.updateKey += 1;
+    // },
 
     toggleCheck() {
       this.checkToggle = !this.checkToggle

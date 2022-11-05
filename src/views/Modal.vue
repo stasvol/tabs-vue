@@ -15,8 +15,8 @@
           </div>
           <div class="modal-body">
             <div>
-              <div class="mod"><b>{{sessionStorage?.name}}</b>
-              <span>Name:<strong v-if="getName.name?.name">{{ getName.name?.name }}</strong>
+              <div class="mod">
+              <span>Name:<strong v-if="getName.name?.name">{{getName.name?.name}}</strong>
 
                 <i v-else>Not selected</i>
               </span>
@@ -96,6 +96,7 @@ import photoFile from "@/utils/photoFile";
 
 
 export default {
+
   // components: {Choose},
   // props: ['modelValue'],
   // emits: ['update:modelValue'],
@@ -108,7 +109,10 @@ export default {
   // data:()=>({
   //   files: []
   // }),
+
   mounted() {
+
+
     const wrapper = document.createElement('div')
 
     const div = document.querySelector('#Photo')
@@ -128,42 +132,6 @@ export default {
       wrapper.insertAdjacentHTML( 'beforeend',
       `<i v-else>Not selected</i>`)
     }
-
-
-  },
-
-  watch: {
-    name(newName) {
-      sessionStorage.name = newName;
-      if (sessionStorage.name === newName) {
-        console.log(newName)
-        console.log(sessionStorage?.name)
-        // sessionStorage.clear()
-        // sessionStorage.removeItem('newName')
-        // sessionStorage.removeItem('name')
-      }
-    },
-    description(newDescription) {
-      sessionStorage.description = newDescription;
-      if (sessionStorage.description === newDescription) {
-
-      }
-    },
-    checkToggle: {
-      handler(newCheckToggle) {
-        sessionStorage.checkToggle = newCheckToggle;
-        if (sessionStorage.checkToggle === newCheckToggle) {
-          // localStorage.clear()
-          // localStorage.removeItem('newCheckToggle')
-          // localStorage.removeItem('checkToggle')
-          // localStorage.checkToggle=false
-
-        }
-      },
-      deep: true,
-
-    }
-
   },
 
   setup() {
@@ -185,6 +153,7 @@ export default {
     // return { photos, onSelected, getSrc }
 
     // const  getSrc = (photo) => URL.createObjectURL(photo)
+
     const {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto} = usePhotos()
 
     return {maxSize, photos, input, onFileSelected, getSrc, needUpload, removePhoto}
