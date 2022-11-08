@@ -119,11 +119,12 @@ export default {
     div.insertAdjacentElement('beforeend', wrapper)
 
     const imageUrl = sessionStorage.getItem('imagesKey')
-    if (imageUrl) {
+    const fileUrl = JSON.parse(imageUrl)
+    if (fileUrl) {
       wrapper.insertAdjacentHTML('afterbegin', `
 
                 <div class="wrapper-image">
-                   <img src="${imageUrl}" />
+                   <img src="${fileUrl}" />
                 </div>
 
              `)

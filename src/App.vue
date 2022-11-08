@@ -35,8 +35,9 @@ export default {
   components: {
     NavBar
   },
+
   // onMounted()  {
-  //   localStorage.clear()
+  //   sessionStorage.clear()
   // },
 }
 </script>

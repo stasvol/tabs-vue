@@ -12,6 +12,7 @@ function formatBytes(bytes, decimals = 2) {
 
 const photoFile = (selector, options = {}) => {
     let files =[]
+    const maxLengthFile = 5
     const input = document.querySelector(selector)
     // const buttonOpen = document.createElement('button')
     // buttonOpen.textContent = 'Open '
@@ -40,61 +41,74 @@ const photoFile = (selector, options = {}) => {
         }
 
         files = Array.from(evt.target.files)
-        wrapper.innerHTML = ''
-        files.forEach(file => {
-            if (!file.type.match('image')) {
-                return
-            }
-            const reader = new FileReader()
 
-            reader.onload = (ev) => {
-                const url = ev.target.result
+        // wrapper.innerHTML = ''
 
-                sessionStorage.setItem('imagesKey', url)
+        // if (files.length <= maxLengthFile) {
 
-                // input.insertAdjacentHTML('afterend', `<div class="photoSize"><img src="${ev.target.result}" class="photo"/></div>`)
+          files.forEach(file => {
+                if (!file.type.match('image')) {
+                    return
+                }
+                const reader = new FileReader()
 
-                wrapper.insertAdjacentHTML('afterbegin', `
-                 
+                reader.onload = (ev) => {
+                    let imgUrl = []
+                    const url = ev.target.result
+                    imgUrl.push(url)
+
+                    sessionStorage.setItem('imagesKey', JSON.stringify(imgUrl))
+                    console.log(imgUrl)
+                    // input.insertAdjacentHTML('afterend', `<div class="photoSize"><img src="${ev.target.result}" class="photo"/></div>`)
+
+                    wrapper.insertAdjacentHTML('afterbegin', `
+
                 <div class="wrapper-image">
                  <div class="wrapper-remove" data-name="${file.name}">&times;</div>
-                 <img src="${url}"  alt="${file.name}"/>
+                 <img src="${imgUrl}"  alt="${file.name}"/>
                  <div class="wrapper-info">
                     <span>${file.name}</span>
                     <span>${formatBytes(file.size)}</span>
                  </div>
                 </div>
-                
+
              `)
+                }
 
+                reader.readAsDataURL(file)
 
-            }
+            })
+        //
+        // } else {
+        //     wrapper.insertAdjacentHTML('afterbegin', `
+        //
+        //         <div class="wrapper-image">
+        //          <h3 style="color:#961c1c;">Max length - ${maxLengthFile} photos </h3>
+        //         </div>
+        //
+        //      `)
+        //
+        // }
 
-            reader.readAsDataURL(file)
-
-        })
-
-
-
-
-        }
+    }
 
     const imageUrl = sessionStorage.getItem('imagesKey')
+    const fileUrl = JSON.parse(imageUrl)
 
-    if (imageUrl) {
+    if (fileUrl) {
+
         wrapper.insertAdjacentHTML('afterbegin', `
-                 
+
                 <div class="wrapper-image">
                 <div class="wrapper-remove" data-name="${files.name}">&times;</div>
-                 <img src="${imageUrl}" />
+                 <img src="${fileUrl}" />
                   <div class="wrapper-info">
                     <span>${files.name}</span>
                     <span>${formatBytes(files.size)}</span>
                  </div>
                 </div>
-                
-             `)
 
+             `)
     }
 
 

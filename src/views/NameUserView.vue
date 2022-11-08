@@ -195,7 +195,7 @@ export default {
   // }
 
   // onMounted()  {
-  //   localStorage.clear()
+  //   sessionStorage.clear()
   // },
 
   setup: () => ({v$: useVuelidate()}),
