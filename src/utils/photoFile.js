@@ -11,7 +11,7 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 const photoFile = (selector, options = {}) => {
-    let files =[]
+    let files = []
     const maxLengthFile = 5
     const input = document.querySelector(selector)
     // const buttonOpen = document.createElement('button')
@@ -46,7 +46,7 @@ const photoFile = (selector, options = {}) => {
 
         // if (files.length <= maxLengthFile) {
 
-          files.forEach(file => {
+          files.map(file => {
                 if (!file.type.match('image')) {
                     return
                 }
@@ -57,10 +57,10 @@ const photoFile = (selector, options = {}) => {
                     const url = ev.target.result
                     imgUrl.push(url)
 
-                    sessionStorage.setItem('imagesKey', JSON.stringify(imgUrl))
-                    console.log(imgUrl)
-                    // input.insertAdjacentHTML('afterend', `<div class="photoSize"><img src="${ev.target.result}" class="photo"/></div>`)
 
+                    sessionStorage.setItem('imagesKey', JSON.stringify(imgUrl))
+                    // input.insertAdjacentHTML('afterend', `<div class="photoSize"><img src="${ev.target.result}" class="photo"/></div>`)
+                    console.log(imgUrl)
                     wrapper.insertAdjacentHTML('afterbegin', `
 
                 <div class="wrapper-image">
@@ -76,6 +76,7 @@ const photoFile = (selector, options = {}) => {
                 }
 
                 reader.readAsDataURL(file)
+
 
             })
         //
@@ -110,6 +111,7 @@ const photoFile = (selector, options = {}) => {
 
              `)
     }
+
 
 
     const removePhotoFile=(e)=> {
