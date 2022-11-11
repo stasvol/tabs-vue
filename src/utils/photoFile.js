@@ -46,21 +46,21 @@ const photoFile = (selector, options = {}) => {
 
         // if (files.length <= maxLengthFile) {
 
-          files.map(file => {
+          files.forEach(file => {
                 if (!file.type.match('image')) {
                     return
                 }
                 const reader = new FileReader()
 
                 reader.onload = (ev) => {
-                    let imgUrl = []
+                    let imgUrl =  JSON.parse(sessionStorage.getItem('imagesKey')) || []
                     const url = ev.target.result
                     imgUrl.push(url)
 
 
-                    sessionStorage.setItem('imagesKey', JSON.stringify(imgUrl))
+                    sessionStorage.setItem('imagesKey',JSON.stringify(imgUrl))
                     // input.insertAdjacentHTML('afterend', `<div class="photoSize"><img src="${ev.target.result}" class="photo"/></div>`)
-                    console.log(imgUrl)
+
                     wrapper.insertAdjacentHTML('afterbegin', `
 
                 <div class="wrapper-image">
@@ -93,16 +93,16 @@ const photoFile = (selector, options = {}) => {
 
     }
 
-    const imageUrl = sessionStorage.getItem('imagesKey')
-    const fileUrl = JSON.parse(imageUrl)
+    const imageUrl = JSON.parse(sessionStorage.getItem('imagesKey'))
+    // const fileUrl = JSON.parse(imageUrl)
 
-    if (fileUrl) {
+    if (imageUrl) {
 
         wrapper.insertAdjacentHTML('afterbegin', `
 
                 <div class="wrapper-image">
                 <div class="wrapper-remove" data-name="${files.name}">&times;</div>
-                 <img src="${fileUrl}" />
+                 <img src="${imageUrl}" />
                   <div class="wrapper-info">
                     <span>${files.name}</span>
                     <span>${formatBytes(files.size)}</span>
