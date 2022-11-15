@@ -18,7 +18,7 @@
           <input
               class="form-control"
               type="file"
-              id="file"
+              id="formFile"
 
           />
 
@@ -278,9 +278,9 @@ export default defineComponent({
 
   mounted() {
 
-    photoFile('#file', {
+    photoFile('#formFile', {
       multi: true,
-      accept: ['.png', '.jpg', '.jpeg', '.gif']
+      accept: ['.png', '.jpg', '.jpeg', '.gif', '.webp']
     })
     // document.getElementById('photoFile').addEventListener('change', () => {
     //

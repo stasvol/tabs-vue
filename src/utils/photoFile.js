@@ -54,10 +54,12 @@ const photoFile = (selector, options = {}) => {
 
                 reader.onload = (ev) => {
                     let imgUrl =  JSON.parse(sessionStorage.getItem('imagesKey')) || []
+                    console.log('1-',imgUrl)
                     const url = ev.target.result
                     imgUrl.push(url)
+                    // let imageUrl = [...imgUrl, url]
 
-
+                    console.log('2-',imgUrl)
                     sessionStorage.setItem('imagesKey',JSON.stringify(imgUrl))
                     // input.insertAdjacentHTML('afterend', `<div class="photoSize"><img src="${ev.target.result}" class="photo"/></div>`)
 
@@ -73,6 +75,7 @@ const photoFile = (selector, options = {}) => {
                 </div>
 
              `)
+                    console.log('3-',imgUrl)
                 }
 
                 reader.readAsDataURL(file)
@@ -95,7 +98,7 @@ const photoFile = (selector, options = {}) => {
 
     const imageUrl = JSON.parse(sessionStorage.getItem('imagesKey'))
     // const fileUrl = JSON.parse(imageUrl)
-
+    console.log('4+', imageUrl)
     if (imageUrl) {
 
         wrapper.insertAdjacentHTML('afterbegin', `
@@ -110,6 +113,7 @@ const photoFile = (selector, options = {}) => {
                 </div>
 
              `)
+        console.log('5+', imageUrl)
     }
 
 
