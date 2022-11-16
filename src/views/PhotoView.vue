@@ -130,16 +130,19 @@
 <!--      <div class="col-lg-10">-->
 <!--        <div class="img-wrapper">-->
 
-          <!--    <div-->
-          <!--        class="photoSize"-->
-          <!--    >-->
-          <!--      <img class="photo" id = "imgFile" src=""  alt = "" >-->
-          <!--        <div>-->
-          <!--          <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>-->
-          <!--        </div>-->
-          <!--    </div>-->
+          <input type="file" id="photo">
+              <div
+                  class="photoSize"
+              >
+
+                <img class="photo" id = "img" src=""  alt = "" >
+<!--                  <div>-->
+<!--                    <button @click="removePhoto(index)" class="btn btn-close position" type="button"></button>-->
+<!--                  </div>-->
+              </div>
 <!--        </div>-->
       </div>
+
 <!--    </label>-->
 <!--    </div>-->
 <!--  </div>-->
@@ -153,6 +156,7 @@ import usePhotos from "@/utils/photo";
 import {mapGetters} from "vuex";
 import store from "@/store";
 import photoFile from "@/utils/photoFile";
+import addPhotosFile from "@/utils/addPhotos";
 
 export default defineComponent({
 
@@ -282,6 +286,8 @@ export default defineComponent({
       multi: true,
       accept: ['.png', '.jpg', '.jpeg', '.gif', '.webp']
     })
+
+    addPhotosFile()
     // document.getElementById('photoFile').addEventListener('change', () => {
     //
     //   let file = document.getElementById('photoFiles').files[0]

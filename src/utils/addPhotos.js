@@ -1,25 +1,26 @@
-//  const addPhotosFile = () => {
-//
-//     document.querySelector("#photo").addEventListener("change", function () {
-//         const reader = new FileReader();
-//
-//         reader.addEventListener('load', () => {
-//             console.log(reader.result)
-//             localStorage.setItem('images', reader.result)
-//
-//         })
-//         reader.readAsDataURL(this.files[0])
-//
-//     })
-//     document.addEventListener('DOMContentLoaded', () => {
-//         const imageUrl = localStorage.getItem('image')
-//         if (imageUrl) {
-//             document.querySelector('#img').setAttribute('src', imageUrl)
-//         }
-//     })
-// }
-//
-//  export default addPhotosFile
+ const addPhotosFile = () => {
+
+    document.querySelector("#photo").addEventListener("change", function () {
+        const reader = new FileReader();
+
+        reader.addEventListener('load', () => {
+            console.log(reader.result)
+            localStorage.setItem('images', JSON.stringify(reader.result))
+
+        })
+        reader.readAsDataURL(this.files[0])
+
+    })
+    // document.addEventListener('DOMContentLoaded', () => {
+        const imageUrl = JSON.parse(localStorage.getItem('images'))
+        if (imageUrl) {
+            document.querySelector('#img').setAttribute('src', imageUrl)
+        }
+     console.log(imageUrl)
+    // })
+}
+
+ export default addPhotosFile
 //
 //
 //
